@@ -48,18 +48,5 @@ assignees: ''
 
 ---
 
-## 📐 OOP Principle (Optional)
-- [ ] **SRP** (Single Responsibility) - مسؤولية الكلاس الواحدة
-- [ ] **Encapsulation** (Private/Public data) - الكبسلة والخصوصية
-- [ ] **Inheritance** (Parent/Child classes) - الوراثة
-- [ ] **Polymorphism** (Overriding methods) - تعدد الأشكال
-
----
-
-## 🖥️ Environment
-*Example: OS: Windows 11 | Runtime: Node 20*
-
----
-
 ### 💡 Additional Notes / Design Reference
 > *Add any screenshots or links here.*
