@@ -7,46 +7,46 @@ assignees: ''
 
 ---
 
-# 🛠️ OOP Issue Report
+# OOP Issue Report
 
-## 📌 Issue Title
+## Issue Title
 > *Example: Handle temporary connection loss*
 
 ---
 
-## 🌿 Branch Name
+## Branch Name
 > **fix/216**
 
-## 🪲 Bug Type
+## Bug Type
 > **Integration**
 
 ---
 
-## 📝 The Problem (Description)
+##  The Problem (Description)
 **What is happening exactly?**
 > *Example: The app logs the user out automatically when the internet disconnects.*
 
 ---
 
-## ✅ Expected Behavior
+## Expected Behavior
 **What should happen instead?**
 > *Example: The app should show a reconnecting message and keep the session active.*
 
 ---
 
-## 🧱 Class Details
+## Class Details
 * **Class Name:** > *e.g., AuthManager* (اسم الكلاس)
 
 * **Affected Element:** > *e.g., logout() method* (هل المشكلة في دالة معينة أم صفة؟)
 
 ---
 
-## 🔁 Steps to Reproduce
+##  Steps to Reproduce
 1. 
 2. 
 3. 
 
 ---
 
-### 💡 Additional Notes / Design Reference
+###  Additional Notes / Design Reference
 > *Add any screenshots or links here.*
