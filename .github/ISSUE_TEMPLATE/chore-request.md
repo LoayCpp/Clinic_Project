@@ -9,59 +9,57 @@ assignees: ''
 
 ##Chore Type: Example[Analysis project]
 
-> اسم التحليل (مثال: تحليل كلاس Patient – تحليل تدفق البيانات – تحليل العلاقات بين الكلاسات)
+)
 
 ---
 
 ##  Analysis Objective
-> لماذا نقوم بهذا التحليل؟
-> (توضيح الهدف مثل: تحسين التصميم، تقليل التكرار، توضيح المسؤوليات، التحضير للتنفيذ)
+
 
 ---
 
-## 🌿 Branch Name
-> اسم البرانش المرتبط بهذا التحليل  
-> **صيغة مقترحة:**
+## Branch Name
+Example:
 ```bash
 chore/analysis-patient-class
 ```
+##  Scope of Analysis
+**This analysis includes:**
+- [ ] Single class
+- [ ] Multiple classes
+- [ ] Inheritance relationship
+- [ ] Composition / Aggregation
+- [ ] Business logic
+- [ ] Overall project architecture
 
-## 📦 Scope of Analysis
-**يشمل هذا التحليل:**
-- [ ] كلاس محدد
-- [ ] مجموعة كلاسات
-- [ ] علاقة وراثة (Inheritance)
-- [ ] علاقة تركيب (Composition / Aggregation)
-- [ ] منطق أعمال (Business Logic)
-- [ ] بنية المشروع العامة
 
 ---
 
-## 🧩 Analysis Elements
+##  Analysis Elements
 
-### 1️⃣ Classes Involved
+### 1- Classes Involved
 | Class Name | Responsibility | Notes |
 |-----------|---------------|-------|
 |           |               |       |
 
 ---
 
-### 2️⃣ Attributes Analysis
+### 2️- Attributes Analysis
 | Attribute | Type | Owner Class | Notes |
 |----------|------|-------------|-------|
 |          |      |             |       |
 
 ---
 
-### 3️⃣ Methods Analysis
+### 3️- Methods Analysis
 | Method | Responsibility | Access Level | Notes |
 |-------|----------------|--------------|-------|
 |       |                |              |       |
 
 ---
 
-### 4️⃣ Relationships
-> وصف العلاقات بين الكلاسات
+### 4️- Relationships
+
 - Inheritance:
 - Association:
 - Composition:
@@ -69,23 +67,19 @@ chore/analysis-patient-class
 
 ---
 
-## ✅ Expected Outcome
-> ما الذي يجب أن نصل إليه بعد انتهاء هذا التحليل؟
-- وثيقة واضحة
-- أساس جاهز للتنفيذ
-- تحسين جودة التصميم
+## Expected Outcome:
 
 ---
 
-## 🔗 References
-> روابط (Notion / Diagrams / Docs)
+## 🔗 References:
+> (Notion / Diagrams / Docs)
 - 
 
 ---
 
-## 👤 Assignee
-> من المسؤول عن تنفيذ هذا التحليل؟
+## 👤 Assignee:
+>
 
 ---
 ## 🕒 Estimated Time
-> الزمن المتوقع للتحليل (مثال: 2–3 ساعات)
+>
