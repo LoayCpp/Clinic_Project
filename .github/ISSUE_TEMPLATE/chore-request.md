@@ -9,7 +9,7 @@ assignees: ''
 
 ##Chore Type: Example[Analysis project]
 
-)
+
 
 ---
 
@@ -35,30 +35,9 @@ chore/analysis-patient-class
 
 ---
 
-##  Analysis Elements
 
-### 1- Classes Involved
-| Class Name | Responsibility | Notes |
-|-----------|---------------|-------|
-|           |               |       |
 
----
-
-### 2️- Attributes Analysis
-| Attribute | Type | Owner Class | Notes |
-|----------|------|-------------|-------|
-|          |      |             |       |
-
----
-
-### 3️- Methods Analysis
-| Method | Responsibility | Access Level | Notes |
-|-------|----------------|--------------|-------|
-|       |                |              |       |
-
----
-
-### 4️- Relationships
+###  Relationships
 
 - Inheritance:
 - Association:
