@@ -1,0 +1,18 @@
+# Visual Studio folders
+.vs/
+Debug/
+Release/
+x64/
+x86/
+
+# Build files
+*.exe
+*.obj
+*.log
+*.pdb
+*.ilk
+
+# Temporary files
+*.tlog
+*.tmp
+
