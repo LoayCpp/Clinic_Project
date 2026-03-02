@@ -10,51 +10,94 @@ enum enGender
 class clsDoctor
 {
 private:
-	int _ID;
-	string _name;
+	string _doctorID;
+	string _firstName;
+    string _secondName;
+    string _thirdName;
+    string _fourthName;
 	enGender _gender;
-	string _Phone;
+	string _phone;
 	clsDate _birthday;
 	string _specialization;
 	float _feesRate;
 
 public:
   
-    clsDoctor(int ID, string name, clsDate birthday, enGender gender, float feesRate, string specialization, string Phone) {
+    clsDoctor(string doctorID, string firstName,string secondName ,string thirdName,string fourthName,clsDate birthday, enGender gender, float feesRate, string specialization, string phone) {
 
-        _ID = ID;
-        _name = name;
+        _doctorID = doctorID;
+        _firstName = firstName;
+        _secondName = secondName;
+        _thirdName = thirdName;
+        _fourthName = fourthName;
         _birthday = birthday;
         _gender = gender;
         _feesRate = feesRate;
         _specialization = specialization;
-        _Phone = Phone;
+        _phone = phone;
 
     };
 
-    int GetID()
+    string GetDoctorID () const
     {
-        return _ID;
+        return _doctorID;
+    }
+    __declspec(property(get = GetDoctorID))string DoctorID;
+
+    void SetFirstName(string firstName)
+    {
+        _firstName = firstName;
     }
 
-    void SetName(string Name)
+    string GetFirstName() const
     {
-        _name = Name;
+        return _firstName;
     }
 
-    string GetName() 
-    {
-        return _name;
-    }
-    __declspec(property(get = GetName, put = SetName))string Name;
+    __declspec(property(get = GetFirstName, put = SetFirstName))string FirstName;
 
-  
+    void SetLastName(string lastName)
+    {
+        _secondName = lastName;
+    }
+
+    string GetLastName() const
+    {
+        return _secondName;
+    }
+
+    __declspec(property(get = GetLastName, put = SetLastName))string LastName;
+
+    void SetThirdName(string thirdName)
+    {
+        _thirdName = thirdName;
+    }
+
+    string GetThirdName() const
+    {
+        return _thirdName;
+    }
+
+    __declspec(property(get = GetThirdName, put = SetThirdName))string ThirdName;
+
+    void SetFourthName(string fourthName)
+    {
+        _fourthName = fourthName;
+    }
+
+    string GetFourthName() const
+    {
+        return _fourthName;
+    }
+
+    __declspec(property(get = GetFourthName, put = SetFourthName))string FourthName;
+
     void SetGender(enGender Gender)
     {
         _gender = Gender;
     }
 
-    enGender GetGender() 
+    enGender GetGender() const
     {
         return _gender;
     }
@@ -63,12 +106,12 @@ public:
 
     void SetPhone(string Phone)
     {
-        _Phone = Phone;
+        _phone = Phone;
     }
 
-    string GetPhone() 
+    string GetPhone() const
     {
-        return _Phone;
+        return _phone;
     }
     __declspec(property(get =GetPhone, put = SetPhone))string Phone;
 
@@ -78,25 +121,25 @@ public:
         _birthday = Birthday;
     }
 
-    clsDate GetBirthday() 
+    clsDate GetBirthday() const
     {
         return _birthday;
     }
 
-    __declspec(property(get = GetBirthday, put = SetBirthday))clsDate Date;
+    __declspec(property(get = GetBirthday, put = SetBirthday))clsDate BirthDay;
 
     void SetSpecialization(string Specialization)
     {
         _specialization = Specialization;
     }
 
-    string GetSpecialization() 
+    string GetSpecialization() const
     {
         return _specialization;
     }
 
 
-    __declspec(property(get = GetSpecialization, put = SetSpecialization))string specialization;
+    __declspec(property(get = GetSpecialization, put = SetSpecialization))string Specialization;
 
 
 
@@ -105,11 +148,11 @@ public:
         _feesRate = FeesRate;
     }
 
-    float GetFeesRate() 
+    float GetFeesRate() const
     {
         return _feesRate;
     }
-    __declspec(property(get = GetFeesRate, put = SetFeesRate))float feesRate;
+    __declspec(property(get = GetFeesRate, put = SetFeesRate))float FeesRate;
 };
 
 
