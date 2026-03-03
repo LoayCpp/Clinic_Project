@@ -1,9 +1,32 @@
 #include <iostream>
+#include "clsDoctor.h"
+#include "clsDate.h"
 using namespace std;
-int main()
+
+string ConvertEnGenderToString(clsDoctor::enGender Gender)
 {
-    cout << "Hello World!\n";
-    system("pause");
-    return 0;
+	return (Gender == clsDoctor::enGender::eMale) ? "Male" : "Female";
 }
 
+void PrintInformation(clsDoctor Doctor)
+{
+	cout << "ID             : " << Doctor.DoctorID << endl;
+	cout << "Name           : " << Doctor.FirstName << " " << Doctor.LastName << " " << Doctor.ThirdName << " " << Doctor.FourthName << endl;
+	cout << "Age (Days)     : " << clsDate::CalculateMyAgeInDays(Doctor.BirthDay) << endl;
+	cout << "Gender         : " << ConvertEnGenderToString(Doctor.Gender) << endl;
+	cout << "Fees Rate      : " << Doctor.FeesRate << endl;
+	cout << "Specialization : " << Doctor.Specialization << endl;
+	cout << "Phone          : " << Doctor.Phone << endl;
+
+}
+
+int main()
+{
+	clsDoctor Doctor("10", "amr", "Anwar", "Fesail", "Ahemd", clsDate(21, 2, 2003), clsDoctor::enGender::eMale, 10.02, "Dentist", "777111222");
+
+
+
+	PrintInformation(Doctor);
+
+	system("pause");
+}
