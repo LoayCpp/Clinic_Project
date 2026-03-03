@@ -1,6 +1,6 @@
 #include <iostream>
 #include "clsDoctor.h"
-#include "clsDate.h"
+#include "ProjectFiles//Libraries/clsDate.h"
 using namespace std;
 
 string ConvertEnGenderToString(clsDoctor::enGender Gender)
@@ -22,7 +22,7 @@ void PrintInformation(clsDoctor Doctor)
 
 int main()
 {
-	clsDoctor Doctor("10", "amr", "Anwar", "Fesail", "Ahemd", clsDate(21, 2, 2003), clsDoctor::enGender::eMale, 10.02, "Dentist", "777111222");
+	clsDoctor Doctor("10", "Luai", "Anwar", "Fesail", "Ahemd", clsDate(21, 2, 2003), clsDoctor::enGender::eMale, 10.02, "Dentist", "777111222");
 
 
 
