@@ -2,14 +2,19 @@
 #include<iostream>
 #include"clsDate.h"
 using namespace std;
-enum enGender
-{
-    eFemale = 0,
-    eMale = 1
-};
+
 class clsDoctor
 {
+
+public:
+    enum enGender {
+        eFemale = 0,
+        eMale = 1
+    };
+
 private:
+
+   
 	string _doctorID;
 	string _firstName;
     string _secondName;
@@ -22,7 +27,7 @@ private:
 	float _feesRate;
 
 public:
-  
+
     clsDoctor(string doctorID, string firstName,string secondName ,string thirdName,string fourthName,clsDate birthday, enGender gender, float feesRate, string specialization, string phone) {
 
         _doctorID = doctorID;

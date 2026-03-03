@@ -3,9 +3,9 @@
 #include "clsDate.h"
 using namespace std;
 
-string ConvertEnGenderToString(enGender Gender)
+string ConvertEnGenderToString(clsDoctor::enGender Gender)
 {
-	return (Gender == enGender::eMale) ? "Male" : "Female";
+	return (Gender == clsDoctor::enGender::eMale) ? "Male" : "Female";
 }
 
 void PrintInformation(clsDoctor Doctor)
@@ -22,7 +22,7 @@ void PrintInformation(clsDoctor Doctor)
 
 int main()
 {
-	clsDoctor Doctor("10", "Luai", "Anwar", "Fesail", "Ahemd", clsDate(21, 2, 2003), enGender::eMale, 10.02, "Dentist", "777111222");
+	clsDoctor Doctor("10", "amr", "Anwar", "Fesail", "Ahemd", clsDate(21, 2, 2003), clsDoctor::enGender::eMale, 10.02, "Dentist", "777111222");
 
 
 
