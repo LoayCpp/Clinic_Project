@@ -393,7 +393,10 @@ public:
 	int GetDifferenceInDays(clsDate Date2, bool IncludeEndDay) {
 		return GetDifferenceInDays(*this, Date2, IncludeEndDay);
 	}
-
+	static short CalculateMyAgeInDays(clsDate DateOfBirth)
+	{
+		return GetDifferenceInDays(DateOfBirth, clsDate::GetSystemDate(), true);
+	}
 	static clsDate GetSystemDate()
 	{
 		time_t t = time(0);
