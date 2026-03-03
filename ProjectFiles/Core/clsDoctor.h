@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include<iostream>
 #include "ProjectFiles//Libraries/clsDate.h""
 using namespace std;
@@ -16,26 +16,36 @@ private:
 
    
 	string _doctorID;
+
 	string _firstName;
+
     string _secondName;
+
     string _thirdName;
+
     string _fourthName;
+
 	enGender _gender;
+
+	clsDate _birthdate;
+
 	string _phone;
-	clsDate _birthday;
+
 	string _specialization;
+
 	float _feesRate;
 
 public:
-
-    clsDoctor(string doctorID, string firstName,string secondName ,string thirdName,string fourthName,clsDate birthday, enGender gender, float feesRate, string specialization, string phone) {
+   
+    clsDoctor(string doctorID, string firstName,string secondName ,string thirdName,
+        string fourthName, enGender gender, clsDate birthdate, string specialization, string phone ,float feesRate) {
 
         _doctorID = doctorID;
         _firstName = firstName;
         _secondName = secondName;
         _thirdName = thirdName;
         _fourthName = fourthName;
-        _birthday = birthday;
+        _birthdate = birthdate;
         _gender = gender;
         _feesRate = feesRate;
         _specialization = specialization;
@@ -121,17 +131,17 @@ public:
     __declspec(property(get =GetPhone, put = SetPhone))string Phone;
 
 
-    void SetBirthday(clsDate Birthday)
+    void SetBirthdate(clsDate birthdate)
     {
-        _birthday = Birthday;
+        _birthdate = birthdate;
     }
 
-    clsDate GetBirthday() const
+    clsDate GetBirthdate() const
     {
-        return _birthday;
+        return _birthdate;
     }
 
-    __declspec(property(get = GetBirthday, put = SetBirthday))clsDate BirthDay;
+    __declspec(property(get = GetBirthdate, put = SetBirthdate))clsDate BirthDate;
 
     void SetSpecialization(string Specialization)
     {
