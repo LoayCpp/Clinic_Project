@@ -1,5 +1,5 @@
 #pragma once
-#include<iostream>
+#include <iostream>
 using namespace std;
 class clsPerson
 {
@@ -16,14 +16,14 @@ private:
 
 public:
     clsPerson(string firstName, string secondName, string thirdName,
-        string fourthName, string phone) {
+              string fourthName, string phone)
+    {
 
         _firstName = firstName;
         _secondName = secondName;
         _thirdName = thirdName;
         _fourthName = fourthName;
         _phone = phone;
-
     }
 
     void SetFirstName(string firstName)
@@ -36,19 +36,19 @@ public:
         return _firstName;
     }
 
-    __declspec(property(get = GetFirstName, put = SetFirstName))string FirstName;
+    __declspec(property(get = GetFirstName, put = SetFirstName)) string FirstName;
 
-    void SetLastName(string lastName)
+    void SetSecondName(string lastName)
     {
         _secondName = lastName;
     }
 
-    string GetLastName() const
+    string GetSecondName() const
     {
         return _secondName;
     }
 
-    __declspec(property(get = GetLastName, put = SetLastName))string LastName;
+    __declspec(property(get = GetSecondName, put = SetSecondName)) string SecondNeme;
 
     void SetThirdName(string thirdName)
     {
@@ -60,7 +60,7 @@ public:
         return _thirdName;
     }
 
-    __declspec(property(get = GetThirdName, put = SetThirdName))string ThirdName;
+    __declspec(property(get = GetThirdName, put = SetThirdName)) string ThirdName;
 
     void SetFourthName(string fourthName)
     {
@@ -72,9 +72,8 @@ public:
         return _fourthName;
     }
 
-    __declspec(property(get = GetFourthName, put = SetFourthName))string FourthName;
+    __declspec(property(get = GetFourthName, put = SetFourthName)) string FourthName;
 
-    
     void SetPhone(string Phone)
     {
         _phone = Phone;
@@ -84,8 +83,5 @@ public:
     {
         return _phone;
     }
-    __declspec(property(get =GetPhone, put = SetPhone))string Phone;
-
-
+    __declspec(property(get = GetPhone, put = SetPhone)) string Phone;
 };
-
