@@ -130,6 +130,7 @@
     <ClCompile Include="Clinic.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="clsPerson.h" />
     <ClInclude Include="ProjectFiles\Core\clsDoctor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

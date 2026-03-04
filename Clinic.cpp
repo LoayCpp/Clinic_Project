@@ -1,32 +1,56 @@
 #include <iostream>
 #include "ProjectFiles//Core//clsDoctor.h"
+#include "ProjectFiles//Core//clsPerson.h"
+#include"ProjectFiles//Core//clsPatient.h"
 using namespace std;
 
-string ConvertEnGenderToString(clsDoctor::enGender Gender)
+string ConvertEnGenderToStringDoctor(clsDoctor::enGender Gender)
 {
 	return (Gender == clsDoctor::enGender::eMale) ? "Male" : "Female";
 }
 
-void PrintInformation(clsDoctor Doctor)
+string ConvertEnGenderToStringPatient(clsPatient::enGender Gender)
 {
-	cout << "ID             : " << Doctor.DoctorID << endl;
-	cout << "Name           : " << Doctor.FirstName << " " << Doctor.LastName << " " << Doctor.ThirdName << " " << Doctor.FourthName << endl;
-	cout << "Age (Days)     : " << clsDate::CalculateMyAgeInDays(Doctor.BirthDate) << endl;
-	cout << "Gender         : " << ConvertEnGenderToString(Doctor.Gender) << endl;
-	cout << "Fees Rate      : " << Doctor.FeesRate << endl;
-	cout << "Specialization : " << Doctor.Specialization << endl;
-	cout << "Phone          : " << Doctor.Phone << endl;
+	return (Gender == clsPatient::enGender::eMale) ? "Male" : "Female";
+}
+void PrintDoctorInformation(clsDoctor doctor)
+{
+	cout << "ID             : " << doctor.DoctorID << endl;
+	cout << "Name           : " << doctor.FirstName << " " << doctor.SecondNeme << " " << doctor.ThirdName << " " << doctor.FourthName << endl;
+	cout << "Age (Days)     : " << clsDate::CalculateMyAgeInDays(doctor.BirthDate) << endl;
+	cout << "Gender         : " << ConvertEnGenderToStringDoctor(doctor.Gender) << endl;
+	cout << "Fees Rate      : " << doctor.FeesRate << endl;
+	cout << "Specialization : " << doctor.Specialization << endl;
+	cout << "Phone          : " << doctor.Phone << endl;
 
 }
 
+void PrintPaitentInformation(clsPatient patient)
+{
+	cout << "ID             : " << patient.PatientID << endl;
+	cout << "Name           : " << patient.FirstName << " " << patient.SecondNeme << " " << patient.ThirdName << " " << patient.FourthName << endl;
+	cout << "Age (Days)     : " << clsDate::CalculateMyAgeInDays(patient.Birthdate) << endl;
+	cout << "Gender         : " << ConvertEnGenderToStringPatient(patient.Gender) << endl;
+	cout << "\nBookingFee   : " << patient.bookingFee << endl;
+	cout << "Phone          : " << patient.Phone << endl;
+	cout << "\n============================\n";
+	cout << "Doctor`s Patient Info :\n";
+	cout << "\n============================\n";
+	PrintDoctorInformation(patient.Doctor);
+	cout << "\n============================\n";
+
+
+}
 int main()
 {
-	
-	clsDoctor Doctor("10", "Luai", "Anwar", "Fesail", "Ahemd", clsDoctor::enGender::eMale, clsDate(21, 2, 2003),"231321", "Dentist", 10.02);
 
+	clsDoctor doctor("120", "Luai", "Anwar", "Fesail", "Ahemd", clsDoctor::enGender::eMale, clsDate(21, 2, 2003), "Dentist", "777184509", 10.02);
+	clsPatient patient("11", "Said", "Ahmed", "khaled", "Smai", clsPatient::enGender::eMale, clsDate(2, 3, 2022), "932974927", doctor, 1200);
 
-
-	PrintInformation(Doctor);
-
+	cout << "Here class Docotor:\n";
+	PrintDoctorInformation(doctor);
+	cout << "\n===========================\n";
+	cout << "\nHere class Patient:\n";
+	PrintPaitentInformation(patient);
 	return 0;
 }
