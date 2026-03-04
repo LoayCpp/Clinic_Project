@@ -11,7 +11,7 @@ void PrintInformation(clsDoctor Doctor)
 {
 	cout << "ID             : " << Doctor.DoctorID << endl;
 	cout << "Name           : " << Doctor.FirstName << " " << Doctor.LastName << " " << Doctor.ThirdName << " " << Doctor.FourthName << endl;
-	cout << "Age (Days)     : " << clsDate::CalculateMyAgeInDays(Doctor.BirthDay) << endl;
+	cout << "Age (Days)     : " << clsDate::CalculateMyAgeInDays(Doctor.BirthDate) << endl;
 	cout << "Gender         : " << ConvertEnGenderToString(Doctor.Gender) << endl;
 	cout << "Fees Rate      : " << Doctor.FeesRate << endl;
 	cout << "Specialization : " << Doctor.Specialization << endl;
@@ -21,7 +21,8 @@ void PrintInformation(clsDoctor Doctor)
 
 int main()
 {
-	clsDoctor Doctor("10", "Luai", "Anwar", "Fesail", "Ahemd", clsDate(21, 2, 2003), clsDoctor::enGender::eMale, 10.02, "Dentist", "777111222");
+	
+	clsDoctor Doctor("10", "Luai", "Anwar", "Fesail", "Ahemd", clsDoctor::enGender::eMale, clsDate(21, 2, 2003),"231321", "Dentist", 10.02);
 
 
 
