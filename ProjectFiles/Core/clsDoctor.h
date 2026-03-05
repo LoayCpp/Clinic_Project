@@ -1,10 +1,10 @@
 ﻿#pragma once
 #include <iostream>
 #include "..//Libraries/clsDate.h"
-#include "..//Core/clsPerson.h"
-using namespace std;
+#include"..//Core/clsPerson.h"
+    using namespace std;
 
-class clsDoctor : public clsPerson
+class clsDoctor  : public clsPerson
 {
 
 public:
@@ -16,16 +16,8 @@ public:
 
 private:
     string _doctorID;
-<<<<<<< HEAD
-=======
-
->>>>>>> 762eed2f4c9874c41f108fca5ad99628cbc86151
     enGender _gender;
     clsDate _birthdate;
-<<<<<<< HEAD
-=======
-
->>>>>>> 762eed2f4c9874c41f108fca5ad99628cbc86151
     string _specialization;
     float _feesRate;
 
@@ -34,18 +26,14 @@ public:
 
     clsDoctor(string doctorID, string firstName, string secondName, string thirdName,
               string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)
-<<<<<<< HEAD
         :clsPerson(firstName,secondName,thirdName,fourthName,phone){
-=======
-        : clsPerson(firstName, secondName, thirdName, fourthName, phone)
-    {
->>>>>>> 762eed2f4c9874c41f108fca5ad99628cbc86151
 
         _doctorID = doctorID;
         _birthdate = birthdate;
         _gender = gender;
         _feesRate = feesRate;
         _specialization = specialization;
+ 
     };
 
     string GetDoctorID() const
@@ -68,6 +56,7 @@ public:
 
     __declspec(property(get = GetGender, put = SetGender)) enGender Gender;
 
+    
     void SetBirthdate(clsDate birthdate)
     {
         _birthdate = birthdate;
@@ -80,6 +69,7 @@ public:
 
     __declspec(property(get = GetBirthdate, put = SetBirthdate)) clsDate BirthDate;
 
+  
     void SetSpecialization(string Specialization)
     {
         _specialization = Specialization;
