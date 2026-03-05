@@ -1,7 +1,6 @@
 #pragma once
 #include "clsDoctor.h"
 #include"clsPerson.h"
-#include"..//Libraries/clsDate.h"
 class clsPatient :public clsPerson
 {
 public:

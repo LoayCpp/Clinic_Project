@@ -1,6 +1,5 @@
 #include <iostream>
 #include "ProjectFiles//Core//clsDoctor.h"
-#include "ProjectFiles//Core//clsPerson.h"
 #include"ProjectFiles//Core//clsPatient.h"
 using namespace std;
 

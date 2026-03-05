@@ -26,8 +26,11 @@
     <ClInclude Include="ProjectFiles\Core\clsDoctor.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="clsPerson.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ProjectFiles\Core\clsPatient.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Core\clsPerson.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

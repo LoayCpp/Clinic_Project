@@ -42,8 +42,7 @@ public:
 
     clsDoctor(string doctorID, string firstName, string secondName, string thirdName,
               string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)
-        :clsPerson(firstName,secondName,thirdName,fourthName,phone)
-    {
+        :clsPerson(firstName,secondName,thirdName,fourthName,phone){
 
         _doctorID = doctorID;
         _birthdate = birthdate;
