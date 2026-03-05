@@ -15,6 +15,7 @@ private:
     string _phone;
 
 public:
+    clsPerson() {}
     clsPerson(string firstName, string secondName, string thirdName,
               string fourthName, string phone)
     {
@@ -38,9 +39,9 @@ public:
 
     __declspec(property(get = GetFirstName, put = SetFirstName)) string FirstName;
 
-    void SetSecondName(string lastName)
+    void SetSecondName(string secondName)
     {
-        _secondName = lastName;
+        _secondName = secondName;
     }
 
     string GetSecondName() const
@@ -48,7 +49,7 @@ public:
         return _secondName;
     }
 
-    __declspec(property(get = GetSecondName, put = SetSecondName)) string SecondNeme;
+    __declspec(property(get = GetSecondName, put = SetSecondName)) string SecondName;
 
     void SetThirdName(string thirdName)
     {
@@ -73,6 +74,12 @@ public:
     }
 
     __declspec(property(get = GetFourthName, put = SetFourthName)) string FourthName;
+
+    string GetFullName() const
+    {
+        return this->_firstName + " " + this->_secondName + " " + this->_thirdName + " " + this->_fourthName;
+    }
+    __declspec(property(get = GetFullName)) string FullName;
 
     void SetPhone(string Phone)
     {

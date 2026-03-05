@@ -1,6 +1,7 @@
 #pragma once
-#include "ProjectFiles//Core//clsDoctor.h"
-class clsPatient
+#include "clsDoctor.h"
+#include"clsPerson.h"
+class clsPatient :public clsPerson
 {
 public:
     enum enGender {
@@ -12,35 +13,21 @@ private:
 
 
     string _patientID;
-
-    string _firstName;
-    string _secondName;
-    string _thirdName;
-    string _fourthName;
-
     enGender _gender;
-
-    clsDate _brithdate;
-
-    string _phone;
-
+    clsDate _birthdate;
     clsDoctor _doctor;
-
-  
     float _bookingFee;
 
 public:
-
-    clsPatient(string PatientID, string firstName, string secondName, string thirdName, string fourthName, enGender gender, clsDate brithdate, string phone, clsDoctor doctor, float bookingFee) {
+    clsPatient(){}
+    clsPatient(string PatientID, string firstName, string secondName, string thirdName, string fourthName, enGender gender, clsDate birthdate, string phone, clsDoctor doctor, float bookingFee) 
+        :clsPerson(firstName,secondName,thirdName,fourthName,phone)
+        
+    {
 
         _patientID = PatientID;
-        _firstName = firstName;
-        _secondName = secondName;
-        _thirdName = thirdName;
-        _fourthName = fourthName;
         _gender = gender;
-        _brithdate = brithdate;
-        _phone = phone;
+        _birthdate = birthdate;
         _doctor = doctor;
         _bookingFee = bookingFee;
 
@@ -52,76 +39,27 @@ public:
     }
     __declspec(property(get = GetPatientID))string PatientID;
 
-    void SetFirstName(string firstName)
-    {
-        _firstName = firstName;
-    }
-    string GetFirstName() const
-    {
-        return _firstName;
-    }
-    __declspec(property(get = GetFirstName, put = SetFirstName))string FirstName;
-
-    void SetSecondName(string secondName)
-    {
-        _secondName = secondName;
-    }
-    string GetSecondName() const
-    {
-        return _secondName;
-    }
-    __declspec(property(get = GetSecondName, put = SetSecondName))string SecondName;
-
-    void SetThirdName(string thirdName)
-    {
-        _thirdName = thirdName;
-    }
-    string GetThirdName() const
-    {
-        return _thirdName;
-    }
-    __declspec(property(get = GetThirdName, put = SetThirdName))string ThirdName;
-
-    void SetFourthName(string fourthName)
-    {
-        _fourthName = fourthName;
-    }
-    string GetFourthName() const
-    {
-        return _fourthName;
-    }
-    __declspec(property(get = GetFourthName, put = SetFourthName))string FourthName;
-
     void SetGender(enGender Gender)
     {
         _gender = Gender;
     }
+
     enGender GetGender() const
     {
         return _gender;
     }
     __declspec(property(get = GetGender, put = SetGender))enGender Gender;
 
-    void SetPhone(string Phone)
+    void SetBirthdate(clsDate Birthdate)
     {
-        _phone = Phone;
-    }
-    string GetPhone() const
-    {
-        return _phone;
-    }
-    __declspec(property(get = GetPhone, put = SetPhone))string Phone;
-
-
-    void SetBrithdate(clsDate Brithdate)
-    {
-        _brithdate = Brithdate;
+        _birthdate = Birthdate;
     }
     clsDate GetBirthdate() const
     {
-        return _brithdate;
+        return _birthdate;
     }
-    __declspec(property(get = GetBirthdate, put = SetBrithdate))clsDate Brithdate;
+
+    __declspec(property(get = GetBirthdate, put = SetBirthdate))clsDate Birthdate;
 
 
     void SetBookingFee(float bookingFee)
@@ -133,5 +71,17 @@ public:
         return _bookingFee;
     }
     __declspec(property(get = GetBookingFee, put = SetBookingFee))float bookingFee;
+
+    clsDoctor GetDoctor()const {
+
+
+        return _doctor;
+    }
+    clsDoctor SetDoctor(clsDoctor doctor) {
+
+
+        _doctor = doctor;
+    }
+    __declspec(property(get = GetDoctor, put = SetDoctor))clsDoctor Doctor;
 };
 
