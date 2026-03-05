@@ -59,6 +59,27 @@ public:
 		PrintFirstLetterOfEachWord(this->value);
 	}
 
+	 static string UpperFirstLetterOfEachWordTheRestIsSmall(string S1) {
+		 bool isFirstLetter = true;
+
+		 for (unsigned short i = 0; i < S1.length(); i++) {
+			 if (S1[i] != ' ' && isFirstLetter) {
+				 S1[i] = toupper(S1[i]);
+			 }
+			 else
+				 S1[i] = tolower(S1[i]);
+
+			 isFirstLetter = (S1[i] == ' ' ? true : false);
+		 }
+
+		 return S1;
+	 }
+	 void UpperFirstLetterOfEachWordTheRestIsSmall() {
+		 _value = UpperFirstLetterOfEachWordTheRestIsSmall(_value);
+
+	 }
+
+
 	static string UpperFirstLetterOfEachWord(string S1) {
 		bool isFirstLetter = true;
 
@@ -66,6 +87,7 @@ public:
 			if (S1[i] != ' ' && isFirstLetter) {
 				S1[i] = toupper(S1[i]);
 			}
+			
 			isFirstLetter = (S1[i] == ' ' ? true : false);
 		}
 
@@ -494,6 +516,12 @@ public:
 	void RemovePunctuationsFromString() {
 		_value = RemovePunctuationsFromString(_value);
 
+	}
+	static 	bool isWordExistsInString(string String,string word ) {
+		return String.find(word) != string::npos;
+	}
+	bool isWordExistsInString(string word) {
+		return isWordExistsInString(this->_value, word);
 	}
 };
 

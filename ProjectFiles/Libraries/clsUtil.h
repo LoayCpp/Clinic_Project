@@ -191,7 +191,7 @@ public:
 		A = B;
 		B = Temp;
 	}
-	static static  void Swap(bool& A, bool& B)
+	static  void Swap(bool& A, bool& B)
 	{
 		bool Temp;
 
@@ -304,6 +304,59 @@ public:
 		}
 
 		return sTab;
+	}
+	static string UnderScore(short NumberOfTabs) {
+		string sTab = "";
+		for (short i = 1; i <= NumberOfTabs; i++) {
+			sTab += "_____";
+		}
+
+		return sTab;
+	}
+	static string NumberToText(long long Number) {
+
+		if (Number == 0) {
+			return "";
+		}
+		if (Number >= 1 && Number <= 19) {
+			string aNumberInText[] = {
+				"","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve"
+				,"Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"
+			};
+
+			return aNumberInText[Number] + " ";
+		}
+		if (Number >= 20 && Number <= 99) {
+			string aNumberInText[] = {
+				"","","Twenty","Thrirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"
+			};
+
+			return aNumberInText[Number / 10] + " " + NumberToText(Number % 10);
+		}
+		if (Number >= 100 && Number <= 199) {
+			return "One Hundred " + NumberToText(Number % 100);
+		}
+		if (Number >= 200 && Number <= 999) {
+			return NumberToText(Number / 100) + "Hundreds " + NumberToText(Number % 100);
+		}
+		if (Number >= 1000 && Number <= 1999) {
+			return "One Thousnd " + NumberToText(Number % 1000);
+		}
+		if (Number >= 2000 && Number <= 999999) {
+			return NumberToText(Number / 1000) + "Thousnds " + NumberToText(Number % 1000);
+		}
+		if (Number >= 1000000 && Number <= 1999999) {
+			return "One Million " + NumberToText(Number % 1000000);
+		}
+		if (Number >= 2000000 && Number <= 99999999) {
+			return NumberToText(Number / 1000000) + "Milions " + NumberToText(Number % 1000000);
+		}
+		if (Number >= 1000000000 && Number <= 1999999999) {
+			return "One Billion " + NumberToText(Number % 1000000000);
+		}
+		else {
+			return NumberToText(Number / 1000000000) + "Billions " + NumberToText(Number % 1000000000);
+		}
 	}
 
 

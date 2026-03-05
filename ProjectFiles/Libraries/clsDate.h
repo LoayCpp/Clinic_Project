@@ -3,9 +3,6 @@
 #include "clsString.h"
 class clsDate {
 private:
-
-	
-
 	short _day;
 	short _month;
 	short _year;
@@ -57,18 +54,45 @@ public:
 	}
 
 	void setYear(short year) {
-		_month = year;
+		_year = year;
 	}
 	short getYear() const {
+		
 		return _year;
+	}
+
+	string getMonthNumberInStrig() {
+		if (this->month < 10) {
+			return "0" + to_string(this->month);
+		}
+		return to_string(this->month);
+	}
+	string getYearNumberInString() {
+		return  to_string(this->year);
+	}
+
+	void setDate(short day, short month, short year) {
+		_day = day;
+		_month = month;
+		_year = year;
 	}
 
 	__declspec(property(get = getDay, put = setDay)) short day;
 	__declspec(property(get = getMonth, put = setMonth)) short month;
 	__declspec(property(get = getYear, put = setYear)) short year;
 
-
-
+	static bool isMonth(short month) {
+		if (month >= 1 && month <= 12) {
+			return true;
+		}
+		return false;
+	}
+	 bool isMonth() {
+		 if (this->month >= 1 && this->month <= 12) {
+			 return true;
+		 }
+		 return false;
+	}
 	static bool IsLeapYear(short Year) {
 		// if year is divisible by 4 AND not 
 		// divisible by 100
@@ -124,6 +148,13 @@ public:
 			: 28) : NumberOfDays[Month - 1];
 
 	}
+	 bool isDayWithInMonth() {
+		 short DaysNumber = this->NumberOfDaysInAMonth();
+		 if (this->_day >= 1 && this->_day <= DaysNumber) {
+			 return true;
+		 }
+		 return false;
+	 }
 	short NumberOfDaysInAMonth() {
 		return NumberOfDaysInAMonth(_month, _year);
 	}
@@ -371,7 +402,10 @@ public:
 	bool  IsLastMonthInYear() {
 		return IsLastMonthInYear(_month);
 	}
-
+	static short CalculateMyAgeInDays(clsDate DateOfBirth)
+	{
+		return GetDifferenceInDays(DateOfBirth, clsDate::GetSystemDate(), true);
+	}
 	static int GetDifferenceInDays(clsDate Date1, clsDate Date2, bool IncludeEndDay)
 	{
 		int Days = 0;
@@ -393,9 +427,10 @@ public:
 	int GetDifferenceInDays(clsDate Date2, bool IncludeEndDay) {
 		return GetDifferenceInDays(*this, Date2, IncludeEndDay);
 	}
-	static short CalculateMyAgeInDays(clsDate DateOfBirth)
-	{
-		return GetDifferenceInDays(DateOfBirth, clsDate::GetSystemDate(), true);
+	static short getSystemYear() {
+		time_t t = time(0);
+		tm* now = localtime(&t);
+		return now->tm_year + 1900;
 	}
 	static clsDate GetSystemDate()
 	{
@@ -403,7 +438,9 @@ public:
 		tm* now = localtime(&t);
 		return clsDate(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900);
 	}
-
+	static clsDate getEmptyDate() {
+		return clsDate(0, 0, 0);
+	}
 	static void SwapDates(clsDate& Date1, clsDate& Date2)
 	{
 		clsDate TempDate;
