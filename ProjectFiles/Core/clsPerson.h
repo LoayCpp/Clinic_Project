@@ -39,9 +39,9 @@ public:
 
     __declspec(property(get = GetFirstName, put = SetFirstName)) string FirstName;
 
-    void SetSecondName(string lastName)
+    void SetSecondName(string secondName)
     {
-        _secondName = lastName;
+        _secondName = secondName;
     }
 
     string GetSecondName() const
@@ -49,7 +49,7 @@ public:
         return _secondName;
     }
 
-    __declspec(property(get = GetSecondName, put = SetSecondName)) string SecondNeme;
+    __declspec(property(get = GetSecondName, put = SetSecondName)) string SecondName;
 
     void SetThirdName(string thirdName)
     {
