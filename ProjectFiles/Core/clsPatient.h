@@ -13,25 +13,13 @@ private:
 
 
     string _patientID;
-
-    string _firstName;
-    string _secondName;
-    string _thirdName;
-    string _fourthName;
-
     enGender _gender;
-
     clsDate _birthdate;
-
-    string _phone;
-
     clsDoctor _doctor;
-
-  
     float _bookingFee;
 
 public:
-
+    clsPatient(){}
     clsPatient(string PatientID, string firstName, string secondName, string thirdName, string fourthName, enGender gender, clsDate birthdate, string phone, clsDoctor doctor, float bookingFee) 
         :clsPerson(firstName,secondName,thirdName,fourthName,phone)
         

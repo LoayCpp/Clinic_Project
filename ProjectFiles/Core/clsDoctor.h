@@ -16,29 +16,13 @@ public:
 
 private:
     string _doctorID;
-
-    string _firstName;
-
-    string _secondName;
-
-    string _thirdName;
-
-    string _fourthName;
-
     enGender _gender;
-
     clsDate _birthdate;
-
-    string _phone;
-
     string _specialization;
-
     float _feesRate;
 
 public:
-    clsDoctor() {
-
-    };
+    clsDoctor(){}
 
     clsDoctor(string doctorID, string firstName, string secondName, string thirdName,
               string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)

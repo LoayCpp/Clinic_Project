@@ -15,9 +15,7 @@ private:
     string _phone;
 
 public:
-    clsPerson() {
-
-    }
+    clsPerson() {}
     clsPerson(string firstName, string secondName, string thirdName,
               string fourthName, string phone)
     {
@@ -76,6 +74,12 @@ public:
     }
 
     __declspec(property(get = GetFourthName, put = SetFourthName)) string FourthName;
+
+    string GetFullName() const
+    {
+        return this->_firstName + " " + this->_secondName + " " + this->_thirdName + " " + this->_fourthName;
+    }
+    __declspec(property(get = GetFullName)) string FullName;
 
     void SetPhone(string Phone)
     {
