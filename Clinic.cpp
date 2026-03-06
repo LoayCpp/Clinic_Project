@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 #include "ProjectFiles//Core//clsDoctor.h"
 #include"ProjectFiles//Core//clsPatient.h"
+#include"ProjectFiles/Core/clsAppointment.h"
+
 using namespace std;
 
 string ConvertEnGenderToStringDoctor(clsDoctor::enGender Gender)
@@ -43,13 +45,15 @@ void PrintPaitentInformation(clsPatient patient)
 int main()
 {
 
-	clsDoctor doctor("120", "Luai", "Anwar", "Fesail", "Ahemd", clsDoctor::enGender::eMale, clsDate(21, 2, 2003), "Dentist", "777184509", 10.02f);
+	/*clsDoctor doctor("120", "Luai", "Anwar", "Fesail", "Ahemd", clsDoctor::enGender::eMale, clsDate(21, 2, 2003), "Dentist", "777184509", 10.02f);
 	clsPatient patient("11", "Amr", "Ahmed", "khaled", "Smai", clsPatient::enGender::eMale, clsDate(2, 3, 2022), "932974927", doctor, 1200);
 
 	cout << "Here class Docotor:\n";
 	PrintDoctorInformation(doctor);
 	cout << "===========================\n";
 	cout << "\nHere class Patient:\n";
-	PrintPaitentInformation(patient);
+	PrintPaitentInformation(patient);*/
+	
+
 	return 0;
 }
