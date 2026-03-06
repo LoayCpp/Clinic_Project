@@ -7,11 +7,11 @@ private:
     string _appointmentID;
     clsDoctor _doctor;
     clsPatient _patient;
-    clsDate _dateTime;
+    string _dateTime;
 
 public:
 
-    clsAppointment(string appointmentID, clsPatient patient, clsDoctor doctor, clsDate dateTime)
+    clsAppointment(string appointmentID, clsPatient patient, clsDoctor doctor, string dateTime)
     {
         _appointmentID = appointmentID;
         _patient = patient;
@@ -57,15 +57,15 @@ public:
 
 
     
-    clsDate GetDateTime()
+    string GetDateTime()
     {
         return _dateTime;
     }
 
-    void SetDateTime(clsDate dateTime)
+    void SetDateTime(string dateTime)
     {
         _dateTime = dateTime;
     }
 
-    __declspec(property(get = GetDateTime, put = SetDateTime)) clsDate DateTime;
+    __declspec(property(get = GetDateTime, put = SetDateTime)) string DateTime;
 };
