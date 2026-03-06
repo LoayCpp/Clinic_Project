@@ -7,7 +7,7 @@ private:
     string _appointmentID;
     clsDoctor _doctor;
     clsPatient _patient;
-    string _dateTime;
+     string _dateTime;
 
 public:
 

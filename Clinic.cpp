@@ -2,7 +2,7 @@
 #include "ProjectFiles//Core//clsDoctor.h"
 #include"ProjectFiles//Core//clsPatient.h"
 #include"ProjectFiles/Core/clsAppointment.h"
-#include"ProjectFiles//Screens\MainMenu/clsMainMenu.h"
+
 using namespace std;
 
 string ConvertEnGenderToStringDoctor(clsDoctor::enGender Gender)
@@ -53,7 +53,7 @@ int main()
 	cout << "===========================\n";
 	cout << "\nHere class Patient:\n";
 	PrintPaitentInformation(patient);*/
-	clsMainMenu::ShowMenu();
+	
 
 	return 0;
 }
