@@ -17,7 +17,7 @@ private:
 	};
 	static short _ReadMainMenuOption() {
 		short num;
-		cout <<setw(45) << left << "" << "Enter The Number from [1-5]:";
+		cout  << "Enter The Number from [1-5]:";
 		num = clsInputValidate::ReadNumberBetween<short>(1, 5);
 
 		return num;
@@ -105,14 +105,14 @@ public:
 	static void ShowMenu() {
 
 		system("cls");
-		showMainHeader("\t\t\t\t\t\t\tMain Menu Screen","",5);
+		showMainHeader("\t\tMain Menu Screen");
 
-		cout << setw(45) << left << "" << "[1]Manage Patients Menue\n";
-		cout << setw(45) << left << "" << "[2]Manage Doctors Menue\n";
-		cout << setw(45) << left << "" << "[3]Manage Users Menue\n";
-		cout << setw(45) << left << "" << "[4]Manage Appointments Menue\n";
-		cout << setw(45) << left << "" << "[5]Log out\n";
-		cout << "\t\t\t\t\t======================================\n";
+		cout << "[1]Manage Patients Menue\n";
+		cout << "[2]Manage Doctors Menue\n";
+		cout << "[3]Manage Users Menue\n";
+		cout << "[4]Manage Appointments Menue\n";
+		cout << "[5]Log out\n";
+		cout << "======================================\n";
 		_PerformMainMenueOperation(eOption(_ReadMainMenuOption()));
 
 
