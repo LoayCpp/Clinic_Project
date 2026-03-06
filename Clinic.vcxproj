@@ -130,13 +130,13 @@
     <ClCompile Include="Clinic.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="clsMainMenu.h" />
     <ClInclude Include="ProjectFiles\Core\clsAppointment.h" />
     <ClInclude Include="ProjectFiles\Core\clsDoctor.h" />
     <ClInclude Include="ProjectFiles\Core\clsPatient.h" />
     <ClInclude Include="ProjectFiles\Core\clsPerson.h" />
     <ClInclude Include="ProjectFiles\Core\clsUser.h" />
     <ClInclude Include="ProjectFiles\Screens\clsHeaderScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsMainMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
