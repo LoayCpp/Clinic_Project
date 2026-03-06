@@ -1,5 +1,5 @@
 #pragma once
-#include "ProjectFiles//Core//clsPatient.h"
+#include "clsPatient.h"
 
 class clsAppointment
 {

@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "ProjectFiles//Core//clsDoctor.h"
 #include"ProjectFiles//Core//clsPatient.h"
+#include"ProjectFiles/Core/clsAppointment.h"
 using namespace std;
 
 string ConvertEnGenderToStringDoctor(clsDoctor::enGender Gender)
