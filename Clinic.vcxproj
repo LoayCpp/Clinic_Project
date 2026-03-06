@@ -133,6 +133,7 @@
     <ClInclude Include="ProjectFiles\Core\clsDoctor.h" />
     <ClInclude Include="ProjectFiles\Core\clsPatient.h" />
     <ClInclude Include="ProjectFiles\Core\clsPerson.h" />
+    <ClInclude Include="ProjectFiles\Core\clsUser.h" />
     <ClInclude Include="ProjectFiles\Screens\clsHeaderScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
