@@ -4,46 +4,9 @@ class clsInputValidate {
 
 public:
 
-	static int ReadIntNumber(string Message, string alternativeMessage) {
+	 template <class T> static T ReadNumber(string Message, string alternativeMessage) {
 
-		int num = 0;
-
-		cout << Message;
-		cin >> num;
-
-		while (cin.fail()) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
-	static int ReadIntNumber(string alternativeMessage = "InValid input, Enter again :") {
-
-		int num = 0;
-
-
-		cin >> num;
-
-		while (cin.fail()) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
-
-	static float ReadFloatNumber(string Message, string alternativeMessage) {
-
-		float num = 0;
+		T num = 0;
 
 		cout << Message;
 		cin >> num;
@@ -59,83 +22,9 @@ public:
 
 		return num;
 	}
-	static float ReadFloatNumber(string alternativeMessage = "InValid input, Enter again :") {
+	 template <class T> static T ReadNumber(string alternativeMessage = "InValid input, Enter again :") {
 
-		float num = 0;
-
-		
-		cin >> num;
-
-		while (cin.fail()) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
-
-	static double ReadDoubleNumber(string Message, string alternativeMessage) {
-
-		double num = 0;
-
-		cout << Message;
-		cin >> num;
-
-		while (cin.fail()) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
-	static double ReadDoubleNumber(string alternativeMessage = "InValid input, Enter again :") {
-
-		double num = 0;
-
-
-		cin >> num;
-
-		while (cin.fail()) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
-
-	static short ReadShortNumber(string Message, string alternativeMessage) {
-
-		short num = 0;
-
-		cout << Message;
-		cin >> num;
-
-		while (cin.fail()) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
-	static short ReadShortNumber(string alternativeMessage = "InValid input, Enter again :") {
-
-		short num = 0;
+		 T num = 0;
 
 
 		cin >> num;
@@ -233,8 +122,6 @@ public:
 		cout << Message;
 		getline(cin >> ws, sString);
 
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
 		return sString;
 	}
 	static string ReadString() {
@@ -242,33 +129,27 @@ public:
 		string sString = "";
 		getline(cin >> ws, sString);
 
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		return sString;
+	}
+
+	static string ReadOneWord(string Message) {
+		string sString = "";
+
+		cout << Message;
+		cin >> sString;
+
+		return sString;
+	}
+	static string ReadOneWord() {
+		string sString = "";
+		cin >> sString;
 
 		return sString;
 	}
 
+	template <class T> static T ReadNumberBetween(string Message, string alternativeMessage, int From, int To) {
 
-	static int ReadIntNumberBetween(string Message, string alternativeMessage, int From, int To) {
-
-		int num = 0;
-
-		cout << Message;
-		cin >> num;
-
-		while (cin.fail() || !(num >= From && num <= To)) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
-	static float ReadFloatNumberBetween(string Message, string alternativeMessage, float From, float To) {
-
-		float num = 0;
+		T num = 0;
 
 		cout << Message;
 		cin >> num;
@@ -284,11 +165,9 @@ public:
 
 		return num;
 	}
-	static double ReadDoubleNumberBetween(string Message, string alternativeMessage, double From, double To) {
+	template <class T> static T ReadNumberBetween(int From, int To, string alternativeMessage = "InValid input, Enter again :") {
 
-		double num = 0;
-
-		cout << Message;
+		T num = 0;
 		cin >> num;
 
 		while (cin.fail() || !(num >= From && num <= To)) {
@@ -302,24 +181,7 @@ public:
 
 		return num;
 	}
-	static short ReadShortNumberBetween(string Message, string alternativeMessage, short From, short To) {
 
-		short num = 0;
-
-		cout << Message;
-		cin >> num;
-
-		while (cin.fail() || !(num >= From && num <= To)) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
 	static char ReadCharacterBetween(string Message, string alternativeMessage, char From, char To) {
 
 		char Char = 0;
@@ -338,10 +200,27 @@ public:
 
 		return Char;
 	}
-	static int ReadIntPositiveNumber(string Message, string alternativeMessage) {
+	static char ReadCharacterBetween(char From, char To, string alternativeMessage = "InValid input, Enter again :") {
+
+		char Char = 0;
+		cin >> Char;
+
+		while (cin.fail() || !(Char >= From && Char <= To)) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << alternativeMessage;
+			cin >> Char;
+		}
+
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		return Char;
+	}
+
+	template <class T> static T ReadPositiveNumber(string Message, string alternativeMessage = "InValid Input, Please enter valid input :") {
 
 
-		int num = 0;
+		T num = 0;
 
 		cout << Message;
 		cin >> num;
@@ -357,12 +236,12 @@ public:
 
 		return num;
 	}
-	static float ReadFloatPositiveNumber(string Message, string alternativeMessage) {
+	template <class T> static T ReadPositiveNumber() {
 
+		T num = 0;
 
-		float num = 0;
+		string alternativeMessage = "InValid Input, Please enter valid input :";
 
-		cout << Message;
 		cin >> num;
 
 		while (cin.fail() || (num <= 0)) {
@@ -376,48 +255,12 @@ public:
 
 		return num;
 	}
-	static double ReadDoublePositiveNumber(string Message, string alternativeMessage) {
 
 
-		double num = 0;
-
-		cout << Message;
-		cin >> num;
-
-		while (cin.fail() || (num <= 0)) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
-	static short ReadShortPositiveNumber(string Message, string alternativeMessage) {
+	template <class T> static T ReadNegtiveNumber(string Message, string alternativeMessage = "InValid Input, Please enter valid input :") {
 
 
-		short num = 0;
-
-		cout << Message;
-		cin >> num;
-
-		while (cin.fail() || (num <= 0)) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
-	static int ReadIntNegtiveNumber(string Message, string alternativeMessage) {
-
-
-		int num = 0;
+		T num = 0;
 
 		cout << Message;
 		cin >> num;
@@ -433,12 +276,12 @@ public:
 
 		return num;
 	}
-	static float ReadFloatNegtiveNumber(string Message, string alternativeMessage) {
+	template <class T> static T ReadNegtiveNumber( ) {
 
+		T num = 0;
 
-		float num = 0;
+		string alternativeMessage = "InValid Input, Please enter valid input :";
 
-		cout << Message;
 		cin >> num;
 
 		while (cin.fail() || (num > 0)) {
@@ -452,44 +295,9 @@ public:
 
 		return num;
 	}
-	static double ReadDoubleNegtiveNumber(string Message, string alternativeMessage) {
 
 
-		double num = 0;
 
-		cout << Message;
-		cin >> num;
-
-		while (cin.fail() || (num > 0)) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
-	static short ReadShortNegtiveNumber(string Message, string alternativeMessage) {
-
-
-		short num = 0;
-
-		cout << Message;
-		cin >> num;
-
-		while (cin.fail() || (num > 0)) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << alternativeMessage;
-			cin >> num;
-		}
-
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		return num;
-	}
 	static bool IsNumberBetween(int Num, int From, int To) {
 		return (Num >= From && Num <= To);
 	}
@@ -518,10 +326,35 @@ public:
 		return clsDate::IsValidDate(Date);
 	}
 	static bool CheckAnswer(string Message) {
-		char YourAnswer = ReadCharacter(Message, "Invalid Input, Please Enter Character : ");
+		char YourAnswer = ReadCharacter(Message, "Invalid Input, Please valid input : ");
 		return (toupper(YourAnswer) == 'Y');
 	}
+	static clsDate ReadDate() {
 
+		clsDate Date;
+		string alternativeMassage = "InValid Input, Please enter valid input : ";
+
+		Date.year = ReadPositiveNumber<short>("Enter year : ", alternativeMassage);
+		Date.month = ReadPositiveNumber<short>("Enter month : ", alternativeMassage);
+		while (!Date.isMonth()) {
+			Date.month = ReadPositiveNumber<short>("Enter a valid month : ", alternativeMassage);
+		}
+		Date.day = ReadPositiveNumber<short>("Enter day : ");
+		while (!Date.isDayWithInMonth()) {
+			Date.day = ReadPositiveNumber<short>("Enter a valid day : ", alternativeMassage);
+		}
+
+		return Date;
+	}
+	static clsDate ReadDateBetween(clsDate From, clsDate To, string AlternativeMessage = "The Date you entered is not allowed ..") {
+		clsDate Date = clsInputValidate::ReadDate();
+		while (!clsInputValidate::IsDateBetween(Date, From, To)) {
+			cout << AlternativeMessage << "\n";
+			Date = clsInputValidate::ReadDate();
+		}
+
+		return Date;
+	}
 
 };
 

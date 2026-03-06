@@ -16,6 +16,12 @@
     <Filter Include="Header Files\Core">
       <UniqueIdentifier>{98c44ac0-3252-45d5-83d7-90e971e932b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Screens">
+      <UniqueIdentifier>{9623104e-21f6-4cc1-b794-e8caf0c3253f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Screens\MainMenue">
+      <UniqueIdentifier>{1c625c3b-71a8-4e97-85a7-8cc8c98253b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Clinic.cpp">
@@ -30,6 +36,12 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="ProjectFiles\Core\clsPerson.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\clsHeaderScreen.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Core\clsUser.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
