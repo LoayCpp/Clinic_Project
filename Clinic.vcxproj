@@ -130,6 +130,8 @@
     <ClCompile Include="Clinic.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="clsMainMenu.h" />
+    <ClInclude Include="ProjectFiles\Core\clsAppointment.h" />
     <ClInclude Include="ProjectFiles\Core\clsDoctor.h" />
     <ClInclude Include="ProjectFiles\Core\clsPatient.h" />
     <ClInclude Include="ProjectFiles\Core\clsPerson.h" />

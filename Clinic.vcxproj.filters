@@ -44,5 +44,11 @@
     <ClInclude Include="ProjectFiles\Core\clsUser.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectFiles\Core\clsAppointment.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="clsMainMenu.h">
+      <Filter>Header Files\Screens\MainMenue</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
