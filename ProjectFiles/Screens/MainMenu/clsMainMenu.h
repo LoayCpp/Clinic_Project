@@ -1,6 +1,8 @@
 #pragma once
 #include"../clsHeaderScreen.h"
 #include"../..//Libraries/clsInputValidate.h"
+#include"clsManagePatientMenu.h"
+#include"clsManageDoctorsMenueScreen.h"
 class clsMainMenu: protected clsHeaderScreen
 {
 
@@ -32,12 +34,12 @@ private:
 
 	static void _ShowManagePatientsMenueScreen() {
 
-		cout << "Mange Patient not implement\n";
+		clsManagePatientMenue::ShowMenue();
 
 	}
 	static void _ShowManageDoctorMenueScreen() {
 
-		cout << "Mange Docotr not implement\n";
+		clsManageDoctorMenue::ShowMenue();
 
 	}
 	static void _ShowManageUsersMenueScreen() {

@@ -137,6 +137,7 @@
     <ClInclude Include="ProjectFiles\Core\clsUser.h" />
     <ClInclude Include="ProjectFiles\Screens\clsHeaderScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsMainMenu.h" />
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageDoctorsMenueScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManagePatientMenue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
