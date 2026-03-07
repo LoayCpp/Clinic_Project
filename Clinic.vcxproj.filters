@@ -47,7 +47,7 @@
     <ClInclude Include="ProjectFiles\Core\clsAppointment.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="clsMainMenu.h">
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsMainMenu.h">
       <Filter>Header Files\Screens\MainMenue</Filter>
     </ClInclude>
   </ItemGroup>
