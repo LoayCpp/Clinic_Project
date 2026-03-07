@@ -3,7 +3,7 @@
 #include"ProjectFiles//Core//clsPatient.h"
 #include"ProjectFiles/Core/clsAppointment.h"
 #include"ProjectFiles//Screens//MainMenu/clsMainMenu.h"
-#include"ProjectFiles//Screens//MainMenu/clsManagePatientMenue.h"
+#include"ProjectFiles//Screens/MainMenu/clsManagePatientMenu.h"
 using namespace std;
 
 string ConvertEnGenderToStringDoctor(clsDoctor::enGender Gender)
