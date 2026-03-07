@@ -7,14 +7,15 @@ class clsMainMenu: protected clsHeaderScreen
 
 private:
 
-	enum eOption
+	enum enMainMenueOption
 	{
 		eManagePatientsMenu=1,
-		eManageDoctorsMenu=2,
-		eManageUsersMenu=3,
-		eManageAppointmentsMenu=4,
-		eLogout=5
+		eManageDoctorsMenu,
+		eManageUsersMenu,
+		eManageAppointmentsMenu,
+		eLogout
 	};
+
 	static short _ReadMainMenuOption() {
 		short num;
 		cout  << "Enter The Number from [1-5]:";
@@ -22,12 +23,13 @@ private:
 
 		return num;
 	}
-	static void _BackToMenue() {
+
+	/*static void _BackToMenue() {
 
 		cout << "Press any Key to go to Main Menu\n";
 		system("pause>0");
 		ShowMenu();
-	}
+	}*/
 
 	static void _ShowManagePatientsMenueScreen() {
 
@@ -56,7 +58,7 @@ private:
 		cout << "Mange logout not implement\n";
 
 	 }
-	static void _PerformMainMenueOperation(eOption option) {
+	static void _PerformMainMenueOperation(enMainMenueOption option) {
 
 
 		switch (option)
@@ -64,34 +66,34 @@ private:
 		case clsMainMenu::eManagePatientsMenu:
 			system("cls");
 			_ShowManagePatientsMenueScreen();
-			_BackToMenue();
+		
 			break;
 
 		case clsMainMenu::eManageDoctorsMenu:
 			system("cls");
 			_ShowManageDoctorMenueScreen();
-			_BackToMenue();
+	
 			break;
 		case clsMainMenu::eManageUsersMenu:
 
 			system("cls");
 			_ShowManageUsersMenueScreen();
-			_BackToMenue();
+			
 
 			break;
 		case clsMainMenu::eManageAppointmentsMenu:
 			system("cls");
 			_ShowManageAppointmentMenueScreen();
-			_BackToMenue();
+		
 			break;
 		case clsMainMenu::eLogout:
 			system("cls");
 			_ShowLogoutScreen();
-			_BackToMenue();
+		
 			break;
 		}
 
-
+		ShowMenu();
 
 
 
@@ -113,7 +115,7 @@ public:
 		cout << "[4]Manage Appointments Menue\n";
 		cout << "[5]Log out\n";
 		cout << "======================================\n";
-		_PerformMainMenueOperation(eOption(_ReadMainMenuOption()));
+		_PerformMainMenueOperation((enMainMenueOption)_ReadMainMenuOption());
 
 
 	}
