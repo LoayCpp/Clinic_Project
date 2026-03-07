@@ -1,7 +1,6 @@
 #pragma once
 #include"../clsHeaderScreen.h"
 #include"../..//Libraries/clsInputValidate.h"
-#include<iomanip>
 class clsMainMenu: protected clsHeaderScreen
 {
 
@@ -10,13 +9,13 @@ private:
 	enum enMainMenueOption
 	{
 		eManagePatientsMenu=1,
-		eManageDoctorsMenu,
-		eManageUsersMenu,
-		eManageAppointmentsMenu,
+		eManageDoctorsMenue,
+		eManageUsersMenue,
+		eManageAppointmentsMenue,
 		eLogout
 	};
 
-	static short _ReadMainMenuOption() {
+	static short _ReadMainMenueOption() {
 		short num;
 		cout  << "Enter The Number from [1-5]:";
 		num = clsInputValidate::ReadNumberBetween<short>(1, 5);
@@ -28,7 +27,7 @@ private:
 
 		cout << "Press any Key to go to Main Menu\n";
 		system("pause>0");
-		ShowMenu();
+		ShowMenue();
 	}*/
 
 	static void _ShowManagePatientsMenueScreen() {
@@ -69,19 +68,19 @@ private:
 		
 			break;
 
-		case clsMainMenu::eManageDoctorsMenu:
+		case clsMainMenu::eManageDoctorsMenue:
 			system("cls");
 			_ShowManageDoctorMenueScreen();
 	
 			break;
-		case clsMainMenu::eManageUsersMenu:
+		case clsMainMenu::eManageUsersMenue:
 
 			system("cls");
 			_ShowManageUsersMenueScreen();
 			
 
 			break;
-		case clsMainMenu::eManageAppointmentsMenu:
+		case clsMainMenu::eManageAppointmentsMenue:
 			system("cls");
 			_ShowManageAppointmentMenueScreen();
 		
@@ -93,7 +92,7 @@ private:
 			break;
 		}
 
-		ShowMenu();
+		ShowMenue();
 
 
 
@@ -104,18 +103,22 @@ private:
 public:
 
 
-	static void ShowMenu() {
+	static void ShowMenue() {
 
 		system("cls");
 		showMainHeader("\t\tMain Menu Screen");
 
-		cout << "[1]Manage Patients Menue\n";
-		cout << "[2]Manage Doctors Menue\n";
-		cout << "[3]Manage Users Menue\n";
-		cout << "[4]Manage Appointments Menue\n";
-		cout << "[5]Log out\n";
-		cout << "======================================\n";
-		_PerformMainMenueOperation((enMainMenueOption)_ReadMainMenuOption());
+		string LineSperator = "=============================================\n";
+
+		cout << LineSperator;
+		cout << "[1] Manage Patients Menue\n";
+		cout << "[2] Manage Doctors Menue\n";
+		cout << "[3] Manage Users Menue\n";
+		cout << "[4] Manage Appointments Menue\n";
+		cout << "[5] Log out\n";
+		cout << LineSperator;
+
+		_PerformMainMenueOperation((enMainMenueOption)_ReadMainMenueOption());
 
 
 	}
