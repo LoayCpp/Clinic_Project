@@ -4,6 +4,7 @@
 #include"clsManagePatientMenu.h"
 #include "clsManageDoctorsMenuScreen.h"
 #include"clsManageUsersMenuScreen.h"
+#include"clsManageAppointmentsMenuScreen.h"
 class clsMainMenu: protected clsHeaderScreen
 {
 
@@ -51,7 +52,7 @@ private:
 	}
 	static void _ShowManageAppointmentMenuScreen() {
 
-		cout << "Mange Appointment not implement\n";
+		clsManageAppointmentsMenuScreen::ShowMenu();
 
 
 	}
