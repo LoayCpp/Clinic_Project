@@ -3,6 +3,7 @@
 #include"../..//Libraries/clsInputValidate.h"
 #include"clsManagePatientMenu.h"
 #include "clsManageDoctorsMenuScreen.h"
+#include"clsManageUsersMenuScreen.h"
 class clsMainMenu: protected clsHeaderScreen
 {
 
@@ -45,7 +46,7 @@ private:
 	static void _ShowManageUsersMenuScreen() {
 
 
-		cout << "Mange Users not implement\n";
+		clsManageUsersMenuScreen::ShowMenu();
 
 	}
 	static void _ShowManageAppointmentMenuScreen() {
