@@ -2,32 +2,32 @@
 #include"../clsHeaderScreen.h"
 #include"../..//Libraries/clsInputValidate.h"
 
-class clsManagePatientMenue: protected clsHeaderScreen
+class clsManagePatientMenu: protected clsHeaderScreen
 {
 
 private:
 
-	enum enManagePatientMenueOption
+	enum enManagePatientMenuOption
 	{
 		eShowAllPatientsScreen=1,
 		eAddNewPatient,
 		eUpdatePatient,
 		eDeletePatient,
 		eFindPatient,
-		eBackToMainMenue
+		eBackToMainMenu
 	};
 
-	static short _ReadManagePatientMenueOption() {
+	static short _ReadManagePatientMenuOption() {
 		
 		cout << "Enter The Number from [1-6]:";
 		return  clsInputValidate::ReadNumberBetween<short>(1, 6);
 	}
 
-	static void _BackToMenue() {
+	static void _BackToMenu() {
 
 		cout << "Press any Key to go to Main Menu\n";
 		system("pause>0");
-		ShowMenue();
+		ShowMenu();
 	}
 
 	static void _ShowAllPatientsScreen() {
@@ -57,43 +57,43 @@ private:
 		cout << "Find Patients is not implemented\n";
 
 	 }
-	static void _PerformManagePatientMenueOperation(enManagePatientMenueOption option) {
+	static void _PerformManagePatientMenuOperation(enManagePatientMenuOption option) {
 
 
 		switch (option)
 		{
-		case enManagePatientMenueOption::eShowAllPatientsScreen:
+		case enManagePatientMenuOption::eShowAllPatientsScreen:
 			system("cls");
 			_ShowAllPatientsScreen();
-			_BackToMenue();
+			_BackToMenu();
 			break;
 
-		case enManagePatientMenueOption::eAddNewPatient:
+		case enManagePatientMenuOption::eAddNewPatient:
 			system("cls");
 			_ShowAddNewPatientScreen();
-			_BackToMenue();
+			_BackToMenu();
 			break;
 
-		case enManagePatientMenueOption::eUpdatePatient:
+		case enManagePatientMenuOption::eUpdatePatient:
 
 			system("cls");
 			_ShowUpdatePatienteScreen();
-			_BackToMenue();
+			_BackToMenu();
 			break;
 
-		case enManagePatientMenueOption::eDeletePatient:
+		case enManagePatientMenuOption::eDeletePatient:
 			system("cls");
 			_ShowDeletePatientScreen();
-			_BackToMenue();
+			_BackToMenu();
 			break;
 
-		case enManagePatientMenueOption::eFindPatient:
+		case enManagePatientMenuOption::eFindPatient:
 			system("cls");
 			_ShowFindPatientScreen();
-			_BackToMenue();
+			_BackToMenu();
 			break;
 
-		case enManagePatientMenueOption::eBackToMainMenue:
+		case enManagePatientMenuOption::eBackToMainMenu:
 			return;
 		
 		}
@@ -102,10 +102,10 @@ private:
 public:
 
 
-	static void ShowMenue() {
+	static void ShowMenu() {
 
 		system("cls");
-		showMainHeader("\tManage Patient Menue Screen");
+		showMainHeader("\tManage Patient Menu Screen");
 		string LineSperator = "=============================================\n";
 
 		cout << LineSperator;
@@ -114,10 +114,10 @@ public:
 		cout << "[3] Update Patient.\n";
 		cout << "[4] Delete Patient.\n";
 		cout << "[5] Find Patient\n";
-		cout << "[6] Back To Main Menue\n";
+		cout << "[6] Back To Main Menu\n";
 		cout << LineSperator;
 
-		_PerformManagePatientMenueOperation((enManagePatientMenueOption)_ReadManagePatientMenueOption());
+		_PerformManagePatientMenuOperation((enManagePatientMenuOption)_ReadManagePatientMenuOption());
 
 
 	}
