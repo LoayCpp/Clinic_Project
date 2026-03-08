@@ -19,7 +19,7 @@
     <Filter Include="Header Files\Screens">
       <UniqueIdentifier>{9623104e-21f6-4cc1-b794-e8caf0c3253f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Screens\MainMenue">
+    <Filter Include="Header Files\Screens\MainMenu">
       <UniqueIdentifier>{1c625c3b-71a8-4e97-85a7-8cc8c98253b3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -48,13 +48,13 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsMainMenu.h">
-      <Filter>Header Files\Screens\MainMenue</Filter>
+      <Filter>Header Files\Screens\MainMenu</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManagePatientMenue.h">
-      <Filter>Header Files\Screens\MainMenue</Filter>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageDoctorsMenuScreen.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageDoctorsMenueScreen.h">
-      <Filter>Header Files\Screens\MainMenue</Filter>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManagePatientMenu.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

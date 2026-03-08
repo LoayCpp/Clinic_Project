@@ -47,7 +47,7 @@ using namespace std;
 int main()
 {
 
-	clsMainMenu::ShowMenue();
+	clsMainMenu::ShowMenu();
 
 	return 0;
 }

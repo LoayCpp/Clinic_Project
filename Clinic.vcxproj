@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -137,8 +137,8 @@
     <ClInclude Include="ProjectFiles\Core\clsUser.h" />
     <ClInclude Include="ProjectFiles\Screens\clsHeaderScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsMainMenu.h" />
-    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageDoctorsMenueScreen.h" />
-    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManagePatientMenue.h" />
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageDoctorsMenuScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManagePatientMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,32 +2,32 @@
 #include"../clsHeaderScreen.h"
 #include"../..//Libraries/clsInputValidate.h"
 
-class clsManageDoctorMenue : protected clsHeaderScreen
+class clsManageDoctorMenu : protected clsHeaderScreen
 {
 
 private:
 
-	enum enManageDoctorMenueOption
+	enum enManageDoctorMenuOption
 	{
 		eShowAllDoctorsScreen = 1,
 		eAddNewDoctor,
 		eUpdateDoctor,
 		eDeleteDoctor,
 		eFindDoctor,
-		eBackToMainMenue
+		eBackToMainMenu
 	};
 
-	static short _ReadManageDoctorsMenueOption() {
+	static short _ReadManageDoctorsMenuOption() {
 
 		cout << "Enter The Number from [1-6]:";
 		return  clsInputValidate::ReadNumberBetween<short>(1, 6);
 	}
 
-	static void _BackToMenue() {
+	static void _BackToMenu() {
 
 		cout << "Press any Key to go to Main Menu\n";
 		system("pause>0");
-		ShowMenue();
+		ShowMenu();
 	}
 
 	static void _ShowDoctorsListScreen() {
@@ -58,43 +58,43 @@ private:
 
 	}
 
-	static void _PerformManageDoctorsMenueOperation(enManageDoctorMenueOption option) {
+	static void _PerformManageDoctorsMenuOperation(enManageDoctorMenuOption option) {
 
 
 		switch (option)
 		{
-		case enManageDoctorMenueOption::eShowAllDoctorsScreen:
+		case enManageDoctorMenuOption::eShowAllDoctorsScreen:
 			system("cls");
 			_ShowDoctorsListScreen();
-			_BackToMenue();
+			_BackToMenu();
 			break;
 
-		case enManageDoctorMenueOption::eAddNewDoctor:
+		case enManageDoctorMenuOption::eAddNewDoctor:
 			system("cls");
 			_ShowAddNewDoctorScreen();
-			_BackToMenue();
+			_BackToMenu();
 			break;
 
-		case enManageDoctorMenueOption::eUpdateDoctor:
+		case enManageDoctorMenuOption::eUpdateDoctor:
 
 			system("cls");
 			_ShowUpdateDoctorScreen();
-			_BackToMenue();
+			_BackToMenu();
 			break;
 
-		case enManageDoctorMenueOption::eDeleteDoctor:
+		case enManageDoctorMenuOption::eDeleteDoctor:
 			system("cls");
 			_ShowDeleteDoctorScreen();
-			_BackToMenue();
+			_BackToMenu();
 			break;
 
-		case enManageDoctorMenueOption::eFindDoctor:
+		case enManageDoctorMenuOption::eFindDoctor:
 			system("cls");
 			_ShowFindDoctorScreen();
-			_BackToMenue();
+			_BackToMenu();
 			break;
 
-		case enManageDoctorMenueOption::eBackToMainMenue:
+		case enManageDoctorMenuOption::eBackToMainMenu:
 			return;
 
 		}
@@ -103,10 +103,10 @@ private:
 public:
 
 
-	static void ShowMenue() {
+	static void ShowMenu() {
 
 		system("cls");
-		showMainHeader("\tManage Doctor Menue Screen");
+		showMainHeader("\tManage Doctor Menu Screen");
 		string LineSperator = "=============================================\n";
 
 		cout << LineSperator;
@@ -115,10 +115,10 @@ public:
 		cout << "[3] Update Doctor.\n";
 		cout << "[4] Delete Doctor.\n";
 		cout << "[5] Find Doctor\n";
-		cout << "[6] Back To Main Menue\n";
+		cout << "[6] Back To Main Menu\n";
 		cout << LineSperator;
 
-		_PerformManageDoctorsMenueOperation((enManageDoctorMenueOption)_ReadManageDoctorsMenueOption());
+		_PerformManageDoctorsMenuOperation((enManageDoctorMenuOption)_ReadManageDoctorsMenuOption());
 
 
 	}
