@@ -111,7 +111,7 @@ public:
 	static void ShowMenu() {
 
 		system("cls");
-		showMainHeader("\t\tMain Menu Screen");
+	    showMainHeader("\t      Main Menu Screen");
 
 		string LineSperator = "=============================================\n";
 
