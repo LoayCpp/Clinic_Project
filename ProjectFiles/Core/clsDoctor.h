@@ -41,13 +41,12 @@ private:
 public:
     clsDoctor(){}
 
-    clsDoctor(enMode mode, string doctorID, string firstName, string secondName, string thirdName,
+    clsDoctor(enMode mode, string firstName, string secondName, string thirdName,
               string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)
         :clsPerson(firstName,secondName,thirdName,fourthName,phone){
 
         _mode = mode;
         _ObjectIsSaved = enIsSave::DataisUnSaved;
-        _doctorID = doctorID;
         _birthdate = birthdate;
         _gender = gender;
         _feesRate = feesRate;
