@@ -56,5 +56,11 @@
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManagePatientMenu.h">
       <Filter>Header Files\Screens\MainMenu</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageUsersMenuScreen.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageAppointmentsMenuScreen.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
