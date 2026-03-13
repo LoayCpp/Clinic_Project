@@ -13,10 +13,54 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{98c44ac0-3252-45d5-83d7-90e971e932b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Screens">
+      <UniqueIdentifier>{9623104e-21f6-4cc1-b794-e8caf0c3253f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Screens\MainMenu">
+      <UniqueIdentifier>{1c625c3b-71a8-4e97-85a7-8cc8c98253b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Clinic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ProjectFiles\Core\clsDoctor.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Core\clsPatient.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Core\clsPerson.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\clsHeaderScreen.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Core\clsUser.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Core\clsAppointment.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsMainMenu.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageDoctorsMenuScreen.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManagePatientMenu.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageUsersMenuScreen.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageAppointmentsMenuScreen.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
