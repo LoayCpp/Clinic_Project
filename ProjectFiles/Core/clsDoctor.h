@@ -1,9 +1,6 @@
 ﻿#pragma once
-#include <iostream>
 #include "..//Libraries/clsDate.h"
 #include"..//Core/clsPerson.h"
-    using namespace std;
-
 class clsDoctor  : public clsPerson
 {
 
@@ -11,10 +8,30 @@ public:
     enum enGender
     {
         eFemale = 0,
-        eMale = 1
+        eMale
+    };
+    enum enMajor
+    {
+        eDentistry = 1,
+        eDermatology,
+        eInternalMedicine,
+        eENT,
+        eSurgery
+    };
+private:
+
+    enum enMode {
+        eUpadateMode = 1,
+        eEmptyMode,
+        eAddNewMode
+    };
+    enum enIsSave {
+        DataisSaved = 1,
+        DataisUnSaved
     };
 
-private:
+    enMode _mode;
+    enIsSave _ObjectIsSaved;
     string _doctorID;
     enGender _gender;
     clsDate _birthdate;
@@ -24,11 +41,12 @@ private:
 public:
     clsDoctor(){}
 
-    clsDoctor(string doctorID, string firstName, string secondName, string thirdName,
+    clsDoctor(enMode mode, string firstName, string secondName, string thirdName,
               string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)
         :clsPerson(firstName,secondName,thirdName,fourthName,phone){
 
-        _doctorID = doctorID;
+        _mode = mode;
+        _ObjectIsSaved = enIsSave::DataisUnSaved;
         _birthdate = birthdate;
         _gender = gender;
         _feesRate = feesRate;

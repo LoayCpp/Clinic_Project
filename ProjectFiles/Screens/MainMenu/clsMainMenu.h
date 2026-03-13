@@ -92,9 +92,6 @@ private:
 		case clsMainMenu::eLogout:
 			system("cls");
 			_ShowLogoutScreen();
-
-			return;
-
 			break;
 		}
 
@@ -112,7 +109,9 @@ public:
 	static void ShowMenu() {
 
 		system("cls");
+
 	    showMainHeader("\t      Main Menu Screen");
+
 
 		string LineSperator = "=============================================\n";
 
