@@ -5,7 +5,8 @@
 #include<vector>
 #include<fstream>
 #include"..//Libraries/clsString.h"
-class clsDoctor  : public clsPerson
+#include<map>
+class clsDoctor : public clsPerson
 {
 
 public:
@@ -22,6 +23,7 @@ public:
         eENT,
         eSurgery
     };
+
 private:
 
     enum enMode {
@@ -44,20 +46,46 @@ private:
     string _specialization;
     float _feesRate;
 
-     vector<string> _LoadDoctorsFromFiles() {
 
-        vector<string> vDoctors;
+    enGender _ConvertFromStringToGender(string gender) {
+
+
+        return (gender == "male") ? enGender::eMale : enGender::eFemale;
+    }
+
+    clsDoctor _convertDataToLine(string DataOfLine) {
+
+        vector<string>vLines;
+
+        vLines = clsString::SpilitString(DataOfLine, "#//#");
+
+        clsDoctor Doctor(enMode::eUpadateMode, vLines[0], vLines[1], vLines[2], vLines[3], vLines[4], _ConvertFromStringToGender(vLines[5]), clsDate::StringToDate(vLines[6]), vLines[7], vLines[8], stof(vLines[9]));
+
+        return Doctor;
+
+    }
+    map<string, clsDoctor> _LoadDoctorsFromFiles() {
+
+        map<string, clsDoctor> mDoctors;
+
         fstream fileOfDoctor;
-        string dataOfLine;
+
+
+
+
         fileOfDoctor.open(DoctorsFile, ios::in);
 
+        string dataOfLine;
         if (fileOfDoctor.is_open()) {
 
             while (getline(fileOfDoctor, dataOfLine)) {
 
 
-                vDoctors.push_back(dataOfLine);
 
+                clsDoctor doctor = _convertDataToLine(dataOfLine);
+
+
+                mDoctors[doctor.DoctorID] = doctor;
 
             }
             fileOfDoctor.close();
@@ -67,69 +95,71 @@ private:
             cout << "\nfile it is not open\n";
         }
 
-        return vDoctors;
+        return mDoctors;
 
+    }
+
+
+    string  _GetDoctorNumber() {
+
+
+        map<string, clsDoctor> mDoctor = _LoadDoctorsFromFiles();
+
+
+        if (mDoctor.empty())
+            return "1";
+
+        auto mEndDoctors = mDoctor.rbegin();
+
+        string WordId = mEndDoctors->first;
+
+
+        string id = WordId.substr(5);
+
+
+
+        return to_string(stoi(id) + 1);
 
     }
 
 
-
-     int  _GetDoctorNumber() {
-
-
-        vector<string> vDoctors = _LoadDoctorsFromFiles();
-        //Doc001#//#Amr Siaf Ahmed Ali#//#1975-2-23#//#male#//#50#//#Dentistry#//#7383199920
-        //Doc002#//#Luai Anwar Fesial#//#2004-3-12#//#male#//#18#//#Dermatology#//#777123456
+    string _GeneratingIDForObject() {
 
 
-        vector<string> vLineFromEndDoctor = clsString::SpilitString(vDoctors.back(), "#//#");
-
-        //Doc002 
-        //Luai Anwar Fesial
-        //2004-3-12
 
 
-        vector<string>vId = clsString::SpilitString(vLineFromEndDoctor.at(0), "Doc00");
-        //First Doc002 
-        //Second Doc00 to split 
 
-        // End 2 in to vId index[0]
-
-        int id = stoi(vId.at(0));
-
-        //convert number from string to int 
-
-        return id;
-
+        return this->DoctorID + _GetDoctorNumber();
 
     }
 
-     string _GeneratingIDForObject() {
 
+    clsDoctor(enMode mode, string doctorID, string firstName, string secondName, string thirdName,
+        string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)
+        : clsPerson(firstName, secondName, thirdName, fourthName, phone) {
 
-        const string doctorIdWord = "Doc00";
-        int doctorIdNum = _GetDoctorNumber();
-        ++doctorIdNum;
+        _doctorID = doctorID;
+        _birthdate = birthdate;
+        _gender = gender;
+        _feesRate = feesRate;
+        _specialization = specialization;
 
-        return doctorIdWord + to_string(doctorIdNum);
-
-    }
-
+    };
 
 public:
-    clsDoctor(){}
+    clsDoctor() {}
 
     clsDoctor(enMode mode, string firstName, string secondName, string thirdName,
-              string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)
-        :clsPerson(firstName,secondName,thirdName,fourthName,phone){
-        _doctorID = _GeneratingIDForObject();
+        string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)
+        :clsPerson(firstName, secondName, thirdName, fourthName, phone) {
+        _doctorID = "Doc00";
         _mode = mode;
         _ObjectIsSaved = enIsSave::DataisUnSaved;
         _birthdate = birthdate;
         _gender = gender;
         _feesRate = feesRate;
         _specialization = specialization;
- 
+
     };
 
     string GetDoctorID() const
@@ -152,7 +182,7 @@ public:
 
     __declspec(property(get = GetGender, put = SetGender)) enGender Gender;
 
-    
+
     void SetBirthdate(clsDate birthdate)
     {
         _birthdate = birthdate;
@@ -165,7 +195,7 @@ public:
 
     __declspec(property(get = GetBirthdate, put = SetBirthdate)) clsDate BirthDate;
 
-  
+
     void SetSpecialization(string Specialization)
     {
         _specialization = Specialization;
@@ -188,4 +218,7 @@ public:
         return _feesRate;
     }
     __declspec(property(get = GetFeesRate, put = SetFeesRate)) float FeesRate;
+
+
+
 };
