@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "..//Libraries/clsDate.h"
 #include"..//Core/clsPerson.h"
-#include "..//Database/"
+#include "..//Database/FilesName.h"
 #include<vector>
 #include<fstream>
 #include"..//Libraries/clsString.h"
