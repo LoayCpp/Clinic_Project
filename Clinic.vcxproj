@@ -135,6 +135,7 @@
     <ClInclude Include="ProjectFiles\Core\clsPatient.h" />
     <ClInclude Include="ProjectFiles\Core\clsPerson.h" />
     <ClInclude Include="ProjectFiles\Core\clsUser.h" />
+    <ClInclude Include="ProjectFiles\Database\FilesName.h" />
     <ClInclude Include="ProjectFiles\Screens\clsHeaderScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsMainMenu.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageAppointmentsMenuScreen.h" />
