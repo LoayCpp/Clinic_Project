@@ -12,12 +12,15 @@ class clsDoctor : public clsPerson
 public:
     enum enGender
     {
-        eFemale = 0,
+        eeUnkown=1,
+        eFemale ,
         eMale
     };
-    enum enMajor
+
+    enum enSpecialization
     {
-        eDentistry = 1,
+        eUnkownSpecialization=1,
+        eDentistry ,
         eDermatology,
         eInternalMedicine,
         eENT,
@@ -43,7 +46,7 @@ private:
     string _doctorID;
     enGender _gender;
     clsDate _birthdate;
-    string _specialization;
+    enSpecialization _specialization;
     float _feesRate;
 
 
@@ -53,13 +56,38 @@ private:
         return (gender == "male") ? enGender::eMale : enGender::eFemale;
     }
 
-    clsDoctor _convertDataToLine(string DataOfLine) {
+
+        enSpecialization _ConvertFromStringToEnSpecialization(string specialization) {
+
+            if (specialization == "Dentistry")
+                return enSpecialization::eDentistry;
+
+            if (specialization == "Dermatology")
+                return enSpecialization::eDermatology;
+
+            if (specialization == "InternalMedicine")
+                return enSpecialization::eInternalMedicine;
+
+            if (specialization == "ENT")
+                return enSpecialization::eENT;
+
+            if (specialization == "Surgery")
+                return enSpecialization::eSurgery;
+
+
+
+            return enSpecialization::eUnkownSpecialization;
+        
+
+    }
+
+    clsDoctor _convertDataToLine(string DataOfLine,string separators) {
 
         vector<string>vLines;
 
-        vLines = clsString::SpilitString(DataOfLine, "#//#");
+        vLines = clsString::SpilitString(DataOfLine,separators);
 
-        clsDoctor Doctor(enMode::eUpadateMode, vLines[0], vLines[1], vLines[2], vLines[3], vLines[4], _ConvertFromStringToGender(vLines[5]), clsDate::StringToDate(vLines[6]), vLines[7], vLines[8], stof(vLines[9]));
+        clsDoctor Doctor(enMode::eUpadateMode, vLines[0], vLines[1], vLines[2], vLines[3], vLines[4], _ConvertFromStringToGender(vLines[5]), clsDate::StringToDate(vLines[6]),_ConvertFromStringToEnSpecialization( vLines[7]), vLines[8], stof(vLines[9]));
 
         return Doctor;
 
@@ -82,7 +110,7 @@ private:
 
 
 
-                clsDoctor doctor = _convertDataToLine(dataOfLine);
+                clsDoctor doctor = _convertDataToLine(dataOfLine,"#//#");
 
 
                 mDoctors[doctor.DoctorID] = doctor;
@@ -135,7 +163,7 @@ private:
 
 
     clsDoctor(enMode mode, string doctorID, string firstName, string secondName, string thirdName,
-        string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)
+        string fourthName, enGender gender, clsDate birthdate, enSpecialization specialization, string phone, float feesRate)
         : clsPerson(firstName, secondName, thirdName, fourthName, phone) {
 
         _doctorID = doctorID;
@@ -150,7 +178,7 @@ public:
     clsDoctor() {}
 
     clsDoctor(enMode mode, string firstName, string secondName, string thirdName,
-        string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)
+        string fourthName, enGender gender, clsDate birthdate, enSpecialization specialization, string phone, float feesRate)
         :clsPerson(firstName, secondName, thirdName, fourthName, phone) {
         _doctorID = "Doc00";
         _mode = mode;
@@ -196,12 +224,12 @@ public:
     __declspec(property(get = GetBirthdate, put = SetBirthdate)) clsDate BirthDate;
 
 
-    void SetSpecialization(string Specialization)
+    void SetSpecialization(enSpecialization Specialization)
     {
         _specialization = Specialization;
     }
 
-    string GetSpecialization() const
+    enSpecialization GetSpecialization() const
     {
         return _specialization;
     }
