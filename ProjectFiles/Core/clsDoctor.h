@@ -113,6 +113,8 @@ private:
                 clsDoctor doctor = _convertDataToLine(dataOfLine,"#//#");
 
 
+
+
                 mDoctors[doctor.DoctorID] = doctor;
 
             }
@@ -123,19 +125,23 @@ private:
             cout << "\nfile it is not open\n";
         }
 
-        return mDoctors;
+        return vDoctors;
+
 
     }
 
 
     string  _GetDoctorNumber() {
 
+    string  _GetDoctorNumber() {
+
+     int  _GetDoctorNumber() {
 
         map<string, clsDoctor> mDoctor = _LoadDoctorsFromFiles();
 
-
-        if (mDoctor.empty())
-            return "1";
+        vector<string> vDoctors = _LoadDoctorsFromFiles();
+        //Doc001#//#Amr Siaf Ahmed Ali#//#1975-2-23#//#male#//#50#//#Dentistry#//#7383199920
+        //Doc002#//#Luai Anwar Fesial#//#2004-3-12#//#male#//#18#//#Dermatology#//#777123456
 
         auto mEndDoctors = mDoctor.rbegin();
 
@@ -162,25 +168,13 @@ private:
     }
 
 
-    clsDoctor(enMode mode, string doctorID, string firstName, string secondName, string thirdName,
-        string fourthName, enGender gender, clsDate birthdate, enSpecialization specialization, string phone, float feesRate)
-        : clsPerson(firstName, secondName, thirdName, fourthName, phone) {
-
-        _doctorID = doctorID;
-        _birthdate = birthdate;
-        _gender = gender;
-        _feesRate = feesRate;
-        _specialization = specialization;
-
-    };
-
 public:
     clsDoctor() {}
 
     clsDoctor(enMode mode, string firstName, string secondName, string thirdName,
-        string fourthName, enGender gender, clsDate birthdate, enSpecialization specialization, string phone, float feesRate)
-        :clsPerson(firstName, secondName, thirdName, fourthName, phone) {
-        _doctorID = "Doc00";
+              string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)
+        :clsPerson(firstName,secondName,thirdName,fourthName,phone){
+        _doctorID = _GeneratingIDForObject();
         _mode = mode;
         _ObjectIsSaved = enIsSave::DataisUnSaved;
         _birthdate = birthdate;
@@ -223,8 +217,8 @@ public:
 
     __declspec(property(get = GetBirthdate, put = SetBirthdate)) clsDate BirthDate;
 
-
-    void SetSpecialization(enSpecialization Specialization)
+  
+    void SetSpecialization(string Specialization)
     {
         _specialization = Specialization;
     }

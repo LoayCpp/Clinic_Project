@@ -68,5 +68,8 @@
     <ClInclude Include="ProjectFiles\Database\FilesName.h">
       <Filter>Header Files\Database</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectFiles\Core\clsTemplate.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
