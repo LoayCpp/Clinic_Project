@@ -4,6 +4,7 @@
 #include"ProjectFiles/Core/clsAppointment.h"
 #include"ProjectFiles//Screens//MainMenu/clsMainMenu.h"
 #include"ProjectFiles//Screens/MainMenu/clsManagePatientMenu.h"
+
 using namespace std;
 //
 //string ConvertEnGenderToStringDoctor(clsDoctor::enGender Gender)
@@ -44,10 +45,132 @@ using namespace std;
 //
 //}
 
+
+void readDoctor(clsDoctor& Doctor) {
+
+    cout << "First Name   : ";
+    Doctor.FirstName = clsInputValidate::ReadString();
+
+    cout << "Second Name    : ";
+    Doctor.SecondName = clsInputValidate::ReadString();
+
+
+    cout << "ThirdName        : ";
+    Doctor.ThirdName = clsInputValidate::ReadString();
+
+    cout << "FourthName        : ";
+    Doctor.FourthName = clsInputValidate::ReadString();
+
+    cout << "Gender      : ";
+
+    Doctor.Gender = (clsDoctor::enGender)clsInputValidate::ReadNumberBetween<int>(1, 2);
+
+    cout << "Date        :";
+    Doctor.BirthDate = clsInputValidate::ReadDate();
+
+    cout << "Specialization        :";
+    Doctor.Specialization = (clsDoctor::enSpecialization)clsInputValidate::ReadNumberBetween<int>(1, 5);
+
+    cout << "Phone        :";
+    Doctor.Phone = clsInputValidate::ReadString();
+
+    cout << "FeesRate        :";
+    Doctor.FeesRate = clsInputValidate::ReadNumber<float>();
+
+
+}
+
+void printDoctor(const clsDoctor& Doctor)
+{
+    cout << "-----------------------------\n";
+
+    cout << "First Name       : " << Doctor.FirstName << "\n";
+    cout << "Second Name      : " << Doctor.SecondName << "\n";
+    cout << "Third Name       : " << Doctor.ThirdName << "\n";
+    cout << "Fourth Name      : " << Doctor.FourthName << "\n";
+
+    cout << "Gender           : "
+        << (Doctor.Gender == clsDoctor::enGender::eMale ? "Male" : "Female") << "\n";
+
+    cout << "Birth Date       : " << clsDate::DateToString(Doctor.BirthDate) << "\n";
+
+
+
+    cout << "Phone            : " << Doctor.Phone << "\n";
+
+    cout << "Fees Rate        : " << Doctor.FeesRate << "\n";
+    cout << "-----------------------------\n";
+}
+
 int main()
 {
 
-	clsMainMenu::ShowMenu();
+    //Add Docotr
 
-	return 0;
+  /*  clsDoctor Doctor = clsDoctor::GetAddDoctor();
+    readDoctor(Doctor);
+    if (Doctor.Save()) {
+
+
+        cout << "\nSuccesfully\n";
+
+        printDoctor(Doctor);
+    }
+    else {
+
+        cout << "\n Not Succesfully\n";
+
+
+    }*/
+
+    //Update Docotr
+   
+     /* string id = "";
+         cout << "Enter the id :";
+         cin >> id;
+         clsDoctor Doctor = clsDoctor::FindDoctor(id);
+         printDoctor(Doctor);
+         cout << "Edit :\n --------------------\n";
+
+         readDoctor(Doctor);
+         if (Doctor.Save()) {
+             cout << "\nSuccefully\n";
+             printDoctor(Doctor);
+
+         }
+         else {
+
+             cout << "Empty\n";
+         }*/
+
+
+         //Delete Doctor;
+
+        /* string id = "";
+         cout << "Enter the id :";
+         cin >> id;
+
+         clsDoctor Doctor = clsDoctor::FindDoctor(id);
+         printDoctor(Doctor);
+       if (Doctor.IsEmpty()) {
+
+           cout << "Doctor is empty\n";
+      }
+       else {
+           printDoctor(Doctor);
+           if (Doctor.DeleteDoctor()) {
+
+
+               cout << "yeeeeeeeeeeeeeeeeees";
+
+           }
+           else {
+
+               cout << "nooooooooooooooooooooooooo\n";
+           }
+
+       }*/
+      
+
+    return 0;
 }

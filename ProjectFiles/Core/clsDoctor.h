@@ -6,153 +6,141 @@
 #include<fstream>
 #include"..//Libraries/clsString.h"
 #include<map>
+#include"clsTemplate.h"
 class clsDoctor : public clsPerson
 {
 
 public:
-    enum enGender
-    {
-        eeUnkown=1,
-        eFemale ,
-        eMale
-    };
 
     enum enSpecialization
     {
-        eUnkownSpecialization=1,
-        eDentistry ,
+        eDentistry = 1,
         eDermatology,
         eInternalMedicine,
         eENT,
-        eSurgery
+        eSurgery,
+        eUnkownSpec
     };
-
+    enum enGender
+    {
+        eMale = 1,
+        eFemale,
+        eUnkownGender
+    };
 private:
 
-    enum enMode {
-        eUpadateMode = 1,
-        eEmptyMode,
-        eAddNewMode
-    };
-    enum enIsSave {
-        DataisSaved = 1,
-        DataisUnSaved
-    };
 
 
 
-    enMode _mode;
-    enIsSave _ObjectIsSaved;
+
+    clsTemplate<clsDoctor>::enMode _mode;
+    clsTemplate<clsDoctor>::enIsSave _ObjectIsSaved;
     string _doctorID;
     enGender _gender;
     clsDate _birthdate;
     enSpecialization _specialization;
     float _feesRate;
 
-
-    enGender _ConvertFromStringToGender(string gender) {
+    static   enGender _ConvertFromStringToGender(string gender) {
 
 
         return (gender == "male") ? enGender::eMale : enGender::eFemale;
     }
 
 
-        enSpecialization _ConvertFromStringToEnSpecialization(string specialization) {
-
-            if (specialization == "Dentistry")
-                return enSpecialization::eDentistry;
-
-            if (specialization == "Dermatology")
-                return enSpecialization::eDermatology;
-
-            if (specialization == "InternalMedicine")
-                return enSpecialization::eInternalMedicine;
-
-            if (specialization == "ENT")
-                return enSpecialization::eENT;
-
-            if (specialization == "Surgery")
-                return enSpecialization::eSurgery;
+    static enSpecialization _ConvertFromStringToSpecialization(string specialization) {
 
 
+        if (specialization == "Dentistry")
+            return enSpecialization::eDentistry;
 
-            return enSpecialization::eUnkownSpecialization;
-        
+        if (specialization == "Dermatology")
+            return enSpecialization::eDermatology;
+
+        if (specialization == "Internal Medicine")
+            return enSpecialization::eInternalMedicine;
+
+        if (specialization == "ENT")
+            return enSpecialization::eENT;
+
+        if (specialization == "Surgery")
+            return enSpecialization::eSurgery;
+
+        return enSpecialization::eUnkownSpec;
 
     }
 
-    clsDoctor _convertDataToLine(string DataOfLine,string separators) {
+    static  clsDoctor _ConvertDataLineToDoctor(string DataOfLine, string separators) {
 
         vector<string>vLines;
 
-        vLines = clsString::SpilitString(DataOfLine,separators);
+        vLines = clsString::SpilitString(DataOfLine, separators);
 
-        clsDoctor Doctor(enMode::eUpadateMode, vLines[0], vLines[1], vLines[2], vLines[3], vLines[4], _ConvertFromStringToGender(vLines[5]), clsDate::StringToDate(vLines[6]),_ConvertFromStringToEnSpecialization( vLines[7]), vLines[8], stof(vLines[9]));
+        clsDoctor Doctor(clsTemplate<clsDoctor>::enMode::eUpadateMode, vLines[0], vLines[1], vLines[2], vLines[3], vLines[4], _ConvertFromStringToGender(vLines[5]), clsDate::StringToDate(vLines[6]), _ConvertFromStringToSpecialization(vLines[7]), vLines[8], stof(vLines[9]));
 
         return Doctor;
 
     }
-    map<string, clsDoctor> _LoadDoctorsFromFiles() {
 
-        map<string, clsDoctor> mDoctors;
-
-        fstream fileOfDoctor;
+    static  string getID(clsDoctor D) {
 
 
+        return D.DoctorID;
+    }
+
+    
 
 
-        fileOfDoctor.open(DoctorsFile, ios::in);
-
-        string dataOfLine;
-        if (fileOfDoctor.is_open()) {
-
-            while (getline(fileOfDoctor, dataOfLine)) {
+    static map<string, clsDoctor> _LoadDoctorsFromFiles() {
 
 
-
-                clsDoctor doctor = _convertDataToLine(dataOfLine,"#//#");
-
-
-
-
-                mDoctors[doctor.DoctorID] = doctor;
-
-            }
-            fileOfDoctor.close();
-        }
-        else {
-
-            cout << "\nfile it is not open\n";
-        }
-
-        return vDoctors;
-
+        return clsTemplate<clsDoctor>::LoadObjectsDataFromFiles(DoctorsFile, _ConvertDataLineToDoctor, getID);
 
     }
 
 
-    string  _GetDoctorNumber() {
+    static string _ConvertDoctorToDataLine(const clsDoctor& DoctorInfo, string separator) {
+
+        string line;
+
+        line = DoctorInfo.DoctorID + separator;
+        line += DoctorInfo.FirstName + separator;
+        line += DoctorInfo.SecondName + separator;
+        line += DoctorInfo.ThirdName + separator;
+        line += DoctorInfo.FourthName + separator;
+        line += _ConvertGenderToString(DoctorInfo.Gender) + separator;
+        line += clsDate::DateToString(DoctorInfo.BirthDate) + separator;
+        line += _ConvertFromEnSpecializationToString(DoctorInfo.Specialization) + separator;
+
+        line += DoctorInfo.Phone + separator;
+
+        line += to_string(DoctorInfo.FeesRate);
+
+
+        return line;
+    }
+
+
+    static clsTemplate<clsDoctor>::enMode getMode(clsDoctor doctor) {
+
+
+
+        return doctor._mode;
+    }
+
+    static  void  _SaveDoctorDataToFile(const map<string, clsDoctor>& doctorsDataMap) {
+
+
+
+        clsTemplate<clsDoctor>::SaveObjectsDataToFile(DoctorsFile, doctorsDataMap, getMode, _ConvertDoctorToDataLine);
+
+
+    }
 
     string  _GetDoctorNumber() {
 
-     int  _GetDoctorNumber() {
 
-        map<string, clsDoctor> mDoctor = _LoadDoctorsFromFiles();
-
-        vector<string> vDoctors = _LoadDoctorsFromFiles();
-        //Doc001#//#Amr Siaf Ahmed Ali#//#1975-2-23#//#male#//#50#//#Dentistry#//#7383199920
-        //Doc002#//#Luai Anwar Fesial#//#2004-3-12#//#male#//#18#//#Dermatology#//#777123456
-
-        auto mEndDoctors = mDoctor.rbegin();
-
-        string WordId = mEndDoctors->first;
-
-
-        string id = WordId.substr(5);
-
-
-
-        return to_string(stoi(id) + 1);
+        return clsTemplate<clsDoctor>::GetEndNumberFromFile(_LoadDoctorsFromFiles);
 
     }
 
@@ -167,16 +155,55 @@ private:
 
     }
 
+    void _UpdateDoctor() {
+
+
+        clsTemplate<clsDoctor>::UpdateObject(_LoadDoctorsFromFiles, *this, getID, _SaveDoctorDataToFile, _ObjectIsSaved);
+
+
+    }
+
+
+    static clsDoctor GetEmptyObject() {
+
+
+        return  clsDoctor(clsTemplate<clsDoctor>::enMode::eEmptyMode, "", "", "", "", enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0);
+
+    }
+
+    void _AddDoctorToFile() {
+
+        this->_doctorID = _GeneratingIDForObject();
+        clsTemplate<clsDoctor>::AddObjectToFile(DoctorsFile, *this, _ConvertDoctorToDataLine, _ObjectIsSaved);
+
+
+
+
+
+    }
+
+    clsDoctor(clsTemplate<clsDoctor>::enMode mode, string doctorID, string firstName, string secondName, string thirdName,
+        string fourthName, enGender gender, clsDate birthdate, enSpecialization specialization, string phone, float feesRate)
+        : clsPerson(firstName, secondName, thirdName, fourthName, phone) {
+        _mode = mode;
+        _doctorID = doctorID;
+        _birthdate = birthdate;
+        _gender = gender;
+        _feesRate = feesRate;
+        _specialization = specialization;
+
+    };
+
 
 public:
     clsDoctor() {}
 
-    clsDoctor(enMode mode, string firstName, string secondName, string thirdName,
-              string fourthName, enGender gender, clsDate birthdate, string specialization, string phone, float feesRate)
-        :clsPerson(firstName,secondName,thirdName,fourthName,phone){
-        _doctorID = _GeneratingIDForObject();
+    clsDoctor(clsTemplate<clsDoctor>::enMode mode, string firstName, string secondName, string thirdName,
+        string fourthName, enGender gender, clsDate birthdate, enSpecialization specialization, string phone, float feesRate)
+        :clsPerson(firstName, secondName, thirdName, fourthName, phone) {
+        _doctorID = "Doc00";
         _mode = mode;
-        _ObjectIsSaved = enIsSave::DataisUnSaved;
+        _ObjectIsSaved = clsTemplate<clsDoctor>::enIsSave::DataisUnSaved;
         _birthdate = birthdate;
         _gender = gender;
         _feesRate = feesRate;
@@ -190,7 +217,7 @@ public:
     }
     __declspec(property(get = GetDoctorID)) string DoctorID;
 
-    __declspec(property(get = GetFourthName, put = SetFourthName)) string FourthName;
+
 
     void SetGender(enGender Gender)
     {
@@ -217,8 +244,8 @@ public:
 
     __declspec(property(get = GetBirthdate, put = SetBirthdate)) clsDate BirthDate;
 
-  
-    void SetSpecialization(string Specialization)
+
+    void SetSpecialization(enSpecialization Specialization)
     {
         _specialization = Specialization;
     }
@@ -228,7 +255,7 @@ public:
         return _specialization;
     }
 
-    __declspec(property(get = GetSpecialization, put = SetSpecialization)) string Specialization;
+    __declspec(property(get = GetSpecialization, put = SetSpecialization)) enSpecialization Specialization;
 
     void SetFeesRate(float FeesRate)
     {
@@ -241,6 +268,64 @@ public:
     }
     __declspec(property(get = GetFeesRate, put = SetFeesRate)) float FeesRate;
 
+    static string _ConvertGenderToString(enGender doctorGender) {
 
 
+        return (doctorGender == enGender::eMale) ? "male" :
+            (doctorGender == enGender::eFemale) ? "female" : "No Gender";
+
+
+    }
+
+
+
+    static  string _ConvertFromEnSpecializationToString(enSpecialization doctorSpecialization) {
+
+        short num = (short)doctorSpecialization;
+        string specialization[] = { "Unknown Specialization", "Dentistry",
+            "Dermatology", "Internal Medicine", "ENT", "Surgery" };
+
+        return specialization[num];
+
+    }
+
+
+
+    bool IsEmpty() {
+
+
+
+        return (_mode == clsTemplate<clsDoctor>::enMode::eEmptyMode);
+    }
+
+    static clsDoctor GetAddDoctor() {
+
+
+        return clsDoctor(clsTemplate<clsDoctor>::enMode::eAddNewMode, "", "", "",
+            "", enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0);
+    }
+
+    static clsDoctor FindDoctor(string doctorID) {
+
+
+        return   clsTemplate<clsDoctor>::FindObject(doctorID, _LoadDoctorsFromFiles, GetEmptyObject);
+
+
+
+
+    }
+
+    bool DeleteDoctor() {
+
+        return   clsTemplate<clsDoctor>::DeleteObject(*this, this->_mode, this->_ObjectIsSaved, [this]() { _UpdateDoctor(); }, GetEmptyObject);
+
+
+
+    }
+
+    bool Save() {
+
+        return clsTemplate<clsDoctor>::Save(_mode, [this]() { _UpdateDoctor(); }, [this]() { _AddDoctorToFile(); }, _ObjectIsSaved);
+
+    }
 };
