@@ -146,7 +146,7 @@ int main()
 
          //Delete Doctor;
 
-        /* string id = "";
+         string id = "";
          cout << "Enter the id :";
          cin >> id;
 
@@ -157,19 +157,19 @@ int main()
            cout << "Doctor is empty\n";
       }
        else {
-           printDoctor(Doctor);
+           
            if (Doctor.DeleteDoctor()) {
 
 
                cout << "yeeeeeeeeeeeeeeeeees";
-
+               printDoctor(Doctor);
            }
            else {
 
                cout << "nooooooooooooooooooooooooo\n";
            }
 
-       }*/
+       }
       
 
     return 0;

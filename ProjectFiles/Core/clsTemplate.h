@@ -21,7 +21,7 @@ public:
         DataisUnSaved
     };
   
-    static map<string, T> LoadObjectsDataFromFiles(string fileName,
+    static map<string, T> LoadObjectsDataFromFiles(string &fileName,
         function<T(string, string)> convertDateLineToObject,
         function<string(const T&)> getID) {
 
@@ -53,7 +53,7 @@ public:
 
     }
 
-    static void  SaveObjectsDataToFile(string fileName, const map<string, T>& mObjects,
+    static void  SaveObjectsDataToFile(string &fileName, const map<string, T>& mObjects,
         function < enMode(const T&) > objectMode, function<string(const T&, string) > convertObjectToDataLine) {
 
         fstream fileDB;
@@ -102,7 +102,7 @@ public:
     }
 
     static void UpdateObject(function< map<string, T>() > loadObjectsDataFromFiles,
-                            T Object,
+                            T &Object,
                             function<string(T)> getID,
                             function<void(const map<string, T>&)> saveObjectsDataToFile,
                             enIsSave& objectIsSave) {
@@ -116,8 +116,8 @@ public:
     }
 
 
-    static void AddObjectToFile(string fileName,
-                                T object,
+    static void AddObjectToFile(string &fileName,
+                                T &object,
                                 function<string(const T&, string)>convertObjectToDataLine,    
                                 enIsSave& objectIsSave) {
 
@@ -137,7 +137,7 @@ public:
 
     }
 
-    static T FindObject(string objectID,    
+    static T FindObject(string &objectID,    
                         function<map<string, T>()> loadObjectsDataFromFiles,
                         function<T()> getEmptyObject) {
 
