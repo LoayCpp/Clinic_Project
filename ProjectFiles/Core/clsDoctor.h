@@ -46,8 +46,6 @@ private:
 
         return (gender == "male") ? enGender::eMale : enGender::eFemale;
     }
-
-
     static enSpecialization _ConvertFromStringToSpecialization(string specialization) {
 
 
@@ -81,25 +79,37 @@ private:
         return Doctor;
 
     }
-
-    static  string getID(clsDoctor D) {
-
-
+    static  string getID(const clsDoctor& D) {
         return D.DoctorID;
     }
 
-    
-
-
     static map<string, clsDoctor> _LoadDoctorsFromFiles() {
-
-
         return clsTemplate<clsDoctor>::LoadObjectsDataFromFiles(DoctorsFile, _ConvertDataLineToDoctor, getID);
 
     }
 
 
-    static string _ConvertDoctorToDataLine(const clsDoctor& DoctorInfo, string separator) {
+    clsTemplate<clsDoctor>::enMode getMode(const clsDoctor& doctor) {
+
+        return doctor._mode;
+    }
+    string _ConvertGenderToString(enGender doctorGender) {
+
+
+        return (doctorGender == enGender::eMale) ? "male" :
+            (doctorGender == enGender::eFemale) ? "female" : "No Gender";
+
+
+    }
+    string _ConvertFromEnSpecializationToString(enSpecialization doctorSpecialization) {
+
+        short num = (short)doctorSpecialization;
+        string specialization[] = { "Unknown Specialization", "Dentistry",
+            "Dermatology", "Internal Medicine", "ENT", "Surgery" };
+
+        return specialization[num];
+    }
+    string _ConvertDoctorToDataLine(const clsDoctor& DoctorInfo, string separator ="#//#") {
 
         string line;
 
@@ -119,67 +129,38 @@ private:
 
         return line;
     }
+    void  _SaveDoctorDataToFile(const map<string, clsDoctor>& doctorsDataMap) {
 
-
-    static clsTemplate<clsDoctor>::enMode getMode(clsDoctor doctor) {
-
-
-
-        return doctor._mode;
-    }
-
-    static  void  _SaveDoctorDataToFile(const map<string, clsDoctor>& doctorsDataMap) {
-
-
-
-        clsTemplate<clsDoctor>::SaveObjectsDataToFile(DoctorsFile, doctorsDataMap, getMode, _ConvertDoctorToDataLine);
-
+        clsTemplate<clsDoctor>::SaveObjectsDataToFile(DoctorsFile, doctorsDataMap,
+            [this](const clsDoctor& tempDoctor)-> clsTemplate<clsDoctor>::enMode { return getMode(tempDoctor); }
+        , [this](const clsDoctor& tempDoctor, string sperator = "#//#")-> string {return _ConvertDoctorToDataLine(tempDoctor, sperator); });
 
     }
 
     string  _GetDoctorNumber() {
-
-
         return clsTemplate<clsDoctor>::GetEndNumberFromFile(_LoadDoctorsFromFiles);
 
     }
 
-
     string _GeneratingIDForObject() {
 
-
-
-
-
         return this->DoctorID + _GetDoctorNumber();
-
     }
 
     void _UpdateDoctor() {
 
-
-        clsTemplate<clsDoctor>::UpdateObject(_LoadDoctorsFromFiles, *this, getID, _SaveDoctorDataToFile, _ObjectIsSaved);
-
-
-    }
-
-
-    static clsDoctor GetEmptyObject() {
-
-
-        return  clsDoctor(clsTemplate<clsDoctor>::enMode::eEmptyMode, "", "", "", "", enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0);
+        clsTemplate<clsDoctor>::UpdateObject(_LoadDoctorsFromFiles, *this, getID, 
+            [this](const map<string, clsDoctor>& doctorsDataMap)->void {_SaveDoctorDataToFile(doctorsDataMap); }, 
+            _ObjectIsSaved);
 
     }
 
     void _AddDoctorToFile() {
 
         this->_doctorID = _GeneratingIDForObject();
-        clsTemplate<clsDoctor>::AddObjectToFile(DoctorsFile, *this, _ConvertDoctorToDataLine, _ObjectIsSaved);
-
-
-
-
-
+        clsTemplate<clsDoctor>::AddObjectToFile(DoctorsFile, *this, 
+        [this](const clsDoctor& tempDoctor, string sperator = "#//#")-> string {return _ConvertDoctorToDataLine(tempDoctor, sperator); }
+        , _ObjectIsSaved);
     }
 
     clsDoctor(clsTemplate<clsDoctor>::enMode mode, string doctorID, string firstName, string secondName, string thirdName,
@@ -218,17 +199,14 @@ public:
     __declspec(property(get = GetDoctorID)) string DoctorID;
 
 
-
     void SetGender(enGender Gender)
     {
         _gender = Gender;
     }
-
     enGender GetGender() const
     {
         return _gender;
     }
-
     __declspec(property(get = GetGender, put = SetGender)) enGender Gender;
 
 
@@ -236,96 +214,76 @@ public:
     {
         _birthdate = birthdate;
     }
-
     clsDate GetBirthdate() const
     {
         return _birthdate;
     }
-
     __declspec(property(get = GetBirthdate, put = SetBirthdate)) clsDate BirthDate;
 
 
-    void SetSpecialization(enSpecialization Specialization)
+    void SetSpecialization(enSpecialization specialization)
     {
-        _specialization = Specialization;
+        _specialization = specialization;
     }
-
     enSpecialization GetSpecialization() const
     {
         return _specialization;
     }
-
     __declspec(property(get = GetSpecialization, put = SetSpecialization)) enSpecialization Specialization;
 
     void SetFeesRate(float FeesRate)
     {
         _feesRate = FeesRate;
     }
-
     float GetFeesRate() const
     {
         return _feesRate;
     }
     __declspec(property(get = GetFeesRate, put = SetFeesRate)) float FeesRate;
 
-    static string _ConvertGenderToString(enGender doctorGender) {
-
-
-        return (doctorGender == enGender::eMale) ? "male" :
-            (doctorGender == enGender::eFemale) ? "female" : "No Gender";
-
-
+    string SpecializationToString() {
+        return _ConvertFromEnSpecializationToString(this->_specialization);
     }
+    __declspec(property(get = SpecializationToString)) string strSpecialization;
 
-
-
-    static  string _ConvertFromEnSpecializationToString(enSpecialization doctorSpecialization) {
-
-        short num = (short)doctorSpecialization;
-        string specialization[] = { "Unknown Specialization", "Dentistry",
-            "Dermatology", "Internal Medicine", "ENT", "Surgery" };
-
-        return specialization[num];
-
+    string GenderToString() {
+        return _ConvertGenderToString(this->_gender);
     }
-
-
+    __declspec(property(get = GenderToString)) string strGender;
 
     bool IsEmpty() {
-
-
 
         return (_mode == clsTemplate<clsDoctor>::enMode::eEmptyMode);
     }
 
-    static clsDoctor GetAddDoctor() {
-
+    static   map<string, clsDoctor> GetAllDoctors() {
+        return _LoadDoctorsFromFiles();
+    }
+    static clsDoctor GetNewDoctorObject() {
 
         return clsDoctor(clsTemplate<clsDoctor>::enMode::eAddNewMode, "", "", "",
-            "", enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0);
+            "", enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0);
     }
-
+    static clsDoctor GetEmptyObject() {
+        return  clsDoctor(clsTemplate<clsDoctor>::enMode::eEmptyMode, "", "", "", "",
+            enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0);
+    }
     static clsDoctor FindDoctor(string doctorID) {
-
 
         return   clsTemplate<clsDoctor>::FindObject(doctorID, _LoadDoctorsFromFiles, GetEmptyObject);
 
-
-
-
     }
 
-    bool DeleteDoctor() {
+    bool Delete() {
 
-        return   clsTemplate<clsDoctor>::DeleteObject(*this, this->_mode, this->_ObjectIsSaved, [this]() { _UpdateDoctor(); }, GetEmptyObject);
-
-
+        return   clsTemplate<clsDoctor>::DeleteObject(*this, this->_mode, 
+            this->_ObjectIsSaved, [this]() { _UpdateDoctor(); }, GetEmptyObject);
 
     }
-
     bool Save() {
 
-        return clsTemplate<clsDoctor>::Save(_mode, [this]() { _UpdateDoctor(); }, [this]() { _AddDoctorToFile(); }, _ObjectIsSaved);
+        return clsTemplate<clsDoctor>::Save(_mode, [this]() { _UpdateDoctor(); }, 
+            [this]() { _AddDoctorToFile(); }, _ObjectIsSaved);
 
     }
 };

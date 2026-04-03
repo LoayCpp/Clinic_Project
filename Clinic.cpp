@@ -80,7 +80,7 @@ void readDoctor(clsDoctor& Doctor) {
 
 }
 
-void printDoctor(const clsDoctor& Doctor)
+void printDoctor( clsDoctor Doctor)
 {
     cout << "-----------------------------\n";
 
@@ -89,8 +89,7 @@ void printDoctor(const clsDoctor& Doctor)
     cout << "Third Name       : " << Doctor.ThirdName << "\n";
     cout << "Fourth Name      : " << Doctor.FourthName << "\n";
 
-    cout << "Gender           : "
-        << (Doctor.Gender == clsDoctor::enGender::eMale ? "Male" : "Female") << "\n";
+    cout << "Gender           : " << Doctor.strGender << "\n";
 
     cout << "Birth Date       : " << clsDate::DateToString(Doctor.BirthDate) << "\n";
 
@@ -106,33 +105,46 @@ int main()
 {
 
     //Add Docotr
+   // map<string, clsDoctor> mdoctors = clsDoctor::GetAllDoctors();
+   // cout << mdoctors["Doc004"].FullName << endl;
 
-  /*  clsDoctor Doctor = clsDoctor::GetAddDoctor();
-    readDoctor(Doctor);
-    if (Doctor.Save()) {
+   // clsDoctor Doctor = clsDoctor::GetNewDoctorObject();
+   // Doctor.FirstName = "Mohamed";
+   // Doctor.SecondName = "Ali";
+   // Doctor.ThirdName = "Sami";
+   // Doctor.FourthName = "Ahmed";
+   // Doctor.Phone = "734296102";
+   // Doctor.FeesRate = 40;
+   // Doctor.BirthDate = clsDate();
+   // Doctor.Gender = clsDoctor::enGender::eMale;
+   // Doctor.Specialization = clsDoctor::enSpecialization::eENT;
+
+   // if (Doctor.Save()) {
 
 
-        cout << "\nSuccesfully\n";
+   //     cout << "\nSuccesfully\n";
 
-        printDoctor(Doctor);
-    }
-    else {
+   //     printDoctor(Doctor);
+   // }
+   // else {
 
-        cout << "\n Not Succesfully\n";
+   //     cout << "\n Not Succesfully\n";
 
 
-    }*/
-
+   // }
+   //mdoctors = clsDoctor::GetAllDoctors();
+   // cout << mdoctors["Doc005"].FullName << endl;
     //Update Docotr
    
-     /* string id = "";
-         cout << "Enter the id :";
-         cin >> id;
-         clsDoctor Doctor = clsDoctor::FindDoctor(id);
+    
+         clsDoctor Doctor = clsDoctor::FindDoctor("Doc005");
+     /*    if (Doctor.IsEmpty()) {
+             return 0;
+         }
          printDoctor(Doctor);
          cout << "Edit :\n --------------------\n";
 
-         readDoctor(Doctor);
+         Doctor.FirstName = "Amr";
          if (Doctor.Save()) {
              cout << "\nSuccefully\n";
              printDoctor(Doctor);
@@ -146,11 +158,9 @@ int main()
 
          //Delete Doctor;
 
-         string id = "";
-         cout << "Enter the id :";
-         cin >> id;
+     
 
-         clsDoctor Doctor = clsDoctor::FindDoctor(id);
+    
          printDoctor(Doctor);
        if (Doctor.IsEmpty()) {
 
@@ -158,7 +168,7 @@ int main()
       }
        else {
            
-           if (Doctor.DeleteDoctor()) {
+           if (Doctor.Delete()) {
 
 
                cout << "yeeeeeeeeeeeeeeeeees";

@@ -103,7 +103,7 @@ public:
 
     static void UpdateObject(function< map<string, T>() > loadObjectsDataFromFiles,
                             T &Object,
-                            function<string(T)> getID,
+                            function<string(const T&)> getID,
                             function<void(const map<string, T>&)> saveObjectsDataToFile,
                             enIsSave& objectIsSave) {
 
