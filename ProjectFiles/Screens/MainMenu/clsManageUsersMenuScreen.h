@@ -107,7 +107,7 @@ public:
 	static void ShowMenu() {
 
 		system("cls");
-		showMainHeader("\t   Manage User Menu Screen");
+		ShowMainHeader("\t   Manage User Menu Screen");
 		string LineSperator = "=============================================\n";
 
 		cout << LineSperator;

@@ -172,12 +172,17 @@ private:
         _gender = gender;
         _feesRate = feesRate;
         _specialization = specialization;
-
+        this->_ObjectIsSaved = clsTemplate<clsDoctor>::enIsSave::DataisUnSaved;
     };
 
 
 public:
-    clsDoctor() {}
+    clsDoctor() {
+        this->_mode = clsTemplate<clsDoctor>::enMode::eEmptyMode;
+        this->_ObjectIsSaved = clsTemplate<clsDoctor>::enIsSave::DataisUnSaved;
+        this->_doctorID = "Doc00";
+        this->BirthDate = clsDate(0,0,0);
+    }
 
     clsDoctor(clsTemplate<clsDoctor>::enMode mode, string firstName, string secondName, string thirdName,
         string fourthName, enGender gender, clsDate birthdate, enSpecialization specialization, string phone, float feesRate)

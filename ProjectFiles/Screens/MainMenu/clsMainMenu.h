@@ -110,7 +110,7 @@ public:
 
 		system("cls");
 
-	    showMainHeader("\t      Main Menu Screen");
+	    ShowMainHeader("\t      Main Menu Screen");
 
 
 		string LineSperator = "=============================================\n";

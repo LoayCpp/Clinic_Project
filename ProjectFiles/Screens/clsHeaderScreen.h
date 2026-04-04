@@ -5,7 +5,7 @@
 class clsHeaderScreen
 {
 protected:
-	static void showMainHeader(string title, string subTitle = "", short TabNumber = 0) {
+	static void ShowMainHeader(string title, string subTitle = "", short TabNumber = 0) {
 		system("cls");
 		string LineSperator = clsUtil::UnderScore(9) + "";
 		string Tab = "";

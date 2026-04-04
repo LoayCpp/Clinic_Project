@@ -137,7 +137,7 @@ int main()
     //Update Docotr
    
     
-         clsDoctor Doctor = clsDoctor::FindDoctor("Doc005");
+        // clsDoctor Doctor = clsDoctor::FindDoctor("Doc005");
      /*    if (Doctor.IsEmpty()) {
              return 0;
          }
@@ -161,25 +161,25 @@ int main()
      
 
     
-         printDoctor(Doctor);
-       if (Doctor.IsEmpty()) {
+      //   printDoctor(Doctor);
+      // if (Doctor.IsEmpty()) {
 
-           cout << "Doctor is empty\n";
-      }
-       else {
-           
-           if (Doctor.Delete()) {
+      //     cout << "Doctor is empty\n";
+      //}
+      // else {
+      //     
+      //     if (Doctor.Delete()) {
 
 
-               cout << "yeeeeeeeeeeeeeeeeees";
-               printDoctor(Doctor);
-           }
-           else {
+      //         cout << "yeeeeeeeeeeeeeeeeees";
+      //         printDoctor(Doctor);
+      //     }
+      //     else {
 
-               cout << "nooooooooooooooooooooooooo\n";
-           }
+      //         cout << "nooooooooooooooooooooooooo\n";
+      //     }
 
-       }
+      // }
       
 
     return 0;
