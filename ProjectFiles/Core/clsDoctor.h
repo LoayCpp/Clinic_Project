@@ -225,6 +225,10 @@ public:
     }
     __declspec(property(get = GetBirthdate, put = SetBirthdate)) clsDate BirthDate;
 
+    string GetDateforYears() {
+        return to_string(BirthDate.CalculateMyAgeInDays() / 365);
+    }
+    __declspec(property(get = GetDateforYears)) string Age;
 
     void SetSpecialization(enSpecialization specialization)
     {
