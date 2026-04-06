@@ -29,7 +29,7 @@ private:
 
 	/*static void _BackToMenu() {
 
-		cout << "Press any Key to go to Main Menu\n";
+		cout << "Press any Key to back to Main Menu\n";
 		system("pause>0");
 		ShowMenu();
 	}*/
