@@ -119,7 +119,6 @@ int main()
    // Doctor.Gender = clsDoctor::enGender::eMale;
    // Doctor.Specialization = clsDoctor::enSpecialization::eENT;
 
-   // if (Doctor.Save()) {
 
 
    //     cout << "\nSuccesfully\n";
@@ -128,10 +127,8 @@ int main()
    // }
    // else {
 
-   //     cout << "\n Not Succesfully\n";
 
 
-   // }
    //mdoctors = clsDoctor::GetAllDoctors();
    // cout << mdoctors["Doc005"].FullName << endl;
     //Update Docotr
