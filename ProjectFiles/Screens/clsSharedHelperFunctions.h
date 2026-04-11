@@ -5,7 +5,7 @@ using namespace std;
 class clsSharedHelperFunctions {
 
 private:
-	static string ReadName(string className, string typeName="") {
+	static string _ReadName(string className, string typeName="") {
 
 		string Name = "";
 		cout << "Enter " << className << "`s " << typeName << " :";
