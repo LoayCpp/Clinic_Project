@@ -138,6 +138,7 @@
     <ClInclude Include="ProjectFiles\Core\clsUser.h" />
     <ClInclude Include="ProjectFiles\Database\FilesName.h" />
     <ClInclude Include="ProjectFiles\Screens\clsHeaderScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\clsSharedHelperFunctions.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsMainMenu.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageAppointmentsMenuScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageDoctorsMenuScreen.h" />
