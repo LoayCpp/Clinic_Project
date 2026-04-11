@@ -16,14 +16,14 @@ private:
 public:
 	static string ReadFirstName(string className) {
 
-		return ReadName(className, "First Name");
+		return _ReadName(className, "First Name");
 
 
 	}
 
 	static string ReadSecondName(string className) {
 
-		return ReadName(className, "Second Name");
+		return _ReadName(className, "Second Name");
 
 
 	}
@@ -31,20 +31,20 @@ public:
 
 	static string ReadThirdName(string className) {
 
-		return ReadName(className, "Third Name");
+		return _ReadName(className, "Third Name");
 
 
 	}
 	static string ReadFourthName(string className) {
 
-		return ReadName(className, "Fourth Name");
+		return _ReadName(className, "Fourth Name");
 
 
 	}
 
 	static string ReadPhoneNumber(string className) {
 
-		return ReadName(className, "Phone Number");
+		return _ReadName(className, "Phone Number");
 
 
 	}

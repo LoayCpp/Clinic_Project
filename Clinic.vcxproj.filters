@@ -71,5 +71,8 @@
     <ClInclude Include="ProjectFiles\Core\clsTemplate.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\clsSharedHelperFunctions.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
