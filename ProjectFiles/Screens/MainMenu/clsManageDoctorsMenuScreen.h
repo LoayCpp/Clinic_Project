@@ -1,7 +1,7 @@
 #pragma once
 #include"../clsHeaderScreen.h"
 #include"../..//Libraries/clsInputValidate.h"
-
+#include"ProjectFiles//Screens//DoctorMenu//clsAddDoctorScreen.h"
 class clsManageDoctorMenu : protected clsHeaderScreen
 {
 
@@ -37,7 +37,7 @@ private:
 	}
 	static void _ShowAddNewDoctorScreen() {
 
-		cout << "Add New Doctor is not implemented\n";
+		clsAddDoctorScreen::ShowAddDoctor();
 
 	}
 	static void _ShowUpdateDoctorScreen() {

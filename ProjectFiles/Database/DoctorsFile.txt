@@ -1,1 +1,3 @@
 Doc004#//#Maryam#//#Nail#//#Sami#//#Said#//#female#//#1/2/1990#//#Surgery#//#04252333#//#55.000000
+Doc005#//#Ahmed#//#Mohamed#//#Ali#//#Sami#//#male#//#3/12/2000#//#ENT#//#734296102#//#10.000000
+Doc006#//#Ali#//#Sami#//#Saad#//#Ameen#//#male#//#2/2/1990#//#Dentistry#//#734582963#//#10.000000
