@@ -101,8 +101,7 @@ void printDoctor( clsDoctor Doctor)
     cout << "-----------------------------\n";
 }
 
-int main()
-{
+int main() {
 
     //Add Docotr
    // map<string, clsDoctor> mdoctors = clsDoctor::GetAllDoctors();
@@ -175,12 +174,9 @@ int main()
       //         printDoctor(Doctor);
       //     }
       //     else {
-
       //         cout << "nooooooooooooooooooooooooo\n";
       //     }
-
       // }
-      
-    
+
     return 0;
 }
