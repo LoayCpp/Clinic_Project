@@ -5,10 +5,10 @@ using namespace std;
 class clsSharedHelperFunctions {
 
 private:
-	static string _ReadName(string className, string typeName="") {
+	static string _ReadData(string className, string typeName="") {
 
 		string Name = "";
-		cout << "Enter " << className << "`s " << typeName << " :";
+		cout << "Enter " << className << "`s " << typeName << " : ";
 		Name = clsInputValidate::ReadOneWord();
 		return Name;
 	}
@@ -16,14 +16,14 @@ private:
 public:
 	static string ReadFirstName(string className) {
 
-		return _ReadName(className, "First Name");
+		return _ReadData(className, "First Name");
 
 
 	}
 
 	static string ReadSecondName(string className) {
 
-		return _ReadName(className, "Second Name");
+		return _ReadData(className, "Second Name");
 
 
 	}
@@ -31,20 +31,20 @@ public:
 
 	static string ReadThirdName(string className) {
 
-		return _ReadName(className, "Third Name");
+		return _ReadData(className, "Third Name");
 
 
 	}
 	static string ReadFourthName(string className) {
 
-		return _ReadName(className, "Fourth Name");
+		return _ReadData(className, "Fourth Name");
 
 
 	}
 
 	static string ReadPhoneNumber(string className) {
 
-		return _ReadName(className, "Phone Number");
+		return _ReadData(className, "Phone Number");
 
 
 	}
