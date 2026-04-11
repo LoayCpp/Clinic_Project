@@ -12,7 +12,8 @@ public:
 		short num = 0;
 		
 		cout << "\nDoctor's Gender Choices :\n";
-		cout << "[1]- Male \n[2]- Female \n---------- : >";
+		cout << "[1]- Male \n[2]- Female \n";
+		cout << "Enter User`s choice (1-2): > ";
 
 		num = clsInputValidate::ReadNumberBetween<short>(1, 2, "Invalid input, please enter a number between[1 - 2] : > ");
 
@@ -21,7 +22,7 @@ public:
 
 	static clsDate ReadBirthdate() {
 
-		cout << "Enter Doctor's Birthdate :>\n";
+		cout << "Enter Doctor's Birthdate :\n";
 		clsDate fromDate(1, 1, 1965);
 		clsDate tODate(31, 12, 2000);
 
@@ -38,7 +39,8 @@ public:
 		cout << "[2] Dermatology\n";
 		cout << "[3] Internal Medicine\n";
 		cout << "[4] ENT\n";
-		cout << "[5] Surgery\n---------- : >";
+		cout << "[5] Surgery\n";
+		cout << "Enter User`s choice (1-5): > ";
 
 		num = clsInputValidate::ReadNumberBetween<short>(1, 5, "Invalid input, please enter a number between[1 - 5] :>");
 
@@ -88,12 +90,12 @@ public:
 
 		cout << "\n==============Print Doctor's Info ==================\n";
 		cout << "====================================================\n";
-		cout << "Doctor's Name            :" << doctor.FullName << endl;
-		cout << "Doctor's Gender          :" << doctor.strGender << endl;
-		cout << "Doctor's Age             :" << doctor.Age << endl;
-		cout << "Doctor's Specialization  :" << doctor.strSpecialization << endl;
-		cout << "Doctor's Phone           :" << doctor.Phone << endl;
-		cout << "Doctor's Fees Rate       :" << doctor.FeesRate << endl;
+		cout << "Doctor's Name            : " << doctor.FullName << endl;
+		cout << "Doctor's Gender          : " << doctor.strGender << endl;
+		cout << "Doctor's Age             : " << doctor.Age << endl;
+		cout << "Doctor's Specialization  : " << doctor.strSpecialization << endl;
+		cout << "Doctor's Phone           : " << doctor.Phone << endl;
+		cout << "Doctor's Fees Rate       : " << doctor.FeesRate << endl;
 		cout << "====================================================\n";
 
 	}
