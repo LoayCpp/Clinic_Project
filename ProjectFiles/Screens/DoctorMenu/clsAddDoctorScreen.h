@@ -15,6 +15,7 @@ public:
 
 		if (!clsInputValidate::CheckAnswer("Are you sure you want to perform this operation? [Y/N] ")) {
 			cout << "Operation was cancelled.\n";
+			return;
 		}
 
 
