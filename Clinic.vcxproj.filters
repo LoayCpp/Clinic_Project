@@ -25,6 +25,9 @@
     <Filter Include="Header Files\Database">
       <UniqueIdentifier>{372827f9-8cb6-4913-93cd-a2db304ec5d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Screens\DoctorMenu">
+      <UniqueIdentifier>{450729b4-74bb-4b42-9e9e-45aea98da639}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Clinic.cpp">
@@ -73,6 +76,12 @@
     </ClInclude>
     <ClInclude Include="ProjectFiles\Screens\clsSharedHelperFunctions.h">
       <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsDoctorHelperFunctions .h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsAddDoctorScreen.h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

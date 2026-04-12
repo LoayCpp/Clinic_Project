@@ -13,9 +13,9 @@ public:
 		
 		cout << "\nDoctor's Gender Choices :\n";
 		cout << "[1] Male \n[2] Female \n";
-		cout << "Enter User`s choice (1-2): > ";
+		cout << "Enter User`s choice (1-2) :> ";
 
-		num = clsInputValidate::ReadNumberBetween<short>(1, 2, "Invalid input, please enter a number between[1 - 2] : > ");
+		num = clsInputValidate::ReadNumberBetween<short>(1, 2, "Invalid input, please enter a number between[1 - 2] :> ");
 
 		return (clsDoctor::enGender)num;
 	}
@@ -40,7 +40,7 @@ public:
 		cout << "[3] Internal Medicine\n";
 		cout << "[4] ENT\n";
 		cout << "[5] Surgery\n";
-		cout << "Enter User`s choice (1-5): > ";
+		cout << "Enter User`s choice (1-5) :> ";
 
 		num = clsInputValidate::ReadNumberBetween<short>(1, 5, "Invalid input, please enter a number between[1 - 5] :> ");
 
@@ -49,7 +49,7 @@ public:
 	static float ReadFeesRate() {
 
 		float num = 0;
-		cout << "Enter Doctor's Fees Rate Between (0 - 100) : >";
+		cout << "Enter Doctor's Fees Rate Between (0 - 100) :> ";
 		num = clsInputValidate::ReadNumberBetween<float>(1, 100, "Invalid input, please enter a valid percentage [0 - 100] :> ");
 
 		return num;
@@ -74,11 +74,11 @@ public:
 	}
 	static clsDoctor ReadDoctorByID() {
 
-		string doctorID = clsInputValidate::ReadOneWord("Enter Doctor's ID : > ");
+		string doctorID = clsInputValidate::ReadOneWord("Enter Doctor's ID :> ");
 		clsDoctor doctor= clsDoctor::FindDoctor(doctorID);
 		while (doctor.IsEmpty()) {
 
-			doctorID = clsInputValidate::ReadOneWord("Invalid input , Enter Doctor's ID : > ");
+			doctorID = clsInputValidate::ReadOneWord("Invalid input , Enter Doctor's ID :> ");
 			doctor = clsDoctor::FindDoctor(doctorID);
 
 		}
@@ -88,7 +88,7 @@ public:
 	}
 	static void PrintDoctorInfo(clsDoctor& doctor) {
 
-		cout << "\n==============Print Doctor's Info ==================\n";
+		cout << "\n============== Print Doctor's Info =================\n";
 		cout << "====================================================\n";
 		cout << "Doctor's Name            : " << doctor.FullName << endl;
 		cout << "Doctor's Gender          : " << doctor.strGender << endl;
