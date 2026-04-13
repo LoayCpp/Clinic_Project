@@ -6,7 +6,10 @@ class clsUpdateDoctorDataScreen :public clsHeaderScreen
 {
 	
 private:
-
+	static void ShowUpdateScreenHeader() {
+		string title = clsUtil::Tabs(1) + " Update Doctor's Data Screen";
+		ShowMainHeader(title);
+	}
 	class clsUpdateDoctorDataMenu {
 
 
@@ -30,70 +33,70 @@ private:
 
 
 
-			static void _ShowUpdateDoctorFirstName(string lineSperator, string title, clsDoctor& doctor) {
-				ShowMainHeader(title);
+			static void _ShowUpdateDoctorFirstName(string lineSperator, clsDoctor& doctor) {
+				ShowUpdateScreenHeader();
 				cout << lineSperator;
 				doctor.FirstName = clsSharedHelperFunctions::ReadFirstName("Doctor`s");
 				cout << lineSperator;
 			}
-			static void _ShowUpdateDoctorSecondName(string lineSperator, string title, clsDoctor& doctor) {
+			static void _ShowUpdateDoctorSecondName(string lineSperator, clsDoctor& doctor) {
 
-				ShowMainHeader(title);
+				ShowUpdateScreenHeader();
 				cout << lineSperator;
 				doctor.SecondName = clsSharedHelperFunctions::ReadSecondName("Doctor`s");
 				cout << lineSperator;
 
 			}
-			static void _ShowUpdateDoctorThirdName(string lineSperator, string title, clsDoctor& doctor) {
-				ShowMainHeader(title);
+			static void _ShowUpdateDoctorThirdName(string lineSperator, clsDoctor& doctor) {
+				ShowUpdateScreenHeader();
 				cout << lineSperator;
 				doctor.ThirdName = clsSharedHelperFunctions::ReadThirdName("Doctor`s");
 				cout << lineSperator;
 			}
-			static void _ShowUpdateDoctorFourthName(string lineSperator, string title, clsDoctor& doctor) {
-				ShowMainHeader(title);
+			static void _ShowUpdateDoctorFourthName(string lineSperator, clsDoctor& doctor) {
+				ShowUpdateScreenHeader();
 				cout << lineSperator;
 				doctor.FourthName = clsSharedHelperFunctions::ReadFourthName("Doctor`s");
 				cout << lineSperator;
 			}
-			static void _ShowUpdateDoctorFullName(string lineSperator, string title, clsDoctor& doctor) {
-				ShowMainHeader(title);
+			static void _ShowUpdateDoctorFullName(string lineSperator, clsDoctor& doctor) {
+				ShowUpdateScreenHeader();
 				cout << lineSperator;
 				clsDoctorHelperFunctions::ReadFullName(doctor);
 				cout << lineSperator;
 			}
 
-			static void _PerformDoctorNameMenuOperation(enUpdateDoctorNameMenu option, string title, clsDoctor& doctor) {
+			static void _PerformDoctorNameMenuOperation(enUpdateDoctorNameMenu option, string lineSperator, clsDoctor& doctor) {
 
-				string lineSperator = "=============================================\n";
+			
 				switch (option)
 				{
 				case enUpdateDoctorNameMenu::eUpdateDoctorFirstName:
 
-					_ShowUpdateDoctorFirstName(lineSperator, title, doctor);
+					_ShowUpdateDoctorFirstName(lineSperator, doctor);
 
 					break;
 
 				case enUpdateDoctorNameMenu::eUpdateDoctorSecondName:
 
-					_ShowUpdateDoctorSecondName(lineSperator, title, doctor);
+					_ShowUpdateDoctorSecondName(lineSperator, doctor);
 					break;
 
 				case enUpdateDoctorNameMenu::eUpdateDoctorThirdName:
 
 
-					_ShowUpdateDoctorThirdName(lineSperator, title, doctor);
+					_ShowUpdateDoctorThirdName(lineSperator, doctor);
 					break;
 
 				case enUpdateDoctorNameMenu::eUpdateDoctorFourthName:
 
-					_ShowUpdateDoctorFourthName(lineSperator, title, doctor);
+					_ShowUpdateDoctorFourthName(lineSperator, doctor);
 
 					break;
 
 				case enUpdateDoctorNameMenu::eUpdateDoctorFullName:
 
-					_ShowUpdateDoctorFullName(lineSperator, title, doctor);
+					_ShowUpdateDoctorFullName(lineSperator, doctor);
 
 					break;
 				}
@@ -103,12 +106,9 @@ private:
 		public:
 
 
-			static void ShowUpdateDoctorDataMenu(string title, clsDoctor& doctor) {
-				ShowMainHeader(title);
+			static void ShowUpdateDoctorDataMenu(string lineSperator, clsDoctor& doctor) {
 				
-				
-				
-			
+				ShowUpdateScreenHeader();
 				
 				string LineSperator = "=============================================\n";
 				cout << LineSperator;
@@ -119,7 +119,7 @@ private:
 				cout << "[5] Update Doctor`s Full Name\n";
 				cout << LineSperator;
 
-				_PerformDoctorNameMenuOperation((enUpdateDoctorNameMenu)_ReadDoctorNameMenuOption(), title, doctor);
+				_PerformDoctorNameMenuOperation((enUpdateDoctorNameMenu)_ReadDoctorNameMenuOption(), lineSperator, doctor);
 			}
 
 
@@ -143,78 +143,78 @@ private:
 
 
 
-		static void _ShowUpdateDoctorName(string lineSperator, string title, clsDoctor& doctor) {
-			clsUpdateDoctorNameMenu::ShowUpdateDoctorDataMenu(title,doctor);
+		static void _ShowUpdateDoctorName(string lineSperator, clsDoctor& doctor) {
+			clsUpdateDoctorNameMenu::ShowUpdateDoctorDataMenu(lineSperator, doctor);
 		}
-		static void _ShowUpdateDoctorGender(string lineSperator, string title, clsDoctor& doctor) {
+		static void _ShowUpdateDoctorGender(string lineSperator, clsDoctor& doctor) {
 			 
-			ShowMainHeader(title);
+			ShowUpdateScreenHeader();
 			 cout << lineSperator;
 			 doctor.Gender = clsDoctorHelperFunctions::ReadGender();
 			 cout << lineSperator;
 
 		}
-		static void _ShowUpdateDoctorBirthdate(string lineSperator, string title, clsDoctor& doctor) {
-			ShowMainHeader(title);
+		static void _ShowUpdateDoctorBirthdate(string lineSperator,clsDoctor& doctor) {
+			ShowUpdateScreenHeader();
 			cout << lineSperator;
 			doctor.BirthDate = clsDoctorHelperFunctions::ReadBirthdate();
 			cout << lineSperator;
 		}
-		static void _ShowUpdateDoctorSpecialization(string lineSperator, string title, clsDoctor& doctor) {
-			ShowMainHeader(title);
+		static void _ShowUpdateDoctorSpecialization(string lineSperator, clsDoctor& doctor) {
+			ShowUpdateScreenHeader();
 			cout << lineSperator;
 			doctor.Specialization = clsDoctorHelperFunctions::ReadSpecialization();
 			cout << lineSperator;
 		}
-		static void _ShowUpdateDoctorPhone(string lineSperator, string title, clsDoctor& doctor) {
-			ShowMainHeader(title);
+		static void _ShowUpdateDoctorPhone(string lineSperator,clsDoctor& doctor) {
+			ShowUpdateScreenHeader();
 			cout << lineSperator;
 			doctor.Phone = clsSharedHelperFunctions::ReadPhoneNumber("Doctor`s");
 			cout << lineSperator;
 		}
-		static void _ShowUpdateDoctorFeesRate(string lineSperator, string title, clsDoctor& doctor) {
-			ShowMainHeader(title);
+		static void _ShowUpdateDoctorFeesRate(string lineSperator, clsDoctor& doctor) {
+			ShowUpdateScreenHeader();
 			cout << lineSperator;
 			doctor.FeesRate = clsDoctorHelperFunctions::ReadFeesRate();
 			cout << lineSperator;
 		}
 
-		static void _PerformDoctorDataMenuOperation(enUpdateDoctorDataMenu option, string title, clsDoctor& doctor) {
+		static void _PerformDoctorDataMenuOperation(enUpdateDoctorDataMenu option, clsDoctor& doctor) {
 
 			string lineSperator = "=============================================\n";
 			switch (option)
 			{
 			case enUpdateDoctorDataMenu::eUpdateDoctorName:
 
-				_ShowUpdateDoctorName(lineSperator,title, doctor);
+				_ShowUpdateDoctorName(lineSperator,doctor);
 
 				break;
 
 			case enUpdateDoctorDataMenu::eUpdateDoctorGender:
 
-				_ShowUpdateDoctorGender(lineSperator, title, doctor);
+				_ShowUpdateDoctorGender(lineSperator, doctor);
 				break;
 
 			case enUpdateDoctorDataMenu::eUpdateDoctorBirthdate:
 
 
-				_ShowUpdateDoctorBirthdate(lineSperator, title, doctor);
+				_ShowUpdateDoctorBirthdate(lineSperator, doctor);
 				break;
 
 			case enUpdateDoctorDataMenu::eUpdateDoctorSpecialization:
 
-				_ShowUpdateDoctorSpecialization(lineSperator, title, doctor);
+				_ShowUpdateDoctorSpecialization(lineSperator, doctor);
 
 				break;
 
 			case enUpdateDoctorDataMenu::eUpdateDoctorPhone:
 
-				_ShowUpdateDoctorPhone(lineSperator, title, doctor);
+				_ShowUpdateDoctorPhone(lineSperator, doctor);
 
 				break;
 
 			case enUpdateDoctorDataMenu::eUpdateDoctorFeesRate:
-				_ShowUpdateDoctorFeesRate(lineSperator, title, doctor);
+				_ShowUpdateDoctorFeesRate(lineSperator, doctor);
 				break;
 			}
 
@@ -223,8 +223,8 @@ private:
 	public:
 
 
-		static void ShowUpdateDoctorDataMenu(string title, clsDoctor& doctor) {
-			ShowMainHeader(title);
+		static void ShowUpdateDoctorDataMenu(clsDoctor& doctor) {
+			ShowUpdateScreenHeader();
 
 			string LineSperator = "=============================================\n";
 			
@@ -238,7 +238,7 @@ private:
 			
 			cout << LineSperator;
 
-			_PerformDoctorDataMenuOperation((enUpdateDoctorDataMenu)_ReadDoctorDataMenuOption(),title,doctor);
+			_PerformDoctorDataMenuOperation((enUpdateDoctorDataMenu)_ReadDoctorDataMenuOption(),doctor);
 		}
 
 
@@ -246,9 +246,7 @@ private:
 
 public:
 	static void ShowUpdateDoctorData() {
-
-		string title = clsUtil::Tabs(1) + " Update Doctor's Data Screen";
-		ShowMainHeader(title);
+		ShowUpdateScreenHeader();
 		clsDoctor doctor = clsDoctorHelperFunctions::ReadDoctorByID();
 		clsDoctorHelperFunctions::PrintDoctorInfo(doctor);
 
@@ -258,7 +256,7 @@ public:
 			return;
 		}
 
-		clsUpdateDoctorDataMenu::ShowUpdateDoctorDataMenu(title, doctor);
+		clsUpdateDoctorDataMenu::ShowUpdateDoctorDataMenu(doctor);
 
 		clsSharedHelperFunctions::PrintTransactionStatus(doctor.Save(), "Doctor", "update");
 	}
