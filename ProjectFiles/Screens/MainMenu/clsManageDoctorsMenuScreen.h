@@ -1,7 +1,11 @@
 #pragma once
 #include"../clsHeaderScreen.h"
 #include"../..//Libraries/clsInputValidate.h"
-
+#include"ProjectFiles//Screens//DoctorMenu//clsShowDoctorsTableScreen.h"
+//#include"ProjectFiles//Screens//DoctorMenu//clsAddDoctorScreen.h"
+//#include"ProjectFiles//Screens//DoctorMenu//clsUpdateDoctorDataScreen.h"
+//#include"ProjectFiles//Screens//DoctorMenu//clsDeleteDoctorScreen.h"
+#include"ProjectFiles//Screens//DoctorMenu//clsFindDoctorScreen.h"
 class clsManageDoctorMenu : protected clsHeaderScreen
 {
 
@@ -32,30 +36,25 @@ private:
 
 	static void _ShowDoctorsListScreen() {
 
-		cout << "Show All Doctors is not implemented\n";
+		clsShowDoctorsTableScreen::ShowDoctorsTable();
 
 	}
 	static void _ShowAddNewDoctorScreen() {
 
-		cout << "Add New Doctor is not implemented\n";
+		//clsAddDoctorScreen::ShowAddDoctor();
 
 	}
 	static void _ShowUpdateDoctorScreen() {
 
-
-		cout << "Update Doctors is not implemented\n";
-
+		//clsUpdateDoctorDataScreen::ShowUpdateDoctorData();
 	}
 	static void _ShowDeleteDoctorScreen() {
 
-		cout << "Delete Doctors is not implemented\n";
-
-
+		//clsDeleteDoctorScreen::ShowDeleteDoctor();
 	}
 	static void _ShowFindDoctorScreen() {
 
-		cout << "Find Doctors is not implemented\n";
-
+		clsFindDoctorScreen::ShowFindDoctor();
 	}
 
 	static void _PerformManageDoctorsMenuOperation(enManageDoctorMenuOption option) {
