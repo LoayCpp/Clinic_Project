@@ -83,5 +83,17 @@
     <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsAddDoctorScreen.h">
       <Filter>Header Files\Screens\DoctorMenu</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsDeleteDoctorScreen.h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsFindDoctorScreen.h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsShowDoctorsTableScreen.h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsUpdateDoctorDataScreen.h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

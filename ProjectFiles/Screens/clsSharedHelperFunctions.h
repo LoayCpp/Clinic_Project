@@ -53,8 +53,8 @@ public:
 				string className, 
 				string transactionName) {
 
-		transactionStatus ? cout << "The " + className + " was " + transactionName + " successfully."
-			: cout << "The " + className + " was not " + transactionName + " successfully.";
+		transactionStatus ? cout << "The " + className + " was " + transactionName + " successfully.\n"
+			: cout << "The " + className + " was not " + transactionName + " successfully.\n";
 
 
 	}
