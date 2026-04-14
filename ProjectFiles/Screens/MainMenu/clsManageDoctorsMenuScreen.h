@@ -2,9 +2,9 @@
 #include"../clsHeaderScreen.h"
 #include"../..//Libraries/clsInputValidate.h"
 #include"ProjectFiles//Screens//DoctorMenu//clsShowDoctorsTableScreen.h"
-//#include"ProjectFiles//Screens//DoctorMenu//clsAddDoctorScreen.h"
-//#include"ProjectFiles//Screens//DoctorMenu//clsUpdateDoctorDataScreen.h"
-//#include"ProjectFiles//Screens//DoctorMenu//clsDeleteDoctorScreen.h"
+#include"ProjectFiles//Screens//DoctorMenu//clsAddDoctorScreen.h"
+#include"ProjectFiles//Screens//DoctorMenu//clsUpdateDoctorDataScreen.h"
+#include"ProjectFiles//Screens//DoctorMenu//clsDeleteDoctorScreen.h"
 #include"ProjectFiles//Screens//DoctorMenu//clsFindDoctorScreen.h"
 class clsManageDoctorMenu : protected clsHeaderScreen
 {
@@ -41,16 +41,16 @@ private:
 	}
 	static void _ShowAddNewDoctorScreen() {
 
-		//clsAddDoctorScreen::ShowAddDoctor();
+		clsAddDoctorScreen::ShowAddDoctor();
 
 	}
 	static void _ShowUpdateDoctorScreen() {
 
-		//clsUpdateDoctorDataScreen::ShowUpdateDoctorData();
+		clsUpdateDoctorDataScreen::ShowUpdateDoctorData();
 	}
 	static void _ShowDeleteDoctorScreen() {
 
-		//clsDeleteDoctorScreen::ShowDeleteDoctor();
+		clsDeleteDoctorScreen::ShowDeleteDoctor();
 	}
 	static void _ShowFindDoctorScreen() {
 
