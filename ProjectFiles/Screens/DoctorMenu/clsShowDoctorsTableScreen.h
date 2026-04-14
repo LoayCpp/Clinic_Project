@@ -15,6 +15,7 @@ private:
 	static void DrawTableRow( clsDoctor& doctor) {
 
 		cout << left
+			<<setw(10)<<doctor.DoctorID<<"|"
 			<< setw(30) << doctor.FullName << "|"
 			<< setw(10) << doctor.strGender << "|"
 			<< setw(6) << doctor.Age << "|"
@@ -46,6 +47,7 @@ private:
 		cout << lineSeparator << endl;
 
 		cout << left
+			<<setw(10)<<"DoctorID"<<"|"
 			<< setw(30) << "Full Name" << "|"
 			<< setw(10) << "Gender" << "|"
 			<< setw(6) << "Age" << "|"

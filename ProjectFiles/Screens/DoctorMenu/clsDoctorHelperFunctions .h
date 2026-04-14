@@ -1,4 +1,5 @@
-﻿#include<iostream>
+﻿#pragma once
+#include<iostream>
 #include"..//..//..//ProjectFiles/Libraries/clsInputValidate.h"
 #include"..//..//..//ProjectFiles/Core/clsDoctor.h"
 #include"..//..//..//ProjectFiles/Libraries/clsDate.h"

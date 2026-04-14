@@ -8,7 +8,7 @@
 using namespace std;
 int main() {
 
-   
+    clsMainMenu::ShowMenu();
 
     return 0;
 }
