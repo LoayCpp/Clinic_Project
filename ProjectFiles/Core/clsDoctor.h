@@ -268,11 +268,13 @@ public:
     static   map<string, clsDoctor> GetAllDoctors() {
         return _LoadDoctorsFromFiles();
     }
+  
     static clsDoctor GetNewDoctorObject() {
 
         return clsDoctor(clsTemplate<clsDoctor>::enMode::eAddNewMode, "", "", "",
             "", enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0);
     }
+
     static clsDoctor GetEmptyObject() {
         return  clsDoctor(clsTemplate<clsDoctor>::enMode::eEmptyMode, "", "", "", "",
             enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0);
