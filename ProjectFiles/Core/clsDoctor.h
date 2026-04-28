@@ -142,9 +142,9 @@ private:
 
     }
 
-    string _GeneratingIDForObject() {
+    void _GeneratingIDForObject() {
 
-        return this->DoctorID + _GetDoctorNumber();
+         this->_doctorID += _GetDoctorNumber();
     }
 
     void _UpdateDoctor() {
@@ -157,45 +157,36 @@ private:
 
     void _AddDoctorToFile() {
 
-        this->_doctorID = _GeneratingIDForObject();
+       
         clsTemplate<clsDoctor>::AddObjectToFile(DoctorsFile, *this, 
-        [this](const clsDoctor& tempDoctor, string sperator = "#//#")-> string {return _ConvertDoctorToDataLine(tempDoctor, sperator); }
-        , _ObjectIsSaved);
+        [this](const clsDoctor& tempDoctor, string sperator = "#//#")-> string {return _ConvertDoctorToDataLine(tempDoctor, sperator); },
+        [this](void)-> void  {_GeneratingIDForObject(); }, _ObjectIsSaved);
     }
 
     clsDoctor(clsTemplate<clsDoctor>::enMode mode, string doctorID, string firstName, string secondName, string thirdName,
         string fourthName, enGender gender, clsDate birthdate, enSpecialization specialization, string phone, float feesRate)
         : clsPerson(firstName, secondName, thirdName, fourthName, phone) {
-        _mode = mode;
-        _doctorID = doctorID;
-        _birthdate = birthdate;
-        _gender = gender;
-        _feesRate = feesRate;
-        _specialization = specialization;
+        this->_mode = mode;
+        this->_doctorID = doctorID;
+        this->_birthdate = birthdate;
+        this->_gender = gender;
+        this->_feesRate = feesRate;
+        this->_specialization = specialization;
         this->_ObjectIsSaved = clsTemplate<clsDoctor>::enIsSave::DataisUnSaved;
     };
 
 
 public:
-    clsDoctor() {
-        this->_mode = clsTemplate<clsDoctor>::enMode::eEmptyMode;
-        this->_ObjectIsSaved = clsTemplate<clsDoctor>::enIsSave::DataisUnSaved;
-        this->_doctorID = "Doc00";
-        this->BirthDate = clsDate(0,0,0);
+    clsDoctor() : clsDoctor(clsTemplate<clsDoctor>::enMode::eEmptyMode, "Doc00", "", "", "", "", enGender::eUnkownGender,
+        clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0) {
+    
     }
 
     clsDoctor(clsTemplate<clsDoctor>::enMode mode, string firstName, string secondName, string thirdName,
-        string fourthName, enGender gender, clsDate birthdate, enSpecialization specialization, string phone, float feesRate)
-        :clsPerson(firstName, secondName, thirdName, fourthName, phone) {
-        _doctorID = "Doc00";
-        _mode = mode;
-        _ObjectIsSaved = clsTemplate<clsDoctor>::enIsSave::DataisUnSaved;
-        _birthdate = birthdate;
-        _gender = gender;
-        _feesRate = feesRate;
-        _specialization = specialization;
-
-    };
+        string fourthName, enGender gender, clsDate birthdate, enSpecialization specialization, string phone, float feesRate) :
+        clsDoctor(mode, "Doc00", firstName, secondName, thirdName, fourthName, gender, birthdate, specialization, phone, feesRate)
+         {
+    }
 
     string GetDoctorID() const
     {
@@ -270,14 +261,13 @@ public:
     }
   
     static clsDoctor GetNewDoctorObject() {
-
-        return clsDoctor(clsTemplate<clsDoctor>::enMode::eAddNewMode, "", "", "",
-            "", enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0);
+        return  clsDoctor(clsTemplate<clsDoctor>::enMode::eAddNewMode, "", "", "", "",
+            enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0);
+        
     }
 
     static clsDoctor GetEmptyObject() {
-        return  clsDoctor(clsTemplate<clsDoctor>::enMode::eEmptyMode, "", "", "", "",
-            enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0);
+        return clsDoctor();
     }
     static clsDoctor FindDoctor(string doctorID) {
 

@@ -8,8 +8,13 @@
 
 using namespace std;
 int main() {
-    clsAddPatientScreen::ShowAddPatient();
+<<<<<<< HEAD
+    clsMainMenu::ShowMenu();
    
+=========
+
+    clsMainMenu::ShowMenu();
+>>>>>>>>> Temporary merge branch 2
 
     return 0;
 }
