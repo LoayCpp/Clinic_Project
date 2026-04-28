@@ -118,7 +118,8 @@ public:
 
     static void AddObjectToFile(string &fileName,
                                 T &object,
-                                function<string(const T&, string)>convertObjectToDataLine,    
+                                function<string(const T&, string)>convertObjectToDataLine,
+                                function<void ()>generateObjectID,
                                 enIsSave& objectIsSave) {
 
         fstream fileDB;
@@ -127,7 +128,7 @@ public:
 
         if (fileDB.is_open()) {
 
-
+            generateObjectID();
             fileDB << convertObjectToDataLine(object,"#//#") << endl;
 
         }
