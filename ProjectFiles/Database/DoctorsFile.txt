@@ -1,12 +1,5 @@
-Doc004#//#Maryam#//#Nail#//#Sami#//#Said#//#female#//#1/1/1990#//#Surgery#//#04252333#//#55.000000
-<<<<<<< HEAD
-Doc004#//#Maryam#//#Nail#//#Sami#//#Said#//#female#//#1/2/1990#//#Surgery#//#04252333#//#55.000000
-Doc005#//#Luai#//#anwar#//#fesail#//#ahmed#//#male#//#3/2/1989#//#Internal Medicine#//#999999#//#55.000000
-=======
 Doc004#//#Nadeen#//#Nail#//#Sami#//#Said#//#female#//#1/1/1990#//#Surgery#//#04252333#//#55.000000
 Doc005#//#Luai#//#Anwar#//#koko#//#Ahmed#//#male#//#3/2/1989#//#ENT#//#112233#//#44.000000
 Doc006#//#Fatama#//#Said#//#Saleh#//#Sami#//#female#//#3/2/1988#//#Dentistry#//#777184509#//#40.000000
 Doc007#//#Jamel#//#Yamen#//#Rami#//#Sami#//#male#//#1/1/1990#//#Dermatology#//#7777211#//#66.000000
-Doc008#//#Yazan#//#Anwar#//#Fesial#//#Ahmed#//#male#//#2/2/1978#//#Internal Medicine#//#04250012#//#53.000000
-Doc006#//#Ali#//#Ahmed#//#Saeed#//#Saber#//#male#//#1/2/1969#//#ENT#//#734265456#//#56.000000
->>>>>>> 45a0be8e4a0780e33bc53cd7e98c1a42dea6d6f1
+
