@@ -92,6 +92,7 @@ private:
 		case clsMainMenu::eLogout:
 			system("cls");
 			_ShowLogoutScreen();
+			return;
 			break;
 		}
 

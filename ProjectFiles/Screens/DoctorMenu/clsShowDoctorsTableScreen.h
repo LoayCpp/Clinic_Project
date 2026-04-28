@@ -15,7 +15,11 @@ private:
 	static void DrawTableRow( clsDoctor& doctor) {
 
 		cout << left
+<<<<<<< HEAD
 			<<setw(10)<<doctor.DoctorID<<"|"
+=======
+			<<"|" << setw(10) << doctor.DoctorID << "|"
+>>>>>>> 45a0be8e4a0780e33bc53cd7e98c1a42dea6d6f1
 			<< setw(30) << doctor.FullName << "|"
 			<< setw(10) << doctor.strGender << "|"
 			<< setw(6) << doctor.Age << "|"
@@ -47,7 +51,11 @@ private:
 		cout << lineSeparator << endl;
 
 		cout << left
+<<<<<<< HEAD
 			<< setw(10) << "DoctorID" << "|"
+=======
+			<<setw(10)<<"|DoctorID"<<" |"
+>>>>>>> 45a0be8e4a0780e33bc53cd7e98c1a42dea6d6f1
 			<< setw(30) << "Full Name" << "|"
 			<< setw(10) << "Gender" << "|"
 			<< setw(6) << "Age" << "|"
@@ -61,7 +69,11 @@ private:
 	static void DrawTable(const map<string, clsDoctor>& mDoctors) {
 
 
+<<<<<<< HEAD
 		string lineSeparator = clsUtil::UnderScore(22);
+=======
+		string lineSeparator = clsUtil::UnderScore(21) + "___";
+>>>>>>> 45a0be8e4a0780e33bc53cd7e98c1a42dea6d6f1
 
 		DrawTableHeader(lineSeparator);
 		DrawTableBody(mDoctors);
