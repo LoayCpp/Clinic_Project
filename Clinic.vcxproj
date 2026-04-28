@@ -150,6 +150,8 @@
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageDoctorsMenuScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManagePatientMenu.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageUsersMenuScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsAddPatientScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsPatientHelperFunctions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

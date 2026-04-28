@@ -1,6 +1,12 @@
 #pragma once
-#include "clsDoctor.h"
-#include"clsPerson.h"
+#include "..//Libraries/clsDate.h"
+#include"..//Core/clsPerson.h"
+#include "..//Database/FilesName.h"
+#include<vector>
+#include<fstream>
+#include"..//Libraries/clsString.h"
+#include<map>
+#include"clsTemplate.h"
 class clsPatient :public clsPerson
 {
 public:
@@ -17,21 +23,20 @@ private:
     string _patientID;
     enGender _gender;
     clsDate _birthdate;
-    clsDoctor _doctor;
     clsTemplate<clsPatient>::enMode _mode;
     clsTemplate<clsPatient>::enIsSave  _ObjectIsSaved;
 
 
 
-    string _ConvertGenderToString(enGender doctorGender) {
+    string _ConvertGenderToString(enGender patientGender) {
 
 
-        return (doctorGender == enGender::eMale) ? "male" :
-            (doctorGender == enGender::eFemale) ? "female" : "No Gender";
+        return (patientGender == enGender::eMale) ? "male" :
+            (patientGender == enGender::eFemale) ? "female" : "No Gender";
 
 
     }
-    string _ConvertDoctorToDataLine(const clsPatient& patientInfo, string separator = "#//#") {
+    string _ConvertPatientToDataLine(const clsPatient& patientInfo, string separator = "#//#") {
 
         string line;
 
@@ -62,7 +67,7 @@ private:
 
         vLines = clsString::SpilitString(DataOfLine, separators);
 
-        clsPatient patient(clsTemplate<clsPatient>::enMode::eUpadateMode, vLines[0], vLines[1], vLines[2], vLines[3], _ConvertFromStringToGender(vLines[5]), clsDate::StringToDate(vLines[6]), vLines[8]);
+        clsPatient patient(clsTemplate<clsPatient>::enMode::eUpadateMode, vLines[0], vLines[1], vLines[2], vLines[3], _ConvertFromStringToGender(vLines[5]), clsDate::StringToDate(vLines[6]), vLines[7]);
 
         return patient;
 
@@ -78,17 +83,17 @@ private:
 
         return patient._mode;
     }
-    void _SaveDoctorDataToFile(const map<string, clsPatient>& patientDataMap) {
+    void _SavePatientDataToFile(const map<string, clsPatient>& patientDataMap) {
 
         clsTemplate<clsPatient>::SaveObjectsDataToFile(PatientFile, patientDataMap,
             [this](const clsPatient& tempPatient)-> clsTemplate<clsPatient>::enMode { return getMode(tempPatient); }
-        , [this](const clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertDoctorToDataLine(tempPatient, sperator); });
+        , [this](const clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertPatientToDataLine(tempPatient, sperator); });
 
     }
-    void _UpdateDoctor() {
+    void _UpdatePatient() {
 
         clsTemplate<clsPatient>::UpdateObject(_LoadPatientFromFiles, *this, getID,
-            [this](const map<string, clsPatient>& patientDataMap)->void {_SaveDoctorDataToFile(patientDataMap); },
+            [this](const map<string, clsPatient>& patientDataMap)->void {_SavePatientDataToFile(patientDataMap); },
             _ObjectIsSaved);
 
     }
@@ -100,11 +105,11 @@ private:
 
         return this->_patientID + _GetPatientNumber();
     }
-    void _AddDoctorToFile() {
+    void _AddPatientToFile() {
 
         this->_patientID = _GeneratingIDForObject();
-        clsTemplate<clsPatient>::AddObjectToFile(DoctorsFile, *this,
-            [this](const clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertDoctorToDataLine(tempPatient, sperator); }
+        clsTemplate<clsPatient>::AddObjectToFile(PatientFile, *this,
+            [this](const clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertPatientToDataLine(tempPatient, sperator); }
         , _ObjectIsSaved);
     }
 public:
@@ -183,7 +188,7 @@ public:
         return  clsPatient(clsTemplate<clsPatient>::enMode::eEmptyMode, "", "", "", "",
             enGender::eUnkownGender, clsDate(0, 0, 0), "");
     }
-    static clsPatient FindDoctor(string patientID) {
+    static clsPatient FindPatient(string patientID) {
 
         return   clsTemplate<clsPatient>::FindObject(patientID, _LoadPatientFromFiles, GetEmptyObject);
 
@@ -191,13 +196,13 @@ public:
     bool Delete() {
 
         return   clsTemplate<clsPatient>::DeleteObject(*this, this->_mode,
-            this->_ObjectIsSaved, [this]() { _UpdateDoctor(); }, GetEmptyObject);
+            this->_ObjectIsSaved, [this]() { _UpdatePatient(); }, GetEmptyObject);
 
     }
     bool Save() {
 
-        return clsTemplate<clsPatient>::Save(_mode, [this]() { _UpdateDoctor(); },
-            [this]() { _AddDoctorToFile(); }, _ObjectIsSaved);
+        return clsTemplate<clsPatient>::Save(_mode, [this]() { _UpdatePatient(); },
+            [this]() { _AddPatientToFile(); }, _ObjectIsSaved);
 
     }
 
