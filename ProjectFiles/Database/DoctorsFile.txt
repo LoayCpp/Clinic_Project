@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-Doc004#//#Maryam#//#Nail#//#Sami#//#Said#//#female#//#1/2/1990#//#Surgery#//#04252333#//#55.000000
-Doc005#//#Luai#//#anwar#//#fesail#//#ahmed#//#male#//#3/2/1989#//#Internal Medicine#//#999999#//#55.000000
-=======
-Doc004#//#Nadeen#//#Nail#//#Sami#//#Said#//#female#//#1/1/1990#//#Surgery#//#04252333#//#55.000000
-Doc005#//#Luai#//#Anwar#//#koko#//#Ahmed#//#male#//#3/2/1989#//#ENT#//#112233#//#44.000000
-Doc006#//#Ali#//#Ahmed#//#Saeed#//#Saber#//#male#//#1/2/1969#//#ENT#//#734265456#//#56.000000
->>>>>>> 45a0be8e4a0780e33bc53cd7e98c1a42dea6d6f1
