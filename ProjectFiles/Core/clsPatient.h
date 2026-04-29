@@ -33,8 +33,6 @@ private:
 
         return (patientGender == enGender::eMale) ? "male" :
             (patientGender == enGender::eFemale) ? "female" : "No Gender";
-
-
     }
     string _ConvertPatientToDataLine(const clsPatient& patientInfo, string separator = "#//#") {
 
@@ -86,7 +84,7 @@ private:
         return p.PatientID;
     }
     static map<string, clsPatient> _LoadPatientFromFiles() {
-        return clsTemplate<clsPatient>::LoadObjectsDataFromFiles(PatientFile, _ConvertDataLineToPatient, getID);
+        return clsTemplate<clsPatient>::LoadObjectsDataFromFiles(PatientsFile, _ConvertDataLineToPatient, getID);
 
     }
     clsTemplate<clsPatient>::enMode getMode(const clsPatient& patient) {
@@ -95,7 +93,7 @@ private:
     }
     void _SavePatientDataToFile(const map<string, clsPatient>& patientDataMap) {
 
-        clsTemplate<clsPatient>::SaveObjectsDataToFile(PatientFile, patientDataMap,
+        clsTemplate<clsPatient>::SaveObjectsDataToFile(PatientsFile, patientDataMap,
             [this](const clsPatient& tempPatient)-> clsTemplate<clsPatient>::enMode { return getMode(tempPatient); }
         , [this](const clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertPatientToDataLine(tempPatient, sperator); });
 
@@ -120,7 +118,7 @@ private:
     void _AddPatientToFile() {
 
         
-        clsTemplate<clsPatient>::AddObjectToFile(PatientFile, *this,
+        clsTemplate<clsPatient>::AddObjectToFile(PatientsFile, *this,
             [this](const clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertPatientToDataLine(tempPatient, sperator); }
         , [this](void)->void {_GeneratingIDForObject(); }, _ObjectIsSaved);
     }
@@ -131,25 +129,16 @@ private:
        this-> _gender = gender;
       this->  _birthdate = birthdate;
        this-> _ObjectIsSaved = clsTemplate<clsPatient>::enIsSave::DataisUnSaved;
-
-
-
     }
 public:
     clsPatient() :clsPatient(clsTemplate<clsPatient>::enMode::eEmptyMode,"Patient00", "", "", "", "", enGender::eUnkownGender, clsDate(0, 0, 0), "") {
-
-
-    };
+    }
 
     
     
     clsPatient(clsTemplate<clsPatient>::enMode mode, string firstName, string secondName, string thirdName, string fourthName, enGender gender, clsDate birthdate, string phone)
         :clsPatient(mode, "Patient00", firstName, secondName, thirdName, fourthName, gender, birthdate, phone)
-    {
-
-    
-      
-    };
+    {}
 
     string GetPatientID() const
     {
@@ -203,8 +192,7 @@ public:
     }
 
     static clsPatient GetEmptyObject() {
-        return  clsPatient(clsTemplate<clsPatient>::enMode::eEmptyMode, "", "", "", "",
-            enGender::eUnkownGender, clsDate(0, 0, 0), "");
+        return  clsPatient();
     }
     static clsPatient FindPatient(string patientID) {
 
