@@ -67,8 +67,18 @@ private:
 
         vLines = clsString::SpilitString(DataOfLine, separators);
 
-        clsPatient patient(clsTemplate<clsPatient>::enMode::eUpadateMode, vLines[0], vLines[1], vLines[2], vLines[3], _ConvertFromStringToGender(vLines[5]), clsDate::StringToDate(vLines[6]), vLines[7]);
-
+        clsPatient patient(
+            clsTemplate<clsPatient>::enMode::eUpadateMode,
+            vLines[0],
+            vLines[1],
+            vLines[2],
+            vLines[3],
+            vLines[4],
+            _ConvertFromStringToGender(vLines[5]),
+            clsDate::StringToDate(vLines[6]),
+            vLines[7] 
+        );
+       
         return patient;
 
     }
@@ -98,38 +108,46 @@ private:
 
     }
     string  _GetPatientNumber() {
-        return clsTemplate<clsPatient>::GetEndNumberFromFile(_LoadPatientFromFiles);
+        return clsTemplate<clsPatient>::GetEndNumberFromFile(_LoadPatientFromFiles,9);
 
     }
-    string _GeneratingIDForObject() {
+    void _GeneratingIDForObject() {
 
-        return this->_patientID + _GetPatientNumber();
+        this->_patientID += _GetPatientNumber();
     }
+
+
     void _AddPatientToFile() {
 
-        this->_patientID = _GeneratingIDForObject();
+        
         clsTemplate<clsPatient>::AddObjectToFile(PatientFile, *this,
             [this](const clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertPatientToDataLine(tempPatient, sperator); }
-        , _ObjectIsSaved);
+        , [this](void)->void {_GeneratingIDForObject(); }, _ObjectIsSaved);
+    }
+    clsPatient(clsTemplate<clsPatient>::enMode mode,string patientID ,string firstName, string secondName, string thirdName, string fourthName, enGender gender, clsDate birthdate, string phone) 
+    :clsPerson(firstName, secondName, thirdName, fourthName, phone){
+        this->_patientID = patientID;
+       this-> _mode = mode;
+       this-> _gender = gender;
+      this->  _birthdate = birthdate;
+       this-> _ObjectIsSaved = clsTemplate<clsPatient>::enIsSave::DataisUnSaved;
+
+
+
     }
 public:
-    clsPatient(){
-        this->_mode = clsTemplate <clsPatient> ::enMode::eEmptyMode;
-        this->_ObjectIsSaved = clsTemplate<clsPatient>::enIsSave::DataisUnSaved;
-        this->_patientID = "Patient00";
-        this->_birthdate = clsDate(0, 0, 0);
+    clsPatient() :clsPatient(clsTemplate<clsPatient>::enMode::eEmptyMode,"Patient00", "", "", "", "", enGender::eUnkownGender, clsDate(0, 0, 0), "") {
+
+
+    };
+
     
-    }
+    
     clsPatient(clsTemplate<clsPatient>::enMode mode, string firstName, string secondName, string thirdName, string fourthName, enGender gender, clsDate birthdate, string phone)
-        :clsPerson(firstName,secondName,thirdName,fourthName,phone)
-        
+        :clsPatient(mode, "Patient00", firstName, secondName, thirdName, fourthName, gender, birthdate, phone)
     {
 
-        _patientID = "Patient00";
-        _mode = mode;
-        _ObjectIsSaved = clsTemplate<clsPatient>::enIsSave::DataisUnSaved;
-        _gender = gender;
-        _birthdate = birthdate;
+    
       
     };
 
