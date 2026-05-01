@@ -107,11 +107,11 @@
     <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsShowPatientsTableScreen.h">
       <Filter>Header Files\Screens\PatientMenu</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectFiles\Database\FilesName.h">
-      <Filter>Header Files\Screens\MainMenu</Filter>
-    </ClInclude>
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsAppointmentHelperFunctions.h">
       <Filter>Header Files\Screens\AppointmentMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Database\FilesName.h">
+      <Filter>Header Files\Database</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
