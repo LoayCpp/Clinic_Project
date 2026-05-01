@@ -13,21 +13,21 @@ private:
 
     float _appointmentFees;
     float _basePrice;
-    static clsAppointment _ConvertDataLineToAppoinment(string dataLine, string sperator = "#//#") {
+    static clsAppointment _ConvertDataLineToAppointment(string dataLine, string separator = "#//#") {
 
-        vector<string> vLine = clsString::SpilitString(dataLine, sperator);
+        vector<string> vLine = clsString::SpilitString(dataLine, separator);
         //Appoin001#//#Patien001#//#Doc004#//#11200#//#4/22/2026 - 2:03
 
         return clsAppointment(clsTemplate<clsAppointment>::enMode::eUpadateMode,
             vLine[0], clsPatient::FindPatient(vLine[1]), clsDoctor::FindDoctor(vLine[2]), stof(vLine[3]), vLine[4]);
     }
-    string _ConvertAppointmentToDataLine(const clsAppointment& appointment, string sperator = "#//#") {
+    string _ConvertAppointmentToDataLine(const clsAppointment& appointment, string separator = "#//#") {
         string line = "";
 
-        line = appointment._appointmentID + sperator;
-        line += appointment._patient.PatientID + sperator;
-        line += appointment._doctor.DoctorID + sperator;
-        line += to_string(appointment._appointmentFees) + sperator;
+        line = appointment._appointmentID + separator;
+        line += appointment._patient.PatientID + separator;
+        line += appointment._doctor.DoctorID + separator;
+        line += to_string(appointment._appointmentFees) + separator;
         line += appointment._dateTime;
 
         return line;
@@ -39,14 +39,14 @@ private:
         return appointment._mode;
     }
     static map<string, clsAppointment> _loadAppointmentDataFromFile() {
-        return clsTemplate<clsAppointment>::LoadObjectsDataFromFiles(AppointmentsFile, _ConvertDataLineToAppoinment, _GetAppointmentID);
+        return clsTemplate<clsAppointment>::LoadObjectsDataFromFiles(AppointmentsFile, _ConvertDataLineToAppointment, _GetAppointmentID);
     }
     void _SaveAppointmentDataToFile(const map<string, clsAppointment>& mAppointments) {
 
         clsTemplate<clsAppointment>::SaveObjectsDataToFile(AppointmentsFile, mAppointments,
             [this](const clsAppointment& appointment) -> clsTemplate<clsAppointment>::enMode {return _GetAppointmentMode(appointment); },
-            [this](const clsAppointment& appointment, string sperator = "#//#") -> string
-            {return _ConvertAppointmentToDataLine(appointment, sperator); });
+            [this](const clsAppointment& appointment, string separator = "#//#") -> string
+            {return _ConvertAppointmentToDataLine(appointment, separator); });
     }
     string _GetNextAppointmentNumber() {
         //Appoin00 ---> 8 
@@ -57,8 +57,8 @@ private:
     }
     void _AddAppointmentToFile() {
         clsTemplate<clsAppointment>::AddObjectToFile(AppointmentsFile, *this, 
-            [this](const clsAppointment& appointment, string sperator = "#//#") -> string
-            {return _ConvertAppointmentToDataLine(appointment, sperator); },
+            [this](const clsAppointment& appointment, string separator = "#//#") -> string
+            {return _ConvertAppointmentToDataLine(appointment, separator); },
             [this]() -> void {_GenerateAppointmentID(); },
             this->_objectIsSaved);
     }
