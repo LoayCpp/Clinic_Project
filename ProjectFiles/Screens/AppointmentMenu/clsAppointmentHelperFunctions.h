@@ -2,6 +2,8 @@
 #include "..//DoctorMenu//clsDoctorHelperFunctions .h"
 #include "..//PatientMenu//clsPatientHelperFunctions.h"
 #include "..//..//Core//clsAppointment.h"
+#include "..//..//Libraries//clsUtil.h"
+#include <iomanip>
 class clsAppointmentHelperFunctions {
 private:
 
@@ -107,6 +109,7 @@ public:
 		cout << "Doctor's Name                 : " << appointment.Doctor.FullName << endl;
 		cout << "Doctor's Specialization       : " << appointment.Doctor.strSpecialization << endl;
 		cout << "Appointment Fees's            : " << appointment.AppointmentFees << endl;
+		cout << "Date - Time	               : " << appointment.DateTime << endl;
 		cout << "============================================================\n";
 
 	}
