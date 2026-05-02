@@ -5,11 +5,12 @@
 #include"ProjectFiles//Screens//MainMenu/clsMainMenu.h"
 #include"ProjectFiles//Screens/MainMenu/clsManagePatientMenu.h"
 #include"ProjectFiles//Screens/AppointmentMenu/clsShowAppointmentTableScreen.h"
+#include"ProjectFiles//Screens/AppointmentMenu/clsFindAppointmentScreen.h"
 using namespace std;
 int main() {
 
    // clsMainMenu::ShowMenu();
-	clsShowAppointmentTableScreen::ShowAppoitmentsTable();
-
+	//clsShowAppointmentTableScreen::ShowAppoitmentsTable();
+	clsFindAppointmentScreen::ShowFindAppointment();
    return 0;
 }
