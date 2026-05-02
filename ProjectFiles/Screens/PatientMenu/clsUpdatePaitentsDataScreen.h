@@ -7,7 +7,7 @@ class clsUpdatePaitentsDataScreen :public clsHeaderScreen
 
 private:
 	static void ShowUpdateScreenHeader() {
-		string title = clsUtil::Tabs(1) + " Update Patient's Data Screen";
+		string title = clsUtil::Tabs(1) + "Update Patient's Data Screen";
 		ShowMainHeader(title);
 	}
 	class clsUpdatePatientDataMenu {
