@@ -44,7 +44,7 @@ private:
 
 	static void DrawTableHeader(string lineSeparator) {
 
-		cout << lineSeparator << endl;
+		cout << lineSeparator << "\n\n";
 
 		cout << left
 			<<setw(10)<<"|DoctorID"<<" |"
@@ -55,7 +55,7 @@ private:
 			<< setw(15) << "Phone" << "|"
 			<< setw(10) << "Fees Rate" <<"|" << endl;
 
-		cout << lineSeparator << endl;
+		cout << lineSeparator << "\n\n";
 	}
 
 	static void DrawTable(const map<string, clsDoctor>& mDoctors) {
