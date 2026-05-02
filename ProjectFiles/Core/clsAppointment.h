@@ -98,7 +98,10 @@ public:
     }
     __declspec(property(get = GetAppointmentID)) string AppointmentID;
 
-
+    string GetDateTime() const {
+        return _dateTime;
+    }
+    __declspec(property(get = GetDateTime)) string DateTime;
     
     clsDoctor GetDoctor()  
     {
