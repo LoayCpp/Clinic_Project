@@ -100,7 +100,7 @@ public:
 
 
     
-    clsDoctor GetDoctor() const 
+    clsDoctor GetDoctor()  
     {
         return _doctor;
     }
@@ -112,7 +112,7 @@ public:
 
 
 
-    clsPatient GetPatient() const
+    clsPatient GetPatient() 
     {
         return _patient;
     }
@@ -163,7 +163,7 @@ public:
         return clsTemplate<clsAppointment>::FindObject(appointmentID, _loadAppointmentDataFromFile, GetEmptyAppointmentObject);
     }
     bool Delete() {
-      
+     
         if (this->_patient.Delete()) {
             bool state = clsTemplate<clsAppointment>::DeleteObject(*this,
                 this->_mode, this->_objectIsSaved,
@@ -171,7 +171,10 @@ public:
                 GetEmptyAppointmentObject);
 
 
-            return state ? true : this->_patient.Delete(), false;
+            if (state) {
+                return true;
+            }
+            return false;
         }
 
 
@@ -185,8 +188,11 @@ public:
                 this->_mode, [this]()-> void {_UpdateAppointment(); },
                 [this]()-> void {_AddAppointmentToFile(); }, this->_objectIsSaved);
 
-         
-            return state ? true : this->_patient.Delete(), false;
+            if (state) {
+                return true;
+            }
+            this->_patient.Delete();
+            return false;
         }
 
     
