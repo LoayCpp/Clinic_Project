@@ -100,7 +100,7 @@ public:
 
 
     
-    clsDoctor GetDoctor()  
+    clsDoctor GetDoctor() const 
     {
         return _doctor;
     }
@@ -112,7 +112,7 @@ public:
 
 
 
-    clsPatient GetPatient() 
+    clsPatient GetPatient() const
     {
         return _patient;
     }
@@ -138,11 +138,10 @@ public:
     float GetAppointmentFees() const {
         return this->_appointmentFees;
     }
-    void SetAppointmentFees(float appointmentFees) {
-
+    void GetAppointmentFees(float appointmentFees) {
         this->_appointmentFees = appointmentFees;
     }
-    __declspec(property(get = GetAppointmentFees, put = SetAppointmentFees)) float AppointmentFees;
+    __declspec(property(get = GetAppointmentFees, put = GetAppointmentFees)) float AppointmentFees;
 
     bool IsAppointmentFeesEqualTotalPrice() {
         return this->_appointmentFees == TotalPrice;
@@ -163,41 +162,14 @@ public:
         return clsTemplate<clsAppointment>::FindObject(appointmentID, _loadAppointmentDataFromFile, GetEmptyAppointmentObject);
     }
     bool Delete() {
-     
-        if (this->_patient.Delete()) {
-            bool state = clsTemplate<clsAppointment>::DeleteObject(*this,
-                this->_mode, this->_objectIsSaved,
-                [this]()-> void {_UpdateAppointment(); },
-                GetEmptyAppointmentObject);
-
-
-            if (state) {
-                return true;
-            }
-            return false;
-        }
-
-
-        return false;
-         
+        return clsTemplate<clsAppointment>::DeleteObject(*this,
+            this->_mode, this->_objectIsSaved,
+            [this]()-> void {_UpdateAppointment(); },
+            GetEmptyAppointmentObject);
     }
     bool Save() {
-    
-        if (this->_patient.Save()){
-            bool state = clsTemplate<clsAppointment>::Save(
-                this->_mode, [this]()-> void {_UpdateAppointment(); },
-                [this]()-> void {_AddAppointmentToFile(); }, this->_objectIsSaved);
-
-            if (state) {
-                return true;
-            }
-            this->_patient.Delete();
-            return false;
-        }
-
-    
-        return false;
-         
-    
+        return clsTemplate<clsAppointment>::Save(
+        this->_mode, [this]()-> void {_UpdateAppointment(); },
+            [this]()-> void {_AddAppointmentToFile(); },this->_objectIsSaved);
     }
 };

@@ -5,4 +5,3 @@ string DoctorsFile = "ProjectFiles//Database//DoctorsFile.txt";
 string PatientsFile = "ProjectFiles//Database//PatientsFile.txt"; 
 string AppointmentsFile = "ProjectFiles//Database//AppointmentsFile.txt";
 
-
