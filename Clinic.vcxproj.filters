@@ -113,5 +113,11 @@
     <ClInclude Include="ProjectFiles\Database\FilesName.h">
       <Filter>Header Files\Database</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsShowAppointmentTableScreen.h">
+      <Filter>Header Files\Screens\AppointmentMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsFindAppointmentScreen.h">
+      <Filter>Header Files\Screens\AppointmentMenu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
