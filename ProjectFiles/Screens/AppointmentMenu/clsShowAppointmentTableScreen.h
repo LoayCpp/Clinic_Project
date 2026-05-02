@@ -76,7 +76,7 @@ public:
 		map<string, clsAppointment> mAppointments = clsAppointment::GetAllAppointment();
 
 		string title = clsUtil::Tabs(5) + "		 Show Appoitments Table Screen";
-		string subTitle = clsUtil::Tabs(5) + "    List of All Appoitments in the System (" + to_string(mAppointments.size()) + " Appoitments)";
+		string subTitle = clsUtil::Tabs(5) + "   List of All Appoitments in the System (" + to_string(mAppointments.size()) + " Appoitments)";
 
 		ShowMainHeader(title, subTitle, 6);
 		DrawTable(mAppointments);
