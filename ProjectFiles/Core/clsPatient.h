@@ -25,7 +25,7 @@ private:
     clsDate _birthdate;
     clsTemplate<clsPatient>::enMode _mode;
     clsTemplate<clsPatient>::enIsSave  _ObjectIsSaved;
-
+    bool _hasMultipleAppointments;
 
 
     string _ConvertGenderToString(enGender patientGender) {
@@ -117,7 +117,6 @@ private:
 
     void _AddPatientToFile() {
 
-        
         clsTemplate<clsPatient>::AddObjectToFile(PatientsFile, *this,
             [this](const clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertPatientToDataLine(tempPatient, sperator); }
         , [this](void)->void {_GeneratingIDForObject(); }, _ObjectIsSaved);
@@ -125,10 +124,11 @@ private:
     clsPatient(clsTemplate<clsPatient>::enMode mode,string patientID ,string firstName, string secondName, string thirdName, string fourthName, enGender gender, clsDate birthdate, string phone) 
     :clsPerson(firstName, secondName, thirdName, fourthName, phone){
         this->_patientID = patientID;
-       this-> _mode = mode;
-       this-> _gender = gender;
-      this->  _birthdate = birthdate;
-       this-> _ObjectIsSaved = clsTemplate<clsPatient>::enIsSave::DataisUnSaved;
+        this->_mode = mode;
+        this->_gender = gender;
+        this->_birthdate = birthdate;
+        this->_hasMultipleAppointments = false;
+        this->_ObjectIsSaved = clsTemplate<clsPatient>::enIsSave::DataisUnSaved;
     }
 public:
     clsPatient() :clsPatient(clsTemplate<clsPatient>::enMode::eEmptyMode,"Patient00", "", "", "", "", enGender::eUnkownGender, clsDate(0, 0, 0), "") {
@@ -165,7 +165,6 @@ public:
     {
         return _birthdate;
     }
-
     __declspec(property(get = GetBirthdate, put = SetBirthdate))clsDate Birthdate;
 
     string GetDateforYears() {
@@ -177,6 +176,17 @@ public:
         return _ConvertGenderToString(this->_gender);
     }
     __declspec(property(get = GenderToString)) string strGender;
+
+    void SetHasMultipleAppointments(bool HasMultipleAppointments){
+        
+        this->_hasMultipleAppointments = HasMultipleAppointments;
+    }
+    bool GetHasMultipleAppointments() const
+    {
+        return this->_hasMultipleAppointments;
+    }
+    __declspec(property(get = GetHasMultipleAppointments, put = SetHasMultipleAppointments))bool HasMultipleAppointments;
+
     bool IsEmpty() {
 
         return (_mode == clsTemplate<clsPatient>::enMode::eEmptyMode);
