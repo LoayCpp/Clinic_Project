@@ -14,18 +14,20 @@ public:
 
     enum enSpecialization
     {
-        eDentistry = 1,
+        eUnkownSpec = 0,
+        eDentistry,
         eDermatology,
         eInternalMedicine,
         eENT,
         eSurgery,
-        eUnkownSpec
+       
     };
     enum enGender
     {
-        eMale = 1,
+        eUnkownGender = 0,
+        eMale,
         eFemale,
-        eUnkownGender
+      
     };
 private:
 
@@ -260,12 +262,12 @@ public:
         return _LoadDoctorsFromFiles();
     }
     static clsDoctor GetNewDoctorObject() {
-        return  clsDoctor(clsTemplate<clsDoctor>::enMode::eAddNewMode, "", "", "", "",
-            enGender::eUnkownGender, clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0);
+        return  clsDoctor();
         
     }
     static clsDoctor GetEmptyObject() {
-        return clsDoctor();
+        return clsDoctor(clsTemplate<clsDoctor>::enMode::eEmptyMode, "Doc00", "", "", "", "", enGender::eUnkownGender,
+            clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0);
     }
     static clsDoctor FindDoctor(string doctorID) {
 

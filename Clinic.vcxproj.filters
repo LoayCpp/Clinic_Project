@@ -25,11 +25,14 @@
     <Filter Include="Header Files\Database">
       <UniqueIdentifier>{372827f9-8cb6-4913-93cd-a2db304ec5d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Screens\PatientMenu">
+      <UniqueIdentifier>{e93d0c4a-edee-4400-8edf-7e005dc9e79a}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\Screens\DoctorMenu">
       <UniqueIdentifier>{450729b4-74bb-4b42-9e9e-45aea98da639}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Screens\PatientMenu">
-      <UniqueIdentifier>{e93d0c4a-edee-4400-8edf-7e005dc9e79a}</UniqueIdentifier>
+    <Filter Include="Header Files\Screens\AppointmentMenu">
+      <UniqueIdentifier>{84731511-6534-443c-8046-575467db02fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -71,9 +74,6 @@
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageAppointmentsMenuScreen.h">
       <Filter>Header Files\Screens\MainMenu</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectFiles\Database\FilesName.h">
-      <Filter>Header Files\Database</Filter>
-    </ClInclude>
     <ClInclude Include="ProjectFiles\Core\clsTemplate.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
@@ -106,6 +106,12 @@
     </ClInclude>
     <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsShowPatientsTableScreen.h">
       <Filter>Header Files\Screens\PatientMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsAppointmentHelperFunctions.h">
+      <Filter>Header Files\Screens\AppointmentMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Database\FilesName.h">
+      <Filter>Header Files\Database</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

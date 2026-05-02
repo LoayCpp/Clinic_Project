@@ -100,7 +100,7 @@ public:
 
 
     
-    clsDoctor GetDoctor() const 
+    clsDoctor GetDoctor()  
     {
         return _doctor;
     }
@@ -112,7 +112,7 @@ public:
 
 
 
-    clsPatient GetPatient() const
+    clsPatient GetPatient() 
     {
         return _patient;
     }
@@ -138,10 +138,11 @@ public:
     float GetAppointmentFees() const {
         return this->_appointmentFees;
     }
-    void GetAppointmentFees(float appointmentFees) {
+    void SetAppointmentFees(float appointmentFees) {
+
         this->_appointmentFees = appointmentFees;
     }
-    __declspec(property(get = GetAppointmentFees, put = GetAppointmentFees)) float AppointmentFees;
+    __declspec(property(get = GetAppointmentFees, put = SetAppointmentFees)) float AppointmentFees;
 
     bool IsAppointmentFeesEqualTotalPrice() {
         return this->_appointmentFees == TotalPrice;
@@ -162,14 +163,41 @@ public:
         return clsTemplate<clsAppointment>::FindObject(appointmentID, _loadAppointmentDataFromFile, GetEmptyAppointmentObject);
     }
     bool Delete() {
-        return clsTemplate<clsAppointment>::DeleteObject(*this,
-            this->_mode, this->_objectIsSaved,
-            [this]()-> void {_UpdateAppointment(); },
-            GetEmptyAppointmentObject);
+     
+        if (this->_patient.Delete()) {
+            bool state = clsTemplate<clsAppointment>::DeleteObject(*this,
+                this->_mode, this->_objectIsSaved,
+                [this]()-> void {_UpdateAppointment(); },
+                GetEmptyAppointmentObject);
+
+
+            if (state) {
+                return true;
+            }
+            return false;
+        }
+
+
+        return false;
+         
     }
     bool Save() {
-        return clsTemplate<clsAppointment>::Save(
-        this->_mode, [this]()-> void {_UpdateAppointment(); },
-            [this]()-> void {_AddAppointmentToFile(); },this->_objectIsSaved);
+    
+        if (this->_patient.Save()){
+            bool state = clsTemplate<clsAppointment>::Save(
+                this->_mode, [this]()-> void {_UpdateAppointment(); },
+                [this]()-> void {_AddAppointmentToFile(); }, this->_objectIsSaved);
+
+            if (state) {
+                return true;
+            }
+            this->_patient.Delete();
+            return false;
+        }
+
+    
+        return false;
+         
+    
     }
 };

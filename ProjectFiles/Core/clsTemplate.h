@@ -130,11 +130,11 @@ public:
 
             generateObjectID();
             fileDB << convertObjectToDataLine(object,"#//#") << endl;
-
+            objectIsSave = enIsSave::DataisSaved;
         }
 
         fileDB.close();
-        objectIsSave = enIsSave::DataisSaved;
+    
 
     }
 
@@ -167,7 +167,7 @@ public:
             return true;
         }
 
-
+        mode = enMode::eUpadateMode;
         return false;
 
     }
