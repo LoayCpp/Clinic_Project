@@ -108,8 +108,8 @@ public:
 		cout << "Patient's Name                : " << appointment.Patient.FullName << endl;
 		cout << "Doctor's Name                 : " << appointment.Doctor.FullName << endl;
 		cout << "Doctor's Specialization       : " << appointment.Doctor.strSpecialization << endl;
-		cout << "Appointment Fees's            : " << appointment.AppointmentFees << endl;
-		cout << "Date - Time	               : " << appointment.DateTime << endl;
+		cout << "Appointment`s Fees            : " << appointment.AppointmentFees << endl;
+		cout << "Date - Time	              : " << appointment.DateTime << endl;
 		cout << "============================================================\n";
 
 	}
