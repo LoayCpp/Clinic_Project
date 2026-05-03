@@ -1,6 +1,12 @@
 #pragma once
 #include"../clsHeaderScreen.h"
 #include"../..//Libraries/clsInputValidate.h"
+#include"..//AppointmentMenu/clsAddAppointmentScreen.h"
+#include"..//AppointmentMenu/clsDeleteAppointmentScreen.h"
+#include"..//AppointmentMenu/clsFindAppointmentScreen.h"
+#include"..//AppointmentMenu/clsShowAppointmentTableScreen.h"
+#include"..//AppointmentMenu/clsUpdateAppointmentScreen.h"
+
 
 class clsManageAppointmentsMenuScreen : protected clsHeaderScreen
 {
@@ -32,30 +38,30 @@ private:
 
 	static void _ShowAppointmentsListScreen() {
 
-		cout << "Show All Appointments is not implemented\n";
+		clsShowAppointmentTableScreen::ShowAppoitmentsTable();
 
 	}
 	static void _ShowAddNewAppointmentScreen() {
 
-		cout << "Add New Appointment is not implemented\n";
+		clsAddAppointmentScreen::ShowAddAppointment();
 
 	}
 
 	static void _ShowUpdateAppointmentScreen() {
 
 
-		cout << "Update Appointments is not implemented\n";
+		clsUpdateAppointmentScreen::ShowUpdateAppointmentData();
 
 	}
 	static void _ShowDeleteAppointmentScreen() {
 
-		cout << "Delete Appointments is not implemented\n";
+		clsDeleteAppointmentScreen::ShowDeleteDoctor();
 
 
 	}
 	static void _ShowFindAppointmentScreen() {
 
-		cout << "Find Appointments is not implemented\n";
+		clsFindAppointmentScreen::ShowFindAppointment();
 
 	}
 
