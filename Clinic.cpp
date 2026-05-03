@@ -12,11 +12,7 @@
 using namespace std;
 int main() {
 
-   // clsMainMenu::ShowMenu();
-	//clsShowAppointmentTableScreen::ShowAppoitmentsTable();
-	//clsFindAppointmentScreen::ShowFindAppointment();
-	//clsUpdatePaitentsDataScreen::ShowUpdatePatientData();
-	//clsAddAppointmentScreen::ShowAddAppointment();
-	clsUpdateAppointmentScreen::ShowUpdateAppointmentData();
+    clsMainMenu::ShowMenu();
+	
    return 0;
 }

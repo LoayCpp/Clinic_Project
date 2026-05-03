@@ -8,21 +8,31 @@ public:
 	static void ShowAddDoctor() {
 		string title = clsUtil::Tabs(1) + "      Add Doctor Screen";
 		ShowMainHeader(title);
-
-		clsDoctor newDoctor = clsDoctor::GetNewDoctorObject();
-
-		clsDoctorHelperFunctions::ReadDoctorData(newDoctor);
-		clsDoctorHelperFunctions::PrintDoctorInfo(newDoctor);
-
-		if (!clsInputValidate::CheckAnswer("Are you sure you want to perform this operation? [Y/N] ")) {
-			cout << "Operation was cancelled.\n";
-
-			return;
+		map<string, clsDoctor> mDoctors = clsDoctor::GetAllDoctors();
+		if (mDoctors.size() !=5) {
 
 
+
+			clsDoctor newDoctor = clsDoctor::GetNewDoctorObject();
+
+			clsDoctorHelperFunctions::ReadDoctorData(newDoctor);
+			clsDoctorHelperFunctions::PrintDoctorInfo(newDoctor);
+
+			if (!clsInputValidate::CheckAnswer("Are you sure you want to perform this operation? [Y/N] ")) {
+				cout << "Operation was cancelled.\n";
+
+				return;
+
+
+			}
+
+
+			clsSharedHelperFunctions::PrintTransactionStatus(newDoctor.Save(), "Doctor", "Added");
 		}
 
+		else {
 
-		clsSharedHelperFunctions::PrintTransactionStatus(newDoctor.Save(), "Doctor", "Added");
+			cout << "\n\n Cannot add new doctor.The system already has the maximum allowed number of doctors(5).\n\n\n" << endl;
+		}
 	}
 };

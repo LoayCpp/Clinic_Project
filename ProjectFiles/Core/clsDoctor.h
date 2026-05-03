@@ -179,7 +179,7 @@ private:
 
 
 public:
-    clsDoctor() : clsDoctor(clsTemplate<clsDoctor>::enMode::eEmptyMode, "Doc00", "", "", "", "", enGender::eUnkownGender,
+    clsDoctor() : clsDoctor(clsTemplate<clsDoctor>::enMode::eAddNewMode, "Doc00", "", "", "", "", enGender::eUnkownGender,
         clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0) {
     
     }
@@ -256,6 +256,16 @@ public:
     bool IsEmpty() {
 
         return (_mode == clsTemplate<clsDoctor>::enMode::eEmptyMode);
+    }
+  static  bool IsSpecializationExists(const enSpecialization& specialization) {
+        map<string, clsDoctor> doctors = _LoadDoctorsFromFiles();
+
+        for (const auto& doctorPair : doctors) {
+            if (doctorPair.second.Specialization == specialization)
+                return true;
+        }
+
+        return false;
     }
 
     static   map<string, clsDoctor> GetAllDoctors() {

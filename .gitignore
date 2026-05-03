@@ -4,7 +4,7 @@ Debug/
 Release/
 x64/
 x86/
-
+.vscode/
 # Build files
 *.exe
 *.obj
