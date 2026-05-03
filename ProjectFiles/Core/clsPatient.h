@@ -38,7 +38,7 @@ private:
 
         string line;
 
-        line = patientInfo.PatientID + separator;
+        line = patientInfo._patientID + separator;
         line += patientInfo.FirstName + separator;
         line += patientInfo.SecondName + separator;
         line += patientInfo.ThirdName + separator;
@@ -46,8 +46,8 @@ private:
         line += _ConvertGenderToString(patientInfo.Gender) + separator;
         line += clsDate::DateToString(patientInfo.Birthdate) + separator;
 
-        line += patientInfo.Phone;
-
+        line += patientInfo.Phone + separator;
+        line += to_string(patientInfo._hasMultipleAppointments);
     
 
 
@@ -74,7 +74,8 @@ private:
             vLines[4],
             _ConvertFromStringToGender(vLines[5]),
             clsDate::StringToDate(vLines[6]),
-            vLines[7] 
+            vLines[7],
+            stoi(vLines[8])
         );
        
         return patient;
@@ -121,23 +122,24 @@ private:
             [this](const clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertPatientToDataLine(tempPatient, sperator); }
         , [this](void)->void {_GeneratingIDForObject(); }, _ObjectIsSaved);
     }
-    clsPatient(clsTemplate<clsPatient>::enMode mode,string patientID ,string firstName, string secondName, string thirdName, string fourthName, enGender gender, clsDate birthdate, string phone) 
+    clsPatient(clsTemplate<clsPatient>::enMode mode,string patientID ,string firstName, string secondName, string thirdName,
+        string fourthName, enGender gender, clsDate birthdate, string phone,bool HasMultipleAppointments)
     :clsPerson(firstName, secondName, thirdName, fourthName, phone){
         this->_patientID = patientID;
         this->_mode = mode;
         this->_gender = gender;
         this->_birthdate = birthdate;
-        this->_hasMultipleAppointments = false;
+        this->_hasMultipleAppointments = HasMultipleAppointments;
         this->_ObjectIsSaved = clsTemplate<clsPatient>::enIsSave::DataisUnSaved;
     }
 public:
-    clsPatient() :clsPatient(clsTemplate<clsPatient>::enMode::eEmptyMode,"Patient00", "", "", "", "", enGender::eUnkownGender, clsDate(0, 0, 0), "") {
+    clsPatient() :clsPatient(clsTemplate<clsPatient>::enMode::eEmptyMode,"Patient00", "", "", "", "", enGender::eUnkownGender, clsDate(0, 0, 0), "",false) {
     }
 
     
     
     clsPatient(clsTemplate<clsPatient>::enMode mode, string firstName, string secondName, string thirdName, string fourthName, enGender gender, clsDate birthdate, string phone)
-        :clsPatient(mode, "Patient00", firstName, secondName, thirdName, fourthName, gender, birthdate, phone)
+        :clsPatient(mode, "Patient00", firstName, secondName, thirdName, fourthName, gender, birthdate, phone,false)
     {}
 
     string GetPatientID() const

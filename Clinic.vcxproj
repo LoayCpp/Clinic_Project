@@ -137,6 +137,7 @@
     <ClInclude Include="ProjectFiles\Core\clsTemplate.h" />
     <ClInclude Include="ProjectFiles\Core\clsUser.h" />
     <ClInclude Include="ProjectFiles\Database\FilesName.h" />
+    <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsAddAppointmentScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsAppointmentHelperFunctions.h" />
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsFindAppointmentScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsShowAppointmentTableScreen.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsFindPatientScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsPatientHelperFunctions.h" />
     <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsShowPatientsTableScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsUpdatePaitentsDataScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

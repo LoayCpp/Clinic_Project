@@ -6,11 +6,15 @@
 #include"ProjectFiles//Screens/MainMenu/clsManagePatientMenu.h"
 #include"ProjectFiles//Screens/AppointmentMenu/clsShowAppointmentTableScreen.h"
 #include"ProjectFiles//Screens/AppointmentMenu/clsFindAppointmentScreen.h"
+#include"ProjectFiles//Screens/AppointmentMenu/clsAddAppointmentScreen.h"
+#include"ProjectFiles//Screens//PatientMenu//clsUpdatePaitentsDataScreen.h"
 using namespace std;
 int main() {
 
    // clsMainMenu::ShowMenu();
 	//clsShowAppointmentTableScreen::ShowAppoitmentsTable();
-	clsFindAppointmentScreen::ShowFindAppointment();
+	//clsFindAppointmentScreen::ShowFindAppointment();
+	//clsUpdatePaitentsDataScreen::ShowUpdatePatientData();
+	clsAddAppointmentScreen::ShowAddAppointment();
    return 0;
 }
