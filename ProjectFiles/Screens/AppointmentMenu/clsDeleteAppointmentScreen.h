@@ -1,5 +1,5 @@
-#include "..//clsHeaderScreen.h"
 #pragma once
+#include "..//clsHeaderScreen.h"
 #include "clsAppointmentHelperFunctions.h"
 class clsDeleteAppointmentScreen : public clsHeaderScreen {
 private:

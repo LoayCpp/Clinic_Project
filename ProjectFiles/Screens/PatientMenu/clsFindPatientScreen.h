@@ -1,3 +1,4 @@
+#pragma once
 #include "..//clsHeaderScreen.h"
 #include "clsPatientHelperFunctions.h"
 class clsFindPatientScreen : public clsHeaderScreen {

@@ -125,5 +125,11 @@
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsAddAppointmentScreen.h">
       <Filter>Header Files\Screens\AppointmentMenu</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsDeleteAppointmentScreen.h">
+      <Filter>Header Files\Screens\AppointmentMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsUpdateAppointmentScreen.h">
+      <Filter>Header Files\Screens\AppointmentMenu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

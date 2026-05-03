@@ -250,7 +250,7 @@ public:
 		clsDoctor doctor = clsDoctorHelperFunctions::ReadDoctorByID();
 		clsDoctorHelperFunctions::PrintDoctorInfo(doctor);
 
-		if (!clsInputValidate::CheckAnswer("Are you sure you want to update this doctors? [Y/N] ")) {
+		if (!clsInputValidate::CheckAnswer("Are you sure you want to perform this operation? [Y/N] ")) {
 
 			cout << "Operation was cancelled.\n";
 			return;
@@ -258,7 +258,7 @@ public:
 
 		clsUpdateDoctorDataMenu::ShowUpdateDoctorDataMenu(doctor);
 
-		clsSharedHelperFunctions::PrintTransactionStatus(doctor.Save(), "Doctor", "update");
+		clsSharedHelperFunctions::PrintTransactionStatus(doctor.Save(), "Doctor", "Updated");
 	}
 
 };

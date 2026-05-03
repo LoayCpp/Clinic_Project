@@ -225,12 +225,13 @@ private:
 	};
 
 public:
+	
 	static void ShowUpdatePatientData() {
 		ShowUpdateScreenHeader();
 		clsPatient Patient = clsPatientHelperFunctions::ReadPatientByID();
 		clsPatientHelperFunctions::PrintPatientInfo(Patient);
 
-		if (!clsInputValidate::CheckAnswer("Are you sure you want to update this Patients? [Y/N] ")) {
+		if (!clsInputValidate::CheckAnswer("Are you sure you want to perform this operation? [Y/N] ")) {
 
 			cout << "Operation was cancelled.\n";
 			return;
@@ -238,7 +239,11 @@ public:
 
 		clsUpdatePatientDataMenu::ShowUpdatePatientDataMenu(Patient);
 
-		clsSharedHelperFunctions::PrintTransactionStatus(Patient.Save(), "Patient", "update");
+		clsSharedHelperFunctions::PrintTransactionStatus(Patient.Save(), "Patient", "Updated");
 	}
-
+	static void ShowUpdatePatientData(clsPatient& Patient) {
+		ShowUpdateScreenHeader();
+		clsUpdatePatientDataMenu::ShowUpdatePatientDataMenu(Patient);
+		
+	}
 };
