@@ -1,7 +1,9 @@
 #pragma once
 #include"../clsHeaderScreen.h"
 #include"../..//Libraries/clsInputValidate.h"
-
+#include"..//PatientMenu/clsFindPatientScreen.h"
+#include"..//PatientMenu/clsShowPatientsTableScreen.h"
+#include"..//PatientMenu/clsUpdatePaitentsDataScreen.h"
 class clsManagePatientMenu: protected clsHeaderScreen
 {
 
@@ -10,17 +12,15 @@ private:
 	enum enManagePatientMenuOption
 	{
 		eShowAllPatientsScreen=1,
-		eAddNewPatient,
 		eUpdatePatient,
-		eDeletePatient,
 		eFindPatient,
 		eBackToMainMenu
 	};
 
 	static short _ReadManagePatientMenuOption() {
 		
-		cout << "Enter The Number from [1-6]:";
-		return  clsInputValidate::ReadNumberBetween<short>(1, 6);
+		cout << "Enter The Number from [1-4]:";
+		return  clsInputValidate::ReadNumberBetween<short>(1, 4);
 	}
 
 	static void _BackToMenu() {
@@ -32,29 +32,20 @@ private:
 
 	static void _ShowAllPatientsScreen() {
 
-		cout << "Show All Patients is not implemented\n";
+		clsShowPatientsTableScreen::ShowPatientsTable();
 
 	}
-	static void _ShowAddNewPatientScreen() {
 
-		cout << "Add New Patient is not implemented\n";
-
-	}
 	static void _ShowUpdatePatienteScreen() {
 
 
-		cout << "Update Patients is not implemented\n";
+		clsUpdatePaitentsDataScreen::ShowUpdatePatientData();
 
 	}
-	static void _ShowDeletePatientScreen() {
 
-		cout << "Delete Patients is not implemented\n";
-
-
-	}
 	static void _ShowFindPatientScreen() {
 
-		cout << "Find Patients is not implemented\n";
+		clsFindPatientScreen::ShowFindPatient();
 
 	 }
 	static void _PerformManagePatientMenuOperation(enManagePatientMenuOption option) {
@@ -68,11 +59,7 @@ private:
 			_BackToMenu();
 			break;
 
-		case enManagePatientMenuOption::eAddNewPatient:
-			system("cls");
-			_ShowAddNewPatientScreen();
-			_BackToMenu();
-			break;
+		
 
 		case enManagePatientMenuOption::eUpdatePatient:
 
@@ -81,11 +68,6 @@ private:
 			_BackToMenu();
 			break;
 
-		case enManagePatientMenuOption::eDeletePatient:
-			system("cls");
-			_ShowDeletePatientScreen();
-			_BackToMenu();
-			break;
 
 		case enManagePatientMenuOption::eFindPatient:
 			system("cls");
@@ -110,11 +92,9 @@ public:
 
 		cout << LineSperator;
 		cout << "[1] Show All Patients.\n";
-		cout << "[2] Add New Patient.\n";
-		cout << "[3] Update Patient.\n";
-		cout << "[4] Delete Patient.\n";
-		cout << "[5] Find Patient\n";
-		cout << "[6] Back To Main Menu\n";
+		cout << "[2] Update Patient.\n";
+		cout << "[3] Find Patient\n";
+		cout << "[4] Back To Main Menu\n";
 		cout << LineSperator;
 
 		_PerformManagePatientMenuOperation((enManagePatientMenuOption)_ReadManagePatientMenuOption());
