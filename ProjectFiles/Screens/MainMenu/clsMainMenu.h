@@ -1,53 +1,58 @@
 #pragma once
 #include"../clsHeaderScreen.h"
 #include"../..//Libraries/clsInputValidate.h"
-#include<iomanip>
+#include"clsManagePatientMenu.h"
+#include "clsManageDoctorsMenuScreen.h"
+#include"clsManageUsersMenuScreen.h"
+#include"clsManageAppointmentsMenuScreen.h"
 class clsMainMenu: protected clsHeaderScreen
 {
 
 private:
 
-	enum eOption
+	enum enMainMenuOption
 	{
 		eManagePatientsMenu=1,
-		eManageDoctorsMenu=2,
-		eManageUsersMenu=3,
-		eManageAppointmentsMenu=4,
-		eLogout=5
+		eManageDoctorsMenu,
+		eManageUsersMenu,
+		eManageAppointmentsMenu,
+		eLogout
 	};
+
 	static short _ReadMainMenuOption() {
 		short num;
-		cout <<setw(45) << left << "" << "Enter The Number from [1-5]:";
+		cout  << "Enter The Number from [1-5]:";
 		num = clsInputValidate::ReadNumberBetween<short>(1, 5);
 
 		return num;
 	}
-	static void _BackToMenue() {
 
-		cout << "Press any Key to go to Main Menu\n";
+	/*static void _BackToMenu() {
+
+		cout << "Press any Key to back to Main Menu\n";
 		system("pause>0");
 		ShowMenu();
-	}
+	}*/
 
-	static void _ShowManagePatientsMenueScreen() {
+	static void _ShowManagePatientsMenuScreen() {
 
-		cout << "Mange Patient not implement\n";
-
-	}
-	static void _ShowManageDoctorMenueScreen() {
-
-		cout << "Mange Docotr not implement\n";
+		clsManagePatientMenu::ShowMenu();
 
 	}
-	static void _ShowManageUsersMenueScreen() {
+	static void _ShowManageDoctorMenuScreen() {
 
-
-		cout << "Mange Users not implement\n";
+		clsManageDoctorMenu::ShowMenu();
 
 	}
-	static void _ShowManageAppointmentMenueScreen() {
+	static void _ShowManageUsersMenuScreen() {
 
-		cout << "Mange Appointment not implement\n";
+
+		clsManageUsersMenuScreen::ShowMenu();
+
+	}
+	static void _ShowManageAppointmentMenuScreen() {
+
+		clsManageAppointmentsMenuScreen::ShowMenu();
 
 
 	}
@@ -56,42 +61,42 @@ private:
 		cout << "Mange logout not implement\n";
 
 	 }
-	static void _PerformMainMenueOperation(eOption option) {
+	static void _PerformMainMenuOperation(enMainMenuOption option) {
 
 
 		switch (option)
 		{
 		case clsMainMenu::eManagePatientsMenu:
 			system("cls");
-			_ShowManagePatientsMenueScreen();
-			_BackToMenue();
+			_ShowManagePatientsMenuScreen();
+		
 			break;
 
 		case clsMainMenu::eManageDoctorsMenu:
 			system("cls");
-			_ShowManageDoctorMenueScreen();
-			_BackToMenue();
+			_ShowManageDoctorMenuScreen();
+	
 			break;
 		case clsMainMenu::eManageUsersMenu:
 
 			system("cls");
-			_ShowManageUsersMenueScreen();
-			_BackToMenue();
+			_ShowManageUsersMenuScreen();
+			
 
 			break;
 		case clsMainMenu::eManageAppointmentsMenu:
 			system("cls");
-			_ShowManageAppointmentMenueScreen();
-			_BackToMenue();
+			_ShowManageAppointmentMenuScreen();
+		
 			break;
 		case clsMainMenu::eLogout:
 			system("cls");
 			_ShowLogoutScreen();
-			_BackToMenue();
+			return;
 			break;
 		}
 
-
+		ShowMenu();
 
 
 
@@ -105,15 +110,21 @@ public:
 	static void ShowMenu() {
 
 		system("cls");
-		showMainHeader("\t\t\t\t\t\t\tMain Menu Screen","",5);
 
-		cout << setw(45) << left << "" << "[1]Manage Patients Menue\n";
-		cout << setw(45) << left << "" << "[2]Manage Doctors Menue\n";
-		cout << setw(45) << left << "" << "[3]Manage Users Menue\n";
-		cout << setw(45) << left << "" << "[4]Manage Appointments Menue\n";
-		cout << setw(45) << left << "" << "[5]Log out\n";
-		cout << "\t\t\t\t\t======================================\n";
-		_PerformMainMenueOperation(eOption(_ReadMainMenuOption()));
+	    ShowMainHeader("\t      Main Menu Screen");
+
+
+		string LineSperator = "=============================================\n";
+
+		cout << LineSperator;
+		cout << "[1] Manage Patients Menu\n";
+		cout << "[2] Manage Doctors Menu\n";
+		cout << "[3] Manage Users Menu\n";
+		cout << "[4] Manage Appointments Menu\n";
+		cout << "[5] Log out\n";
+		cout << LineSperator;
+
+		_PerformMainMenuOperation((enMainMenuOption)_ReadMainMenuOption());
 
 
 	}
