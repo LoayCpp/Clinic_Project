@@ -179,7 +179,7 @@ private:
 
 
 public:
-    clsDoctor() : clsDoctor(clsTemplate<clsDoctor>::enMode::eAddNewMode, "Doc00", "", "", "", "", enGender::eUnkownGender,
+    clsDoctor() : clsDoctor(clsTemplate<clsDoctor>::enMode::eEmptyMode, "Doc00", "", "", "", "", enGender::eUnkownGender,
         clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0) {
     
     }
@@ -272,7 +272,8 @@ public:
         return _LoadDoctorsFromFiles();
     }
     static clsDoctor GetNewDoctorObject() {
-        return  clsDoctor();
+        return  clsDoctor(clsTemplate<clsDoctor>::enMode::eAddNewMode, "Doc00", "", "", "", "", enGender::eUnkownGender,
+        clsDate(0, 0, 0), enSpecialization::eUnkownSpec, "", 0.0);
         
     }
     static clsDoctor GetEmptyObject() {
