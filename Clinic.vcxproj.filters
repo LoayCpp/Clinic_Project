@@ -19,8 +19,20 @@
     <Filter Include="Header Files\Screens">
       <UniqueIdentifier>{9623104e-21f6-4cc1-b794-e8caf0c3253f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Screens\MainMenue">
+    <Filter Include="Header Files\Screens\MainMenu">
       <UniqueIdentifier>{1c625c3b-71a8-4e97-85a7-8cc8c98253b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Database">
+      <UniqueIdentifier>{372827f9-8cb6-4913-93cd-a2db304ec5d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Screens\PatientMenu">
+      <UniqueIdentifier>{e93d0c4a-edee-4400-8edf-7e005dc9e79a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Screens\DoctorMenu">
+      <UniqueIdentifier>{450729b4-74bb-4b42-9e9e-45aea98da639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Screens\AppointmentMenu">
+      <UniqueIdentifier>{84731511-6534-443c-8046-575467db02fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,8 +59,71 @@
     <ClInclude Include="ProjectFiles\Core\clsAppointment.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="clsMainMenu.h">
-      <Filter>Header Files\Screens\MainMenue</Filter>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsMainMenu.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageDoctorsMenuScreen.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManagePatientMenu.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageUsersMenuScreen.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageAppointmentsMenuScreen.h">
+      <Filter>Header Files\Screens\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Core\clsTemplate.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\clsSharedHelperFunctions.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsDoctorHelperFunctions .h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsAddDoctorScreen.h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsDeleteDoctorScreen.h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsFindDoctorScreen.h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsShowDoctorsTableScreen.h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\DoctorMenu\clsUpdateDoctorDataScreen.h">
+      <Filter>Header Files\Screens\DoctorMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsPatientHelperFunctions.h">
+      <Filter>Header Files\Screens\PatientMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsFindPatientScreen.h">
+      <Filter>Header Files\Screens\PatientMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsShowPatientsTableScreen.h">
+      <Filter>Header Files\Screens\PatientMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsAppointmentHelperFunctions.h">
+      <Filter>Header Files\Screens\AppointmentMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Database\FilesName.h">
+      <Filter>Header Files\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsShowAppointmentTableScreen.h">
+      <Filter>Header Files\Screens\AppointmentMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsFindAppointmentScreen.h">
+      <Filter>Header Files\Screens\AppointmentMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsUpdatePaitentsDataScreen.h">
+      <Filter>Header Files\Screens\PatientMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsAddAppointmentScreen.h">
+      <Filter>Header Files\Screens\AppointmentMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

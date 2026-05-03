@@ -402,6 +402,10 @@ public:
 	bool  IsLastMonthInYear() {
 		return IsLastMonthInYear(_month);
 	}
+	int CalculateMyAgeInDays()
+	{
+		return GetDifferenceInDays(*this, clsDate::GetSystemDate(), true);
+	}
 	static short CalculateMyAgeInDays(clsDate DateOfBirth)
 	{
 		return GetDifferenceInDays(DateOfBirth, clsDate::GetSystemDate(), true);
