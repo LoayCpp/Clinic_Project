@@ -1,4 +1,3 @@
 Patient002#//#Ahmed#//#Ali#//#Sami#//#Naji#//#male#//#2/1/2004#//#734296102#//#1
 Patient003#//#Ahmed#//#Ali#//#Sami#//#Sajed#//#male#//#12/2/2008#//#735461230#//#1
 Patient004#//#Hadi#//#Ahmed#//#Ameen#//#Saad#//#male#//#2/5/2009#//#734260123#//#1
-Patient005#//#Sara#//#Ahmed#//#Sami#//#Ameen#//#female#//#2/5/2015#//#734296102#//#0

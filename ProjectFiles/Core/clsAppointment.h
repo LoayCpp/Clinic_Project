@@ -67,7 +67,13 @@ private:
             [this](const map<string, clsAppointment>& mAppointments)-> void {_SaveAppointmentDataToFile(mAppointments); }, this->_objectIsSaved
         );
     }
+    bool _Delete() {
+       return  clsTemplate<clsAppointment>::DeleteObject(*this,
+            this->_mode, this->_objectIsSaved,
+            [this]()-> void {_UpdateAppointment(); },
+            GetEmptyAppointmentObject);
 
+    }
     clsAppointment(clsTemplate<clsAppointment>::enMode mode,
         string appointmentID, clsPatient patient, clsDoctor doctor, float appointmentFees,string dateTime) {
 
@@ -167,21 +173,24 @@ public:
     }
     bool Delete() {
      
-        if (this->_patient.Delete()) {
-            bool state = clsTemplate<clsAppointment>::DeleteObject(*this,
-                this->_mode, this->_objectIsSaved,
-                [this]()-> void {_UpdateAppointment(); },
-                GetEmptyAppointmentObject);
-
-
-            if (state) {
-                return true;
+        if (!this->_patient.HasMultipleAppointments) {
+            clsPatient patient= this->_patient;
+            if (_patient.Delete()) {
+                if (this->_Delete())
+                    return true;
+                else {
+                    this->_patient = patient;
+                    this->_patient.Save();
+                    return false;
+                }
             }
-            return false;
+            else {
+                return false;
+            }
         }
-
-
-        return false;
+     
+        return this->_Delete();
+   
          
     }
     bool Save() {

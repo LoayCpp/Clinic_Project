@@ -139,6 +139,7 @@
     <ClInclude Include="ProjectFiles\Database\FilesName.h" />
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsAddAppointmentScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsAppointmentHelperFunctions.h" />
+    <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsDeleteAppointmentScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsFindAppointmentScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsShowAppointmentTableScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\clsHeaderScreen.h" />

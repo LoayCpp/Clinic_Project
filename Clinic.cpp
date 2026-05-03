@@ -7,6 +7,7 @@
 #include"ProjectFiles//Screens/AppointmentMenu/clsShowAppointmentTableScreen.h"
 #include"ProjectFiles//Screens/AppointmentMenu/clsFindAppointmentScreen.h"
 #include"ProjectFiles//Screens/AppointmentMenu/clsAddAppointmentScreen.h"
+#include"ProjectFiles//Screens/AppointmentMenu/clsDeleteAppointmentScreen.h"
 #include"ProjectFiles//Screens//PatientMenu//clsUpdatePaitentsDataScreen.h"
 using namespace std;
 int main() {
@@ -15,6 +16,7 @@ int main() {
 	//clsShowAppointmentTableScreen::ShowAppoitmentsTable();
 	//clsFindAppointmentScreen::ShowFindAppointment();
 	//clsUpdatePaitentsDataScreen::ShowUpdatePatientData();
-	clsAddAppointmentScreen::ShowAddAppointment();
+	//clsAddAppointmentScreen::ShowAddAppointment();
+	clsDeleteAppointmentScreen::ShowDeleteDoctor();
    return 0;
 }
