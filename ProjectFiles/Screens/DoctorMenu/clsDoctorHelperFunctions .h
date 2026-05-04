@@ -42,9 +42,14 @@ public:
 		cout << "[4] ENT\n";
 		cout << "[5] Surgery\n";
 		cout << "Enter User`s choice (1-5) :> ";
-
+		
 		num = clsInputValidate::ReadNumberBetween<short>(1, 5, "Invalid input, please enter a number between[1 - 5] :> ");
+		while (clsDoctor::IsSpecializationExists((clsDoctor::enSpecialization)num)) {
+			cout << "This specialization already has a doctor. Please choose another one.\n";
 
+			num = clsInputValidate::ReadNumberBetween<short>(1, 5, "Invalid input, please enter a number between[1 - 5] :> ");
+
+		}
 		return (clsDoctor::enSpecialization)num;
 	}
 	static float ReadFeesRate() {
