@@ -15,7 +15,7 @@ private:
 	{
 
 		cout << left
-			<< "|" << setw(10) << patient.PatientID << "|"
+			<< "|" << setw(12) << patient.PatientID << "|"
 			<< setw(30) << patient.FullName << "|"
 			<< setw(10) << patient.strGender << "|"
 			<< setw(6) << patient.Age << "|"
@@ -45,7 +45,7 @@ private:
 		cout << lineSeparator << "\n\n";
 
 		cout << left
-			<< setw(10) << "|PatientID" << " |"
+			<< setw(12) << "|PatientID" << " |"
 			<< setw(30) << "Full Name" << "|"
 			<< setw(10) << "Gender" << "|"
 			<< setw(6) << "Age" << "|"
@@ -58,7 +58,7 @@ private:
 	static void DrawTable(const map<string, clsPatient>& mPatient)
 	{
 
-		string lineSeparator = clsUtil::UnderScore(15) + "___";
+		string lineSeparator = clsUtil::UnderScore(15) + "____";
 
 		DrawTableHeader(lineSeparator);
 		DrawTableBody(mPatient);

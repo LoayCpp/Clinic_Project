@@ -3,7 +3,7 @@
 using namespace std;
 int main() {
 
-    clsMainMenu::ShowMenu();
-	
+   clsMainMenu::ShowMenu();
+
    return 0;
 }
