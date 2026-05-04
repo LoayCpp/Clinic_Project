@@ -26,7 +26,7 @@ private:
 
 		if (mAppointments.empty()) {
 
-			cout << "\nThere are no Appointments in the system\n";
+			cout << "\n\t\t\t\t\t\t    There are no Appointments in the system\n";
 			return;
 		}
 
