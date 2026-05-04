@@ -1,9 +1,9 @@
 #pragma once
 #include"../clsHeaderScreen.h"
-#include"../..//Libraries/clsInputValidate.h"
-#include"..//PatientMenu/clsFindPatientScreen.h"
-#include"..//PatientMenu/clsShowPatientsTableScreen.h"
-#include"..//PatientMenu/clsUpdatePaitentsDataScreen.h"
+#include"../..//Libraries//clsInputValidate.h"
+#include"..//PatientMenu//clsFindPatientScreen.h"
+#include"..//PatientMenu//clsShowPatientsTableScreen.h"
+#include"..//PatientMenu//clsUpdatePaitentsDataScreen.h"
 class clsManagePatientMenu: protected clsHeaderScreen
 {
 
