@@ -32,7 +32,7 @@ public:
 
 		else {
 
-			cout << "\n\n Cannot add new doctor.The system already has the maximum allowed number of doctors(5).\n\n\n" << endl;
+			cout << "\n\nYou Cannot add a new doctor because\nThe system already has the maximum\n allowed number of doctors(5).\n" << endl;
 		}
 	}
 };
