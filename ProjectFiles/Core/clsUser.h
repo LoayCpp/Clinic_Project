@@ -1,9 +1,10 @@
 #pragma once
-#include "..//Core/clsPerson.h"
+#include "clsPerson.h"
+#include "clsPermissions.h"
+#include "clsTemplate.h"
 #include "..//Database/FilesName.h"
 #include "..//Libraries/clsString.h"
 #include "..//Libraries/clsDate.h"
-#include "clsTemplate.h"
 #include <map>
 #include <vector>
 #include <fstream>
@@ -12,43 +13,22 @@ class clsUser : public clsPerson
 {
 public:
 
-    enum enClinicRole
-    {
-        eSuperAdmin = 1,
-        eAdmin,
-        eReceptionist,
-        eUnknownRole
-    };
 
 private:
 
     string _userID;
     string _userName;
     string _password;
-    enClinicRole _role;
+    clsPermissions _permissions;
 
     clsTemplate<clsUser>::enMode _mode;
     clsTemplate<clsUser>::enIsSave _ObjectIsSaved;
 
 private:
 
-    static string _ConvertRoleToString(enClinicRole role)
-    {
-        return (role == enClinicRole::eSuperAdmin) ? "SuperAdmin" :
-            (role == enClinicRole::eAdmin) ? "Admin" :
-            (role == enClinicRole::eReceptionist) ? "Receptionist" :
-            "Unknown";
-    }
 
-    static enClinicRole _ConvertStringToRole(string role)
-    {
-        return (role == "SuperAdmin") ? enClinicRole::eSuperAdmin :
-            (role == "Admin") ? enClinicRole::eAdmin :
-            (role == "Receptionist") ? enClinicRole::eReceptionist :
-            enClinicRole::eUnknownRole;
-    }
 
-    static string _ConvertUserToDataLine(const clsUser& user, string separator = "#//#")
+    static string _ConvertUserToDataLine( clsUser& user, string separator = "#//#")
     {
         string line = "";
 
@@ -60,7 +40,8 @@ private:
         line += user._userName + separator;
         line += user._password + separator;
         line += user.Phone + separator;
-        line += _ConvertRoleToString(user.Role);
+        line += user._permissions.StrRole;
+  
 
         return line;
     }
@@ -71,7 +52,7 @@ private:
 
         vData = clsString::SpilitString(line, separator);
 
-        clsUser user(clsTemplate<clsUser>::enMode::eUpadateMode, vData[0], vData[1], vData[2], vData[3], vData[4], vData[5], vData[6], vData[7], _ConvertStringToRole(vData[8]));
+        clsUser user(clsTemplate<clsUser>::enMode::eUpadateMode, vData[0], vData[1], vData[2], vData[3], vData[4], vData[5], vData[6], vData[7], clsPermissions(vData[8]));
 
         return user;
     }
@@ -86,19 +67,22 @@ private:
         return clsTemplate<clsUser>::LoadObjectsDataFromFiles(UsersFile, _ConvertDataLineToUser, GetID);
     }
 
-    clsTemplate<clsUser>::enMode _GetMode(const clsUser& user)
+    clsTemplate<clsUser>::enMode _GetMode(clsUser& user)
     {
         return user._mode;
     }
 
-    void _SaveUsersDataToFile(const map<string, clsUser>& usersMap)
+    void _SaveUsersDataToFile(map<string, clsUser>& usersMap)
     {
-        clsTemplate<clsUser>::SaveObjectsDataToFile(UsersFile, usersMap, [this](const clsUser& tempUser) -> clsTemplate<clsUser>::enMode { return _GetMode(tempUser); }, [this](const clsUser& tempUser, string separator = "#//#") -> string { return _ConvertUserToDataLine(tempUser, separator); });
+        clsTemplate<clsUser>::SaveObjectsDataToFile(UsersFile, usersMap, 
+            [this](clsUser& tempUser) -> clsTemplate<clsUser>::enMode { return _GetMode(tempUser); }, 
+            [this](clsUser& tempUser, string separator = "#//#") -> string { return _ConvertUserToDataLine(tempUser, separator); });
     }
 
     void _UpdateUser()
     {
-        clsTemplate<clsUser>::UpdateObject(_LoadUsersFromFile, *this, GetID, [this](const map<string, clsUser>& usersMap) { _SaveUsersDataToFile(usersMap); }, _ObjectIsSaved);
+        clsTemplate<clsUser>::UpdateObject(_LoadUsersFromFile, *this, GetID, 
+            [this](map<string, clsUser>& usersMap)->void { _SaveUsersDataToFile(usersMap); }, _ObjectIsSaved);
     }
 
     string _GetUserNumber()
@@ -113,29 +97,29 @@ private:
 
     void _AddUserToFile()
     {
-        clsTemplate<clsUser>::AddObjectToFile(UsersFile, *this, [this](const clsUser& tempUser, string separator = "#//#") -> string { return _ConvertUserToDataLine(tempUser, separator); }, [this]() -> void { _GenerateUserID(); }, _ObjectIsSaved);
+        clsTemplate<clsUser>::AddObjectToFile(UsersFile, *this, [this]( clsUser& tempUser, string separator = "#//#") -> string { return _ConvertUserToDataLine(tempUser, separator); }, [this]() -> void { _GenerateUserID(); }, _ObjectIsSaved);
     }
 
-    clsUser(clsTemplate<clsUser>::enMode mode, string userID, string firstName, string secondName, string thirdName, string fourthName, string userName, string password, string phone, enClinicRole role)
+    clsUser(clsTemplate<clsUser>::enMode mode, string userID, string firstName, string secondName, string thirdName, string fourthName, string userName, string password, string phone, clsPermissions permissions)
         : clsPerson(firstName, secondName, thirdName, fourthName, phone)
     {
         this->_mode = mode;
         this->_userID = userID;
         this->_userName = userName;
         this->_password = password;
-        this->_role = role;
+        this->_permissions = permissions;
 
         this->_ObjectIsSaved = clsTemplate<clsUser>::enIsSave::DataisUnSaved;
     }
 
 public:
 
-    clsUser() : clsUser(clsTemplate<clsUser>::enMode::eEmptyMode, "User00", "", "", "", "", "", "", "", enClinicRole::eUnknownRole)
+    clsUser() : clsUser(clsTemplate<clsUser>::enMode::eEmptyMode, "User00", "", "", "", "", "", "", "", clsPermissions())
     {
     }
 
-    clsUser(clsTemplate<clsUser>::enMode mode, string firstName, string secondName, string thirdName, string fourthName, string userName, string password, string phone, enClinicRole role)
-        : clsUser(mode, "User00", firstName, secondName, thirdName, fourthName, userName, password, phone, role)
+    clsUser(clsTemplate<clsUser>::enMode mode, string firstName, string secondName, string thirdName, string fourthName, string userName, string password, string phone, clsPermissions permissions)
+        : clsUser(mode, "User00", firstName, secondName, thirdName, fourthName, userName, password, phone, permissions)
     {
     }
 
@@ -172,24 +156,19 @@ public:
 
     __declspec(property(get = GetPassword, put = SetPassword)) string Password;
 
-    void SetRole(enClinicRole role)
+    void SetPermissions(clsPermissions permissions)
     {
-        _role = role;
+        _permissions = permissions;
     }
 
-    enClinicRole GetRole() const
+    clsPermissions GetPermissions() const
     {
-        return _role;
+        return _permissions;
     }
 
-    __declspec(property(get = GetRole, put = SetRole)) enClinicRole Role;
+    __declspec(property(get = GetPermissions, put = SetPermissions)) clsPermissions Permissions;
 
-    string RoleToString()
-    {
-        return _ConvertRoleToString(_role);
-    }
-
-    __declspec(property(get = RoleToString)) string strRole;
+   
 
     bool IsEmpty()
     {
@@ -203,7 +182,7 @@ public:
 
     static clsUser GetNewUserObject()
     {
-        return clsUser(clsTemplate<clsUser>::enMode::eAddNewMode, "", "", "", "", "", "", "", enClinicRole::eUnknownRole);
+        return clsUser(clsTemplate<clsUser>::enMode::eAddNewMode, "", "", "", "", "", "", "", clsPermissions());
     }
 
     static clsUser GetEmptyObject()
