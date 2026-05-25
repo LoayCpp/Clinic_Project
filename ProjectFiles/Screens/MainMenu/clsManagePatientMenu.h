@@ -1,5 +1,6 @@
 #pragma once
 #include"../clsHeaderScreen.h"
+#include "..//..//Globlas//Globals.h"
 #include"../..//Libraries//clsInputValidate.h"
 #include"..//PatientMenu//clsFindPatientScreen.h"
 #include"..//PatientMenu//clsShowPatientsTableScreen.h"
@@ -54,25 +55,37 @@ private:
 		switch (option)
 		{
 		case enManagePatientMenuOption::eShowAllPatientsScreen:
-			system("cls");
-			_ShowAllPatientsScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eShowAllPatients)) {
+				system("cls");
+				_ShowAllPatientsScreen();
+				_BackToMenu();
+			}
+		
 			break;
 
 		
 
 		case enManagePatientMenuOption::eUpdatePatient:
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdatePatient)) {
+				system("cls");
+				_ShowUpdatePatienteScreen();
+				_BackToMenu();
+			}
 
-			system("cls");
-			_ShowUpdatePatienteScreen();
-			_BackToMenu();
 			break;
 
 
 		case enManagePatientMenuOption::eFindPatient:
-			system("cls");
-			_ShowFindPatientScreen();
-			_BackToMenu();
+				
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eFindPatient)) {
+				system("cls");
+				_ShowFindPatientScreen();
+				_BackToMenu();
+			}
+
 			break;
 
 		case enManagePatientMenuOption::eBackToMainMenu:
@@ -91,9 +104,15 @@ public:
 		string LineSperator = "=============================================\n";
 
 		cout << LineSperator;
-		cout << "[1] Show All Patients.\n";
-		cout << "[2] Update Patient.\n";
-		cout << "[3] Find Patient\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eShowAllPatients))
+			cout << "[1] Show All Patients.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdatePatient))
+			cout << "[2] Update Patient.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eFindPatient))
+			cout << "[3] Find Patient\n";
 		cout << "[4] Back To Main Menu\n";
 		cout << LineSperator;
 

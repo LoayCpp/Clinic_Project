@@ -6,6 +6,7 @@
 #include"..//..//..//ProjectFiles/Core/clsAppointment.h"
 #include"..//..//..//ProjectFiles/Libraries/clsUtil.h"
 #include"..//..//..//ProjectFiles/Screens/clsHeaderScreen.h"
+#include "..//..//Globlas//Globals.h"
 using namespace std;
 
 class clsShowAppointmentTableScreen :public clsHeaderScreen

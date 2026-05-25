@@ -6,6 +6,7 @@
 #include "..//..//..//ProjectFiles/Core/clsPatient.h"
 #include "..//..//..//ProjectFiles/Libraries/clsUtil.h"
 #include "..//..//..//ProjectFiles/Screens/clsHeaderScreen.h"
+#include "..//..//Globlas//Globals.h"
 using namespace std;
 
 class clsShowPatientsTableScreen : public clsHeaderScreen

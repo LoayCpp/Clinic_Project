@@ -1,6 +1,7 @@
 #pragma once
 #include "..//clsHeaderScreen.h"
 #include "clsDoctorHelperFunctions .h"
+#include "..//..//Globlas//Globals.h"
 using namespace std;
 class clsUpdateDoctorDataScreen :public clsHeaderScreen
 {
@@ -202,7 +203,8 @@ private:
 				break;
 
 			case enUpdateDoctorDataMenu::eUpdateDoctorSpecialization:
-
+				if (CurrentUser.Permissions.IsUserHasPermissions(
+					CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateDoctorsSpecialization))
 				_ShowUpdateDoctorSpecialization(lineSperator, doctor);
 
 				break;
@@ -214,6 +216,8 @@ private:
 				break;
 
 			case enUpdateDoctorDataMenu::eUpdateDoctorFeesRate:
+				if (CurrentUser.Permissions.IsUserHasPermissions(
+					CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateDoctorsFeesRate))
 				_ShowUpdateDoctorFeesRate(lineSperator, doctor);
 				break;
 			}
@@ -232,9 +236,13 @@ private:
 			cout << "[1] Update Doctor`s Name\n";
 			cout << "[2] Update Doctor`s Gender\n";
 			cout << "[3] Update Doctor`s Brithdate\n";
-			cout << "[4] Update Doctor`s Specialization\n";
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateDoctorsSpecialization))
+				cout << "[4] Update Doctor`s Specialization\n";
 			cout << "[5] Update Doctor`s Phone\n";
-			cout << "[6] Update Doctor`s Fees Rate\n";
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateDoctorsFeesRate))
+				cout << "[6] Update Doctor`s Fees Rate\n";
 			
 			cout << LineSperator;
 

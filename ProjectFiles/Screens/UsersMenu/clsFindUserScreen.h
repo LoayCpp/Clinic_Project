@@ -1,7 +1,7 @@
 #pragma once
 #include "..//clsHeaderScreen.h"
 #include "clsUserHelperFunctions.h"
-
+#include "..//..//Globlas//Globals.h"
 class clsFindUserScreen : public clsHeaderScreen
 {
 public:

@@ -34,6 +34,12 @@
     <Filter Include="Header Files\Screens\AppointmentMenu">
       <UniqueIdentifier>{84731511-6534-443c-8046-575467db02fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Screens\UserMenu">
+      <UniqueIdentifier>{65320d6c-a95b-462c-9ff8-46f51dd4ee80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Globals">
+      <UniqueIdentifier>{b786f25e-c90e-40f3-ac21-8932bbe0b53b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Clinic.cpp">
@@ -134,5 +140,28 @@
     <ClInclude Include="ProjectFiles\Core\clsPermissions.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\UsersMenu\clsAddUserScreen.h">
+      <Filter>Header Files\Screens\UserMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\UsersMenu\clsFindUserScreen.h">
+      <Filter>Header Files\Screens\UserMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\UsersMenu\clsShowUsersTableScreen.h">
+      <Filter>Header Files\Screens\UserMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\UsersMenu\clsUpdateUsersDataScreen.h">
+      <Filter>Header Files\Screens\UserMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Screens\UsersMenu\clsUserHelperFunctions.h">
+      <Filter>Header Files\Screens\UserMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectFiles\Globlas\Globals.h">
+      <Filter>Header Files\Globals</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ProjectFiles\Screens\UsersMenu\clsDeleteUserScreen.h">
+      <Filter>Header Files\Screens\UserMenu</Filter>
+    </Text>
   </ItemGroup>
 </Project>

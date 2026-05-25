@@ -1,11 +1,13 @@
+
 #pragma once
-#include"../clsHeaderScreen.h"
-#include"../..//Libraries/clsInputValidate.h"
-#include"..//AppointmentMenu/clsAddAppointmentScreen.h"
-#include"..//AppointmentMenu/clsDeleteAppointmentScreen.h"
-#include"..//AppointmentMenu/clsFindAppointmentScreen.h"
-#include"..//AppointmentMenu/clsShowAppointmentTableScreen.h"
-#include"..//AppointmentMenu/clsUpdateAppointmentScreen.h"
+#include"..//clsHeaderScreen.h"
+#include "..//..//Globlas//Globals.h"
+#include"..//..//Libraries/clsInputValidate.h"
+#include"..//AppointmentMenu//clsAddAppointmentScreen.h"
+#include"..//AppointmentMenu//clsDeleteAppointmentScreen.h"
+#include"..//AppointmentMenu//clsFindAppointmentScreen.h"
+#include"..//AppointmentMenu//clsShowAppointmentTableScreen.h"
+#include"..//AppointmentMenu//clsUpdateAppointmentScreen.h"
 
 
 class clsManageAppointmentsMenuScreen : protected clsHeaderScreen
@@ -71,34 +73,53 @@ private:
 		switch (option)
 		{
 		case enManageAppointmentMenuOption::eShowAllAppointmentsScreen:
-			system("cls");
-			_ShowAppointmentsListScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eShowAllAppointments)) {
+				system("cls");
+				_ShowAppointmentsListScreen();
+				_BackToMenu();
+			}
+		
 			break;
 
 		case enManageAppointmentMenuOption::eAddNewAppointment:
-			system("cls");
-			_ShowAddNewAppointmentScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eAddNewAppointment)) {
+				system("cls");
+				_ShowAddNewAppointmentScreen();
+				_BackToMenu();
+			}
+		
 			break;
 
 		case enManageAppointmentMenuOption::eUpdateAppointment:
-
-			system("cls");
-			_ShowUpdateAppointmentScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateAppointment)) {
+				system("cls");
+				_ShowUpdateAppointmentScreen();
+				_BackToMenu();
+			}
+		
 			break;
 
 		case enManageAppointmentMenuOption::eDeleteAppointment:
-			system("cls");
-			_ShowDeleteAppointmentScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eDeleteAppointment)) {
+				system("cls");
+				_ShowDeleteAppointmentScreen();
+				_BackToMenu();
+			}
+			
 			break;
 
 		case enManageAppointmentMenuOption::eFindAppointment:
-			system("cls");
-			_ShowFindAppointmentScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eFindAppointment)) {
+				system("cls");
+				_ShowFindAppointmentScreen();
+				_BackToMenu();
+			}
+			
 			break;
 
 		case enManageAppointmentMenuOption::eBackToMainMenu:
@@ -117,11 +138,21 @@ public:
 		string LineSperator = "=============================================\n";
 
 		cout << LineSperator;
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eShowAllAppointments))
 		cout << "[1] Show All Appointments.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eAddNewAppointment))
 		cout << "[2] Add New Appointment.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateAppointment))
 		cout << "[3] Update Appointment.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eDeleteAppointment))
 		cout << "[4] Delete Appointment.\n";
-		cout << "[5] Find Appointment\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eFindAppointment))
+			cout << "[5] Find Appointment\n";
 		cout << "[6] Back To Main Menu\n";
 		cout << LineSperator;
 

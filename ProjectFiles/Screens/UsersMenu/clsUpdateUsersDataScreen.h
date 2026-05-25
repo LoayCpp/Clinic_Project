@@ -1,10 +1,10 @@
 #pragma once
 #include "..//clsHeaderScreen.h"
 #include "clsUserHelperFunctions.h"
-
+#include "..//..//Globlas//Globals.h"
 using namespace std;
 
-class clsUpdateUserDataScreen : public clsHeaderScreen
+class clsUpdateUsersDataScreen : public clsHeaderScreen
 {
 private:
 
@@ -170,7 +170,7 @@ private:
         {
             ShowUpdateScreenHeader();
             cout << lineSperator;
-            user.Role = clsUserHelperFunctions::ReadRole();
+            user.Permissions = clsUserHelperFunctions::ReadPermissions();
             cout << lineSperator;
         }
 
@@ -197,7 +197,9 @@ private:
                 break;
 
             case enUpdateUserDataMenu::eUpdateUserRole:
-                _ShowUpdateUserRole(lineSperator, user);
+                if (CurrentUser.Permissions.IsUserHasPermissions(
+                    CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateUsersPermissions))
+                    _ShowUpdateUserRole(lineSperator, user);
                 break;
             }
         }
@@ -215,7 +217,9 @@ private:
             cout << "[2] Update User Name\n";
             cout << "[3] Update User`s Password\n";
             cout << "[4] Update User`s Phone\n";
-            cout << "[5] Update User`s Role\n";
+            if (CurrentUser.Permissions.IsUserHasPermissions(
+                CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateUsersPermissions))
+                cout << "[5] Update User`s Role\n";
             cout << LineSperator;
 
             _PerformUserDataMenuOperation((enUpdateUserDataMenu)_ReadUserDataMenuOption(), user);

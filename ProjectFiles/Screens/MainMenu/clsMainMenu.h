@@ -1,6 +1,7 @@
 #pragma once
-#include"../clsHeaderScreen.h"
-#include"../..//Libraries/clsInputValidate.h"
+#include"..//clsHeaderScreen.h"
+#include "..//..//Globlas//Globals.h"
+#include"..//..//Libraries//clsInputValidate.h"
 #include"clsManagePatientMenu.h"
 #include "clsManageDoctorsMenuScreen.h"
 #include"clsManageUsersMenuScreen.h"
@@ -27,12 +28,6 @@ private:
 		return num;
 	}
 
-	/*static void _BackToMenu() {
-
-		cout << "Press any Key to back to Main Menu\n";
-		system("pause>0");
-		ShowMenu();
-	}*/
 
 	static void _ShowManagePatientsMenuScreen() {
 
@@ -58,7 +53,7 @@ private:
 	}
 	static void _ShowLogoutScreen() {
 
-		cout << "Mange logout not implement\n";
+		CurrentUser = clsUser::GetEmptyObject();
 
 	 }
 	static void _PerformMainMenuOperation(enMainMenuOption option) {
@@ -67,27 +62,36 @@ private:
 		switch (option)
 		{
 		case clsMainMenu::eManagePatientsMenu:
-			system("cls");
-			_ShowManagePatientsMenuScreen();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role ,clsPermissions::enUserPermissionsOption::eManagePatientsMenu)) {
+				system("cls");
+				_ShowManagePatientsMenuScreen();
+			}
+		
 		
 			break;
 
 		case clsMainMenu::eManageDoctorsMenu:
-			system("cls");
-			_ShowManageDoctorMenuScreen();
-	
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eManageDoctorsMenu)) {
+				system("cls");
+				_ShowManageDoctorMenuScreen();
+			}
 			break;
 		case clsMainMenu::eManageUsersMenu:
-
-			system("cls");
-			_ShowManageUsersMenuScreen();
-			
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eManageUsersMenu)) {
+				system("cls");
+				_ShowManageUsersMenuScreen();
+			}
 
 			break;
 		case clsMainMenu::eManageAppointmentsMenu:
-			system("cls");
-			_ShowManageAppointmentMenuScreen();
-		
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eManageAppointmentsMenu)) {
+				system("cls");
+				_ShowManageAppointmentMenuScreen();
+			}
 			break;
 		case clsMainMenu::eLogout:
 			system("cls");
@@ -117,10 +121,24 @@ public:
 		string LineSperator = "=============================================\n";
 
 		cout << LineSperator;
-		cout << "[1] Manage Patients Menu\n";
-		cout << "[2] Manage Doctors Menu\n";
-		cout << "[3] Manage Users Menu\n";
-		cout << "[4] Manage Appointments Menu\n";
+		
+
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eManagePatientsMenu))
+			cout << "[1] Manage Patients Menu\n";
+
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eManageDoctorsMenu))
+			cout << "[2] Manage Doctors Menu\n";
+
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eManageUsersMenu))
+			cout << "[3] Manage Users Menu\n";
+
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eManageAppointmentsMenu))
+			cout << "[4] Manage Appointments Menu\n";
+
 		cout << "[5] Log out\n";
 		cout << LineSperator;
 

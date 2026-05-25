@@ -138,6 +138,7 @@
     <ClInclude Include="ProjectFiles\Core\clsTemplate.h" />
     <ClInclude Include="ProjectFiles\Core\clsUser.h" />
     <ClInclude Include="ProjectFiles\Database\FilesName.h" />
+    <ClInclude Include="ProjectFiles\Globlas\Globals.h" />
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsAddAppointmentScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsAppointmentHelperFunctions.h" />
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsDeleteAppointmentScreen.h" />
@@ -161,6 +162,14 @@
     <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsPatientHelperFunctions.h" />
     <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsShowPatientsTableScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsUpdatePaitentsDataScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\UsersMenu\clsAddUserScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\UsersMenu\clsFindUserScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\UsersMenu\clsShowUsersTableScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\UsersMenu\clsUpdateUsersDataScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\UsersMenu\clsUserHelperFunctions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ProjectFiles\Screens\UsersMenu\clsDeleteUserScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

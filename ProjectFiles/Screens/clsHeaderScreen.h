@@ -2,6 +2,7 @@
 #include<iostream>
 #include<string>
 #include "..//Libraries/clsUtil.h"
+#include "..//Globlas//Globals.h"
 class clsHeaderScreen
 {
 protected:

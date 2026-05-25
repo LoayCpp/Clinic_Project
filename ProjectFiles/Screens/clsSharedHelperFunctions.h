@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include"..//..//ProjectFiles/Libraries/clsInputValidate.h"
+#include "..//Globlas//Globals.h"
 using namespace std;
 class clsSharedHelperFunctions {
 

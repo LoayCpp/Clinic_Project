@@ -1,5 +1,6 @@
 #pragma once
 #include "clsPatient.h"
+#include "..//Globlas//Globals.h"
 class clsAppointment
 {
 private:

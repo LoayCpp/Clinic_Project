@@ -1,6 +1,7 @@
 #pragma once
 #include "..//clsHeaderScreen.h"
 #include "clsAppointmentHelperFunctions.h"
+#include "..//..//Globlas//Globals.h"
 class clsAddAppointmentScreen : public clsHeaderScreen {
 private:
 	static void _showScreenHeader() {

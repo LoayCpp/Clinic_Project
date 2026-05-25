@@ -1,16 +1,17 @@
 #pragma once
 #include <iostream>
-#include "..//..//..//ProjectFiles/Libraries/clsInputValidate.h"
-#include "..//..//..//ProjectFiles/Core/clsUser.h"
+#include "..//..//..//ProjectFiles//Libraries//clsInputValidate.h"
+#include "..//..//..//ProjectFiles//Core//clsUser.h"
 #include "..//clsSharedHelperFunctions.h"
-
+#include "..//..//Core//clsUser.h"
+#include "..//..//Globlas//Globals.h"
 using namespace std;
 
 class clsUserHelperFunctions
 {
 public:
 
-    static clsUser::enClinicRole ReadRole()
+    static clsPermissions ReadPermissions()
     {
         short num = 0;
 
@@ -22,7 +23,7 @@ public:
 
         num = clsInputValidate::ReadNumberBetween<short>(1, 3, "Invalid input, please enter a number between[1 - 3] :> ");
 
-        return (clsUser::enClinicRole)num;
+        return clsPermissions((clsPermissions::enClinicRole)num);
     }
 
     static void ReadFullName(clsUser& user)
@@ -51,7 +52,7 @@ public:
         user.UserName = ReadUserName();
         user.Password = ReadPassword();
         user.Phone = clsSharedHelperFunctions::ReadPhoneNumber("User");
-        user.Role = ReadRole();
+        user.Permissions = ReadPermissions();
     }
 
     static clsUser ReadUserByID()
@@ -77,7 +78,7 @@ public:
         cout << "User Name       : " << user.UserName << endl;
         cout << "Password        : " << user.Password << endl;
         cout << "User's Phone    : " << user.Phone << endl;
-        cout << "User's Role     : " << user.strRole << endl;
+        cout << "User's Role     : " << user.Permissions.StrRole << endl;
         cout << "==================================================\n";
     }
 };

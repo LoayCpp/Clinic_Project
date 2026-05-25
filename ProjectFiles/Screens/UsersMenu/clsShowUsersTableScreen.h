@@ -3,10 +3,10 @@
 #include <map>
 #include <string>
 #include <iomanip>
-#include "..//..//..//ProjectFiles/Core/clsUser.h"
-#include "..//..//..//ProjectFiles/Libraries/clsUtil.h"
-#include "..//..//..//ProjectFiles/Screens/clsHeaderScreen.h"
-
+#include "..//..//..//ProjectFiles//Core//clsUser.h"
+#include "..//..//..//ProjectFiles//Libraries//clsUtil.h"
+#include "..//..//..//ProjectFiles//Screens//clsHeaderScreen.h"
+#include "..//..//Globlas//Globals.h"
 using namespace std;
 
 class clsShowUsersTableScreen : public clsHeaderScreen
@@ -21,14 +21,14 @@ private:
             << setw(20) << user.UserName << "|"
             << setw(20) << user.Password << "|"
             << setw(15) << user.Phone << "|"
-            << setw(15) << user.strRole << "|" << endl;
+            << setw(15) << user.Permissions.StrRole << "|" << endl;
     }
 
     static void DrawTableBody(const map<string, clsUser>& mUsers)
     {
         if (mUsers.empty())
         {
-            cout << "\nThere are no registered users in the system\n";
+            cout << "\n\t\t\t\t  There are no registered users in the system\n";
             return;
         }
 
@@ -55,7 +55,7 @@ private:
 
     static void DrawTable(const map<string, clsUser>& mUsers)
     {
-        string lineSeparator = clsUtil::UnderScore(23) + "___";
+        string lineSeparator = clsUtil::UnderScore(23) + "__";
 
         DrawTableHeader(lineSeparator);
         DrawTableBody(mUsers);
@@ -68,8 +68,8 @@ public:
     {
         map<string, clsUser> mUsers = clsUser::GetAllUsers();
 
-        string title = clsUtil::Tabs(4) + "         Show Users Table Screen";
-        string subTitle = clsUtil::Tabs(4) + "List of All Users in the System (" + to_string(mUsers.size()) + " Users)";
+        string title = clsUtil::Tabs(4) + "           Show Users Table Screen";
+        string subTitle = clsUtil::Tabs(4) + "   List of All Users in the System (" + to_string(mUsers.size()) + " Users)";
 
         ShowMainHeader(title, subTitle, 4);
         DrawTable(mUsers);

@@ -1,7 +1,11 @@
 #pragma once
 #include<iostream>
 #include <functional>
-#include"..//Database/FilesName.h"
+#include<map>
+#include<string>
+#include<fstream>
+#include"..//Database//FilesName.h"
+#include "..//Globlas//Globals.h"
 using namespace std;
 	
 template <class T>

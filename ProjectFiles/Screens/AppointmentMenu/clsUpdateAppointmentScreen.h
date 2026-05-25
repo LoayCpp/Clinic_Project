@@ -3,6 +3,7 @@
 #include "..//clsHeaderScreen.h"
 #include "clsAppointmentHelperFunctions.h"
 #include "..//PatientMenu//clsUpdatePaitentsDataScreen.h"
+#include "..//..//Globlas//Globals.h"
 using namespace std;
 class clsUpdateAppointmentScreen :public clsHeaderScreen
 {

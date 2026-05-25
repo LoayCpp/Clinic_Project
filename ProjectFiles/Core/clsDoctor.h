@@ -1,12 +1,13 @@
 ﻿#pragma once
-#include "..//Libraries/clsDate.h"
-#include"..//Core/clsPerson.h"
-#include "..//Database/FilesName.h"
+#include "..//Libraries//clsDate.h"
+#include"..//Core//clsPerson.h"
+#include "..//Database//FilesName.h"
 #include<vector>
 #include<fstream>
-#include"..//Libraries/clsString.h"
+#include"..//Libraries//clsString.h"
 #include<map>
 #include"clsTemplate.h"
+#include "..//Globlas//Globals.h"
 class clsDoctor : public clsPerson
 {
 

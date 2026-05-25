@@ -97,7 +97,7 @@ private:
 
     void _AddUserToFile()
     {
-        clsTemplate<clsUser>::AddObjectToFile(UsersFile, *this, [this]( clsUser& tempUser, string separator = "#//#") -> string { return _ConvertUserToDataLine(tempUser, separator); }, [this]() -> void { _GenerateUserID(); }, _ObjectIsSaved);
+        clsTemplate<clsUser>::AddObjectToFile(UsersFile, *this, [this](clsUser& tempUser, string separator = "#//#") -> string { return _ConvertUserToDataLine(tempUser, separator); }, [this]() -> void { _GenerateUserID(); }, _ObjectIsSaved);
     }
 
     clsUser(clsTemplate<clsUser>::enMode mode, string userID, string firstName, string secondName, string thirdName, string fourthName, string userName, string password, string phone, clsPermissions permissions)
@@ -194,14 +194,26 @@ public:
     {
         return clsTemplate<clsUser>::FindObject(userID, _LoadUsersFromFile, GetEmptyObject);
     }
+    static clsUser FindUser(string username,string password)
+    {
 
+        map < string, clsUser> mUsers = _LoadUsersFromFile();
+
+        for (auto user : mUsers) {
+            if (user.second.UserName == username && user.second.Password == password)
+                return user.second;
+        }
+        return GetEmptyObject();
+    }
     bool Delete()
     {
+       
         return clsTemplate<clsUser>::DeleteObject(*this, this->_mode, this->_ObjectIsSaved, [this]() { _UpdateUser(); }, GetEmptyObject);
     }
 
     bool Save()
     {
+
         return clsTemplate<clsUser>::Save(_mode, [this]() { _UpdateUser(); }, [this]() { _AddUserToFile(); }, _ObjectIsSaved);
     }
 };

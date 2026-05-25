@@ -1,5 +1,6 @@
 #pragma once
 #include<string>
+#include "..//Globlas//Globals.h"
 using namespace std;
 class clsPermissions {
 
@@ -14,40 +15,40 @@ public:
     enum enUserPermissionsOption
     {
         eManagePatientsMenu = 1,
-        eShowAllPatients = 4,
-        eUpdatePatient = 7,
-        eFindPatient = 10,
+        eShowAllPatients = 2,
+        eUpdatePatient = 4,
+        eFindPatient = 8,
 
-        eManageDoctorsMenu = 13,
-        eShowAllDoctors = 16,
-        eAddNewDoctor = 19,
-        eUpdateDoctor = 22,
-        eDeleteDoctor = 25,
-        eFindDoctor = 28,
-        eUpdateDoctorsSpecialization = 31,
-        eUpdateDoctorsFeesRate = 34,
+        eManageDoctorsMenu = 16,
+        eShowAllDoctors = 32,
+        eAddNewDoctor = 64,
+        eUpdateDoctor = 128,
+        eDeleteDoctor = 256,
+        eFindDoctor = 512,
+        eUpdateDoctorsSpecialization = 1024,
+        eUpdateDoctorsFeesRate = 2048,
 
-        eManageUsersMenu = 37,
-        eShowAllUsers = 40,
-        eAddNewUser = 43,
-        eUpdateUser = 46,
-        eDeleteUser = 49,
-        eFindUser = 52,
-        eUpdateUsersPermissions = 55,
+        eManageUsersMenu = 4096,
+        eShowAllUsers = 8192,
+        eAddNewUser = 16384,
+        eUpdateUser = 32768,
+        eDeleteUser = 65536,
+        eFindUser = 131072,
+        eUpdateUsersPermissions = 262144,
 
-        eManageAppointmentsMenu = 58,
-        eShowAllAppointments = 61,
-        eAddNewAppointment = 64,
-        eUpdateAppointment = 67,
-        eDeleteAppointment = 70,
-        eFindAppointment = 73
+        eManageAppointmentsMenu = 524288,
+        eShowAllAppointments = 1048576,
+        eAddNewAppointment = 2097152,
+        eUpdateAppointment = 4194304,
+        eDeleteAppointment = 8388608,
+        eFindAppointment = 16777216
     };
 private:
  
     enClinicRole _role;
-    int _permissions;
+    unsigned long long  _permissions;
 
-    int _GetAdminPermissions() {
+    unsigned long long _GetAdminPermissions() {
         return (int)enUserPermissionsOption::eManagePatientsMenu + enUserPermissionsOption::eShowAllPatients +
             enUserPermissionsOption::eUpdatePatient + enUserPermissionsOption::eFindPatient +
             enUserPermissionsOption::eManageDoctorsMenu + enUserPermissionsOption::eShowAllDoctors +
@@ -59,17 +60,17 @@ private:
             enUserPermissionsOption::eFindAppointment;
 
     }
-    int _GetReceptionistPermissions() {
+    unsigned long long _GetReceptionistPermissions() {
         return (int)enUserPermissionsOption::eManagePatientsMenu + enUserPermissionsOption::eShowAllPatients +
             enUserPermissionsOption::eUpdatePatient + enUserPermissionsOption::eFindPatient +
             enUserPermissionsOption::eManageDoctorsMenu + enUserPermissionsOption::eShowAllDoctors +
-            enUserPermissionsOption::eFindDoctor + enUserPermissionsOption::eManageUsersMenu +
+            enUserPermissionsOption::eFindDoctor +
             enUserPermissionsOption::eManageAppointmentsMenu + enUserPermissionsOption::eShowAllAppointments +
             enUserPermissionsOption::eAddNewAppointment + enUserPermissionsOption::eUpdateAppointment +
             enUserPermissionsOption::eFindAppointment;
 
     }
-    int GetUserPermissions(enClinicRole role) {
+     unsigned long long GetUserPermissions(enClinicRole role) {
         switch (role) {
         case enClinicRole::eSuperAdmin:
             return -1;
@@ -120,9 +121,16 @@ public:
         return this->_role == enClinicRole::eSuperAdmin;
     }
     bool IsAdmin() {
-        return this->_role == enClinicRole::eSuperAdmin && this->_role == enClinicRole::eAdmin;
+        return  this->_role == enClinicRole::eAdmin;
     }
-    bool IsUserHasPermissions(enUserPermissionsOption permissionType) {
-        return (_permissions && permissionType) == permissionType;
+    bool IsUserHasPermissions(clsPermissions::enClinicRole role, enUserPermissionsOption permissionType) {
+        if ( role == enClinicRole::eSuperAdmin) {
+            return true;
+        }
+        if (role == enClinicRole::eUnknownRole) {
+            return false;
+        }
+        else
+            return (_permissions & permissionType) == permissionType;
     }
 };

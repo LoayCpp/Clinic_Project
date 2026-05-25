@@ -4,6 +4,7 @@
 #include"..//..//..//ProjectFiles/Core/clsDoctor.h"
 #include"..//..//..//ProjectFiles/Libraries/clsDate.h"
 #include"..//clsSharedHelperFunctions.h"
+#include "..//..//Globlas//Globals.h"
 using namespace std;
 class clsDoctorHelperFunctions 
 {

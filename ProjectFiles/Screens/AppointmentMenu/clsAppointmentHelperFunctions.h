@@ -3,6 +3,7 @@
 #include "..//PatientMenu//clsPatientHelperFunctions.h"
 #include "..//..//Core//clsAppointment.h"
 #include "..//..//Libraries//clsUtil.h"
+#include "..//..//Globlas//Globals.h"
 #include <iomanip>
 class clsAppointmentHelperFunctions {
 private:

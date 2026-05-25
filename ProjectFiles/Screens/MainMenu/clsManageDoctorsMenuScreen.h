@@ -1,6 +1,7 @@
 #pragma once
-#include"../clsHeaderScreen.h"
-#include"../..//Libraries/clsInputValidate.h"
+#include"..//clsHeaderScreen.h"
+#include "..//..//Globlas//Globals.h"
+#include"..//..//Libraries/clsInputValidate.h"
 #include"ProjectFiles//Screens//DoctorMenu//clsShowDoctorsTableScreen.h"
 #include"ProjectFiles//Screens//DoctorMenu//clsAddDoctorScreen.h"
 #include"ProjectFiles//Screens//DoctorMenu//clsUpdateDoctorDataScreen.h"
@@ -63,34 +64,53 @@ private:
 		switch (option)
 		{
 		case enManageDoctorMenuOption::eShowAllDoctorsScreen:
-			system("cls");
-			_ShowDoctorsListScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eShowAllDoctors)) {
+				system("cls");
+				_ShowDoctorsListScreen();
+				_BackToMenu();
+			}
+		
 			break;
 
 		case enManageDoctorMenuOption::eAddNewDoctor:
-			system("cls");
-			_ShowAddNewDoctorScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eAddNewDoctor)) {
+				system("cls");
+				_ShowAddNewDoctorScreen();
+				_BackToMenu();
+			}
+		
 			break;
 
 		case enManageDoctorMenuOption::eUpdateDoctor:
-
-			system("cls");
-			_ShowUpdateDoctorScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateDoctor)) {
+				system("cls");
+				_ShowUpdateDoctorScreen();
+				_BackToMenu();
+			}
+	
 			break;
 
 		case enManageDoctorMenuOption::eDeleteDoctor:
-			system("cls");
-			_ShowDeleteDoctorScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eDeleteDoctor)) {
+				system("cls");
+				_ShowDeleteDoctorScreen();
+				_BackToMenu();
+			}
+		
 			break;
 
 		case enManageDoctorMenuOption::eFindDoctor:
-			system("cls");
-			_ShowFindDoctorScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eFindDoctor)) {
+				system("cls");
+				_ShowFindDoctorScreen();
+				_BackToMenu();
+			}
+	
 			break;
 
 		case enManageDoctorMenuOption::eBackToMainMenu:
@@ -109,11 +129,21 @@ public:
 		string LineSperator = "=============================================\n";
 
 		cout << LineSperator;
-		cout << "[1] Show All Doctors.\n";
-		cout << "[2] Add New Doctor.\n";
-		cout << "[3] Update Doctor.\n";
-		cout << "[4] Delete Doctor.\n";
-		cout << "[5] Find Doctor\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eShowAllDoctors))
+			cout << "[1] Show All Doctors.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eAddNewDoctor))
+			cout << "[2] Add New Doctor.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateDoctor))
+			cout << "[3] Update Doctor.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eDeleteDoctor))
+			cout << "[4] Delete Doctor.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eFindDoctor))
+			cout << "[5] Find Doctor\n";
 		cout << "[6] Back To Main Menu\n";
 		cout << LineSperator;
 

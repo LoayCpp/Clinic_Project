@@ -1,6 +1,7 @@
 #pragma once
 #include "..//clsHeaderScreen.h"
 #include "clsPatientHelperFunctions.h"
+#include "..//..//Globlas//Globals.h"
 class clsFindPatientScreen : public clsHeaderScreen {
 
 public:

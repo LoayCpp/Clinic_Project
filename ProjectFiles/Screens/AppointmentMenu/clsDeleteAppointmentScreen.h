@@ -1,6 +1,7 @@
 #pragma once
 #include "..//clsHeaderScreen.h"
 #include "clsAppointmentHelperFunctions.h"
+#include "..//..//Globlas//Globals.h"
 class clsDeleteAppointmentScreen : public clsHeaderScreen {
 private:
 

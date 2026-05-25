@@ -1,6 +1,12 @@
 #pragma once
-#include"../clsHeaderScreen.h"
-#include"../..//Libraries/clsInputValidate.h"
+#include"..//clsHeaderScreen.h"
+#include "..//..//Globlas//Globals.h"
+#include"..//..//Libraries//clsInputValidate.h"
+#include "..//UsersMenu//clsShowUsersTableScreen.h"
+#include "..//UsersMenu//clsAddUserScreen.h"
+#include "..//UsersMenu//clsUpdateUsersDataScreen.h"
+#include "..//UsersMenu//clsDeleteUserScreen.h"
+#include "..//UsersMenu//clsFindUserScreen.h"
 
 class clsManageUsersMenuScreen : protected clsHeaderScreen
 {
@@ -32,30 +38,30 @@ private:
 
 	static void _ShowUsersListScreen() {
 
-		cout << "Show All Users is not implemented\n";
+		clsShowUsersTableScreen::ShowUsersTable();
 
 	}
 	static void _ShowAddNewUserScreen() {
 
-		cout << "Add New User is not implemented\n";
+		clsAddUserScreen::ShowAddUser();
 
 	}
 
 	static void _ShowUpdateUserScreen() {
 
 
-		cout << "Update Users is not implemented\n";
+		clsUpdateUsersDataScreen::ShowUpdateUserData();
 
 	}
 	static void _ShowDeleteUserScreen() {
 
-		cout << "Delete Users is not implemented\n";
+		clsDeleteUserScreen::ShowDeleteDoctor();
 
 
 	}
 	static void _ShowFindUserScreen() {
 
-		cout << "Find Users is not implemented\n";
+		clsFindUserScreen::ShowFindUser();
 
 	}
 
@@ -65,34 +71,53 @@ private:
 		switch (option)
 		{
 		case enManageUserMenuOption::eShowAllUsersScreen:
-			system("cls");
-			_ShowUsersListScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eShowAllUsers)) {
+				system("cls");
+				_ShowUsersListScreen();
+				_BackToMenu();
+			}
+	
 			break;
 
 		case enManageUserMenuOption::eAddNewUser:
-			system("cls");
-			_ShowAddNewUserScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eAddNewUser)) {
+				system("cls");
+				_ShowAddNewUserScreen();
+				_BackToMenu();
+			}
+			
 			break;
 
 		case enManageUserMenuOption::eUpdateUser:
-
-			system("cls");
-			_ShowUpdateUserScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateUser)) {
+				system("cls");
+				_ShowUpdateUserScreen();
+				_BackToMenu();
+			}
+	
 			break;
 
 		case enManageUserMenuOption::eDeleteUser:
-			system("cls");
-			_ShowDeleteUserScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eDeleteUser)) {
+				system("cls");
+				_ShowDeleteUserScreen();
+				_BackToMenu();
+			}
+		
 			break;
 
 		case enManageUserMenuOption::eFindUser:
-			system("cls");
-			_ShowFindUserScreen();
-			_BackToMenu();
+			if (CurrentUser.Permissions.IsUserHasPermissions(
+				CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eFindUser)) {
+				system("cls");
+				_ShowFindUserScreen();
+				_BackToMenu();
+			}
+			
 			break;
 
 		case enManageUserMenuOption::eBackToMainMenu:
@@ -111,11 +136,22 @@ public:
 		string LineSperator = "=============================================\n";
 
 		cout << LineSperator;
-		cout << "[1] Show All Users.\n";
-		cout << "[2] Add New User.\n";
-		cout << "[3] Update User.\n";
-		cout << "[4] Delete User.\n";
-		cout << "[5] Find User\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eShowAllUsers))
+			cout << "[1] Show All Users.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eAddNewUser))
+			cout << "[2] Add New User.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eUpdateUser))
+			cout << "[3] Update User.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eDeleteUser))
+			cout << "[4] Delete User.\n";
+		if (CurrentUser.Permissions.IsUserHasPermissions(
+			CurrentUser.Permissions.Role, clsPermissions::enUserPermissionsOption::eFindUser))
+			cout << "[5] Find User\n";
+	
 		cout << "[6] Back To Main Menu\n";
 		cout << LineSperator;
 
