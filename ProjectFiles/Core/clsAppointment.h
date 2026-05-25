@@ -21,7 +21,7 @@ private:
         return clsAppointment(clsTemplate<clsAppointment>::enMode::eUpadateMode,
             vLine[0], clsPatient::FindPatient(vLine[1]), clsDoctor::FindDoctor(vLine[2]), stof(vLine[3]), vLine[4]);
     }
-    string _ConvertAppointmentToDataLine(const clsAppointment& appointment, string separator = "#//#") {
+    string _ConvertAppointmentToDataLine(clsAppointment& appointment, string separator = "#//#") {
         string line = "";
 
         line = appointment._appointmentID + separator;
@@ -35,17 +35,17 @@ private:
     static string _GetAppointmentID(const clsAppointment& appointment) {
         return appointment._appointmentID;
     }
-    clsTemplate<clsAppointment>::enMode _GetAppointmentMode(const clsAppointment& appointment) {
+    clsTemplate<clsAppointment>::enMode _GetAppointmentMode(clsAppointment& appointment) {
         return appointment._mode;
     }
     static map<string, clsAppointment> _loadAppointmentDataFromFile() {
         return clsTemplate<clsAppointment>::LoadObjectsDataFromFiles(AppointmentsFile, _ConvertDataLineToAppointment, _GetAppointmentID);
     }
-    void _SaveAppointmentDataToFile(const map<string, clsAppointment>& mAppointments) {
+    void _SaveAppointmentDataToFile(map<string, clsAppointment>& mAppointments) {
 
         clsTemplate<clsAppointment>::SaveObjectsDataToFile(AppointmentsFile, mAppointments,
-            [this](const clsAppointment& appointment) -> clsTemplate<clsAppointment>::enMode {return _GetAppointmentMode(appointment); },
-            [this](const clsAppointment& appointment, string separator = "#//#") -> string
+            [this](clsAppointment& appointment) -> clsTemplate<clsAppointment>::enMode {return _GetAppointmentMode(appointment); },
+            [this](clsAppointment& appointment, string separator = "#//#") -> string
             {return _ConvertAppointmentToDataLine(appointment, separator); });
     }
     string _GetNextAppointmentNumber() {
@@ -57,14 +57,14 @@ private:
     }
     void _AddAppointmentToFile() {
         clsTemplate<clsAppointment>::AddObjectToFile(AppointmentsFile, *this,
-            [this](const clsAppointment& appointment, string separator = "#//#") -> string
+            [this](clsAppointment& appointment, string separator = "#//#") -> string
             {return _ConvertAppointmentToDataLine(appointment, separator); },
             [this]() -> void {_GenerateAppointmentID(); },
             this->_objectIsSaved);
     }
     void _UpdateAppointment() {
         clsTemplate<clsAppointment>::UpdateObject(_loadAppointmentDataFromFile, *this, _GetAppointmentID,
-            [this](const map<string, clsAppointment>& mAppointments)-> void {_SaveAppointmentDataToFile(mAppointments); }, this->_objectIsSaved
+            [this](map<string, clsAppointment>& mAppointments)-> void {_SaveAppointmentDataToFile(mAppointments); }, this->_objectIsSaved
         );
     }
     bool _Delete() {

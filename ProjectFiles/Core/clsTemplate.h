@@ -53,8 +53,8 @@ public:
 
     }
 
-    static void  SaveObjectsDataToFile(string &fileName, const map<string, T>& mObjects,
-        function < enMode(const T&) > objectMode, function<string(const T&, string) > convertObjectToDataLine) {
+    static void  SaveObjectsDataToFile(string &fileName,  map<string, T>& mObjects,
+        function < enMode(T&) > objectMode, function<string(T&, string) > convertObjectToDataLine) {
 
         fstream fileDB;
 
@@ -63,7 +63,7 @@ public:
         if (fileDB.is_open()) {
 
 
-            for (const auto& object : mObjects) {
+            for (auto& object : mObjects) {
 
 
                 if (objectMode(object.second) == enMode::eUpadateMode) {
@@ -104,7 +104,7 @@ public:
     static void UpdateObject(function< map<string, T>() > loadObjectsDataFromFiles,
                             T &Object,
                             function<string(const T&)> getID,
-                            function<void(const map<string, T>&)> saveObjectsDataToFile,
+                            function<void(map<string, T>&)> saveObjectsDataToFile,
                             enIsSave& objectIsSave) {
 
         map < string, T> mObjects = loadObjectsDataFromFiles();
@@ -118,7 +118,7 @@ public:
 
     static void AddObjectToFile(string &fileName,
                                 T &object,
-                                function<string(const T&, string)>convertObjectToDataLine,
+                                function<string(T&, string)>convertObjectToDataLine,
                                 function<void ()>generateObjectID,
                                 enIsSave& objectIsSave) {
 

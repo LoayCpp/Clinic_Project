@@ -133,6 +133,7 @@
     <ClInclude Include="ProjectFiles\Core\clsAppointment.h" />
     <ClInclude Include="ProjectFiles\Core\clsDoctor.h" />
     <ClInclude Include="ProjectFiles\Core\clsPatient.h" />
+    <ClInclude Include="ProjectFiles\Core\clsPermissions.h" />
     <ClInclude Include="ProjectFiles\Core\clsPerson.h" />
     <ClInclude Include="ProjectFiles\Core\clsTemplate.h" />
     <ClInclude Include="ProjectFiles\Core\clsUser.h" />

@@ -91,7 +91,7 @@ private:
     }
 
 
-    clsTemplate<clsDoctor>::enMode getMode(const clsDoctor& doctor) {
+    clsTemplate<clsDoctor>::enMode getMode(clsDoctor& doctor) {
 
         return doctor._mode;
     }
@@ -111,7 +111,7 @@ private:
 
         return specialization[num];
     }
-    string _ConvertDoctorToDataLine(const clsDoctor& DoctorInfo, string separator ="#//#") {
+    string _ConvertDoctorToDataLine(clsDoctor& DoctorInfo, string separator ="#//#") {
 
         string line;
 
@@ -131,11 +131,11 @@ private:
 
         return line;
     }
-    void  _SaveDoctorDataToFile(const map<string, clsDoctor>& doctorsDataMap) {
+    void  _SaveDoctorDataToFile(map<string, clsDoctor>& doctorsDataMap) {
 
         clsTemplate<clsDoctor>::SaveObjectsDataToFile(DoctorsFile, doctorsDataMap,
-            [this](const clsDoctor& tempDoctor)-> clsTemplate<clsDoctor>::enMode { return getMode(tempDoctor); }
-        , [this](const clsDoctor& tempDoctor, string sperator = "#//#")-> string {return _ConvertDoctorToDataLine(tempDoctor, sperator); });
+            [this](clsDoctor& tempDoctor)-> clsTemplate<clsDoctor>::enMode { return getMode(tempDoctor); }
+        , [this](clsDoctor& tempDoctor, string sperator = "#//#")-> string {return _ConvertDoctorToDataLine(tempDoctor, sperator); });
 
     }
 
@@ -152,7 +152,7 @@ private:
     void _UpdateDoctor() {
 
         clsTemplate<clsDoctor>::UpdateObject(_LoadDoctorsFromFiles, *this, getID, 
-            [this](const map<string, clsDoctor>& doctorsDataMap)->void {_SaveDoctorDataToFile(doctorsDataMap); }, 
+            [this]( map<string, clsDoctor>& doctorsDataMap)->void {_SaveDoctorDataToFile(doctorsDataMap); }, 
             _ObjectIsSaved);
 
     }
@@ -161,7 +161,7 @@ private:
 
        
         clsTemplate<clsDoctor>::AddObjectToFile(DoctorsFile, *this, 
-        [this](const clsDoctor& tempDoctor, string sperator = "#//#")-> string {return _ConvertDoctorToDataLine(tempDoctor, sperator); },
+        [this](clsDoctor& tempDoctor, string sperator = "#//#")-> string {return _ConvertDoctorToDataLine(tempDoctor, sperator); },
         [this](void)-> void  {_GeneratingIDForObject(); }, _ObjectIsSaved);
     }
 

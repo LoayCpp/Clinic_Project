@@ -131,5 +131,8 @@
     <ClInclude Include="ProjectFiles\Screens\AppointmentMenu\clsUpdateAppointmentScreen.h">
       <Filter>Header Files\Screens\AppointmentMenu</Filter>
     </ClInclude>
+    <ClInclude Include="ProjectFiles\Core\clsPermissions.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

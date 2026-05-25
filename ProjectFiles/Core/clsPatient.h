@@ -34,7 +34,7 @@ private:
         return (patientGender == enGender::eMale) ? "male" :
             (patientGender == enGender::eFemale) ? "female" : "No Gender";
     }
-    string _ConvertPatientToDataLine(const clsPatient& patientInfo, string separator = "#//#") {
+    string _ConvertPatientToDataLine(clsPatient& patientInfo, string separator = "#//#") {
 
         string line;
 
@@ -88,21 +88,21 @@ private:
         return clsTemplate<clsPatient>::LoadObjectsDataFromFiles(PatientsFile, _ConvertDataLineToPatient, getID);
 
     }
-    clsTemplate<clsPatient>::enMode getMode(const clsPatient& patient) {
+    clsTemplate<clsPatient>::enMode getMode(clsPatient& patient) {
 
         return patient._mode;
     }
-    void _SavePatientDataToFile(const map<string, clsPatient>& patientDataMap) {
+    void _SavePatientDataToFile( map<string, clsPatient>& patientDataMap) {
 
         clsTemplate<clsPatient>::SaveObjectsDataToFile(PatientsFile, patientDataMap,
-            [this](const clsPatient& tempPatient)-> clsTemplate<clsPatient>::enMode { return getMode(tempPatient); }
-        , [this](const clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertPatientToDataLine(tempPatient, sperator); });
+            [this](clsPatient& tempPatient)-> clsTemplate<clsPatient>::enMode { return getMode(tempPatient); }
+        , [this](clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertPatientToDataLine(tempPatient, sperator); });
 
     }
     void _UpdatePatient() {
 
         clsTemplate<clsPatient>::UpdateObject(_LoadPatientFromFiles, *this, getID,
-            [this](const map<string, clsPatient>& patientDataMap)->void {_SavePatientDataToFile(patientDataMap); },
+            [this]( map<string, clsPatient>& patientDataMap)->void {_SavePatientDataToFile(patientDataMap); },
             _ObjectIsSaved);
 
     }
@@ -119,7 +119,7 @@ private:
     void _AddPatientToFile() {
 
         clsTemplate<clsPatient>::AddObjectToFile(PatientsFile, *this,
-            [this](const clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertPatientToDataLine(tempPatient, sperator); }
+            [this](clsPatient& tempPatient, string sperator = "#//#")-> string {return _ConvertPatientToDataLine(tempPatient, sperator); }
         , [this](void)->void {_GeneratingIDForObject(); }, _ObjectIsSaved);
     }
     clsPatient(clsTemplate<clsPatient>::enMode mode,string patientID ,string firstName, string secondName, string thirdName,
