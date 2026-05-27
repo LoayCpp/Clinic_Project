@@ -376,29 +376,28 @@ Doc001#//#First#//#Second#//#Third#//#Fourth#//#male#//#1/1/1990#//#Dentistry#//
 <a id="screenshots"></a>
 ## Screenshots
 
-Screenshots can be added inside a folder such as:
 
-```text
-docs/images/
-```
+<img width="1920" height="1140" alt="Screenshot 2026-05-27 221607" src="https://github.com/user-attachments/assets/defe3d46-35d3-48d0-979b-ffa0bd11ad18" />
 
-Suggested screenshots:
+---
 
-| Screenshot | Description | Suggested Path |
-|---|---|---|
-| Login Screen | Shows the system start and credential input | `docs/images/login-screen.png` |
-| Main Menu | Shows available menus based on user permissions | `docs/images/main-menu.png` |
-| Doctors Menu | Shows doctor list, add, update, delete, and search operations | `docs/images/doctors-menu.png` |
-| Patients Menu | Shows patient list, update, and search operations | `docs/images/patients-menu.png` |
-| Appointments Menu | Shows appointment management and doctor-patient linking | `docs/images/appointments-menu.png` |
-| Table View | Shows how data is displayed in console tables | `docs/images/table-view.png` |
+<img width="1920" height="1140" alt="Screenshot 2026-05-27 221617" src="https://github.com/user-attachments/assets/8868c90f-da7f-48b4-ab10-85a56d49347f" />
 
-After adding images, they can be displayed in the README like this:
+---
 
-```md
-![Login Screen](docs/images/login-screen.png)
-![Main Menu](docs/images/main-menu.png)
-```
+
+<img width="1920" height="1140" alt="Screenshot 2026-05-27 221624" src="https://github.com/user-attachments/assets/5dd2ef2b-7be1-4f2a-9a95-48e808ee0fc6" />
+
+---
+
+<img width="1920" height="1140" alt="Screenshot 2026-05-27 221634" src="https://github.com/user-attachments/assets/337730a2-64d9-43dd-9f13-695eaf71b049" />
+
+---
+
+
+<img width="1920" height="1140" alt="Screenshot 2026-05-27 221644" src="https://github.com/user-attachments/assets/f7caacfa-a1fd-42ec-9d59-1b883dd7cb3b" />
+
+---
 
 <a id="development-notes"></a>
 ## Development Notes
