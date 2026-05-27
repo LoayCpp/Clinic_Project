@@ -13,7 +13,6 @@ A simple C++ console-based clinic management system built as an OOP practice pro
 - [Main Work Completed](#main-work-completed)
 - [Function Wrapper, Lambda, and Template Usage](#function-wrapper-lambda-and-template-usage)
 - [Data Flow](#data-flow)
-- [Screenshots](#screenshots)
 - [Development Notes](#development-notes)
 
 <a id="overview"></a>
@@ -374,31 +373,7 @@ Doc001#//#First#//#Second#//#Third#//#Fourth#//#male#//#1/1/1990#//#Dentistry#//
 ```
 
 <a id="screenshots"></a>
-## Screenshots
 
-Screenshots can be added inside a folder such as:
-
-```text
-docs/images/
-```
-
-Suggested screenshots:
-
-| Screenshot | Description | Suggested Path |
-|---|---|---|
-| Login Screen | Shows the system start and credential input | `docs/images/login-screen.png` |
-| Main Menu | Shows available menus based on user permissions | `docs/images/main-menu.png` |
-| Doctors Menu | Shows doctor list, add, update, delete, and search operations | `docs/images/doctors-menu.png` |
-| Patients Menu | Shows patient list, update, and search operations | `docs/images/patients-menu.png` |
-| Appointments Menu | Shows appointment management and doctor-patient linking | `docs/images/appointments-menu.png` |
-| Table View | Shows how data is displayed in console tables | `docs/images/table-view.png` |
-
-After adding images, they can be displayed in the README like this:
-
-```md
-![Login Screen](docs/images/login-screen.png)
-![Main Menu](docs/images/main-menu.png)
-```
 
 <a id="development-notes"></a>
 ## Development Notes
