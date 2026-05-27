@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "..//Globlas//Globals.h"
+
 using namespace std;
 class clsPerson
 {

@@ -5,7 +5,7 @@
 #include<string>
 #include<fstream>
 #include"..//Database//FilesName.h"
-#include "..//Globlas//Globals.h"
+
 using namespace std;
 	
 template <class T>

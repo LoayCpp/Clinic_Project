@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -158,6 +158,7 @@
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageDoctorsMenuScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManagePatientMenu.h" />
     <ClInclude Include="ProjectFiles\Screens\MainMenu\clsManageUsersMenuScreen.h" />
+    <ClInclude Include="ProjectFiles\Screens\MainMenu\clsLoginScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsFindPatientScreen.h" />
     <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsPatientHelperFunctions.h" />
     <ClInclude Include="ProjectFiles\Screens\PatientMenu\clsShowPatientsTableScreen.h" />

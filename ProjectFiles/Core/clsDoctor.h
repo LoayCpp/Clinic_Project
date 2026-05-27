@@ -7,7 +7,7 @@
 #include"..//Libraries//clsString.h"
 #include<map>
 #include"clsTemplate.h"
-#include "..//Globlas//Globals.h"
+
 class clsDoctor : public clsPerson
 {
 
