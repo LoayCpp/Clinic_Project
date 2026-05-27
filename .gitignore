@@ -11,7 +11,9 @@ x86/
 *.log
 *.pdb
 *.ilk
-
+*.vcxproj.user
+*.vcxproj.filters
+*.vcxproj
 # Temporary files
 *.tlog
 *.tmp
